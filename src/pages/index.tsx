@@ -138,7 +138,7 @@ const fetchNames = async () => {
   return data;
 };
 
-type Names = {
+type SectionLabels = {
   about: string;
   careers: string;
   contact: string;
@@ -152,14 +152,14 @@ type Names = {
 };
 
 type StaticData = {
-  namesData: Names;
+  sectionLabels: SectionLabels;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const namesData = (await fetchNames()) as Names;
+  const namesData = (await fetchNames()) as SectionLabels;
 
   const data: StaticData = {
-    namesData,
+    sectionLabels: namesData,
   };
 
   return {

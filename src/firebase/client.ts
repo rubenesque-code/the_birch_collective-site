@@ -19,11 +19,15 @@ const firestore = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
 
-if (app) {
-  if (process.env.NODE_ENV === "development") {
-    connectAuthEmulator(auth, "http://127.0.0.1:9099/");
+if (process.env.NODE_ENV === "development" && app) {
+  connectAuthEmulator(auth, "http://127.0.0.1:9099/");
+  connectStorageEmulator(storage, "127.0.0.1", 9199);
+
+  // · below is a workaround to prevent multiple attempts to connect during development. This is a bug on firebase's side.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  if (!firestore._settingsFrozen) {
     connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
-    connectStorageEmulator(storage, "127.0.0.1", 9199);
   }
 }
 
