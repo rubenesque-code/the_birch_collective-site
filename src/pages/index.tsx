@@ -1,10 +1,21 @@
+import { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import { doc, getDoc } from "firebase/firestore/lite";
+
+import { firestore } from "~/firebase/client";
+
+// TODO
+// import some firestore data
+// get set up with fetching db data:
+//  async functions
+//  validation: zod, other packages, approaches
+// testing
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  // let a = "";
+export default function Home({ data }: { data: StaticData }) {
+  console.log("data:", data);
 
   return (
     <main
@@ -118,3 +129,42 @@ export default function Home() {
     </main>
   );
 }
+
+const fetchNames = async () => {
+  const docRef = doc(firestore, "editableElements", "names");
+  const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
+
+  return data;
+};
+
+type Names = {
+  about: string;
+  careers: string;
+  contact: string;
+  donate: string;
+  getInvolved: string;
+  org: string;
+  programmes: string;
+  team: string;
+  volunteer: string;
+  workshops: string;
+};
+
+type StaticData = {
+  namesData: Names;
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const namesData = (await fetchNames()) as Names;
+
+  const data: StaticData = {
+    namesData,
+  };
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
