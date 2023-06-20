@@ -28,7 +28,7 @@ export default function Home({ data: dbData }: { data: StaticData }) {
         },
       }}
     >
-      <div>Home</div>
+      <div>About Us</div>
     </Layout.Primary>
   );
 }

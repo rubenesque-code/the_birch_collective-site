@@ -28,7 +28,7 @@ export default function Home({ data: dbData }: { data: StaticData }) {
         },
       }}
     >
-      <div>Home</div>
+      <div>Volunteer</div>
     </Layout.Primary>
   );
 }
