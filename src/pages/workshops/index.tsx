@@ -1,9 +1,9 @@
-import { GetStaticProps } from "next";
+import { type GetStaticProps } from "next";
 
 import Layout from "~/components/layouts";
 import { pick } from "~/helpers/utilities";
 import { myDb } from "~/lib/firebase/firestore/fetch";
-import { EditableLabels } from "~/types/database";
+import { type EditableLabels } from "~/types/database";
 
 // testing
 // get set up with fetching db data:

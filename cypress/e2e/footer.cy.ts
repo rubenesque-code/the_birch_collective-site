@@ -1,3 +1,5 @@
+// □  message component link
+
 describe("footer", () => {
   it("page links go to the correct page", () => {
     cy.visit("http://localhost:3000");

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /donateSuccess
+Disallow: /checkout
+
+User-agent: *
+Allow: /

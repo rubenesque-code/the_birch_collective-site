@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Footer, FooterProps, Header } from "../parts";
+import { Footer, FooterProps, Header } from "../sections";
 
 export const Primary = ({
   children,

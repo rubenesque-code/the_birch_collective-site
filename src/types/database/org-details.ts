@@ -1,6 +1,6 @@
 export type OrgDetails = {
   contact: Contact;
-  socialMedia: SocialMedia;
+  socialMediaLinks: SocialMedia;
 };
 
 type Contact = {
@@ -9,14 +9,8 @@ type Contact = {
   email: string;
 };
 
-type SocialMediaItem = {
-  id: string;
-  name?: string;
-  link: string;
-};
-
 type SocialMedia = {
-  facebook: SocialMediaItem;
-  instagram: SocialMediaItem;
-  linkedIn: SocialMediaItem;
+  facebook: string;
+  instagram: string;
+  linkedIn: string;
 };
