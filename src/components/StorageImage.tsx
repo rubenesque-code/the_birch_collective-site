@@ -5,10 +5,12 @@ import { storage_urls } from "~/firebase/static-data/urls";
 import { isDevMode } from "~/static-data/process";
 import { StorageImage } from "~/types/site";
 
+// □ image as StorageImage - don't need image to have id
+
 const StorageImage = ({
   // objectFit = "cover",
   // objectPosition,
-  image,
+  urlEndpoint,
   // layout = "fill",
   height,
   width,
@@ -17,7 +19,7 @@ const StorageImage = ({
 }: {
   objectFit?: "cover" | "contain";
   objectPosition?: string;
-  image: StorageImage | undefined;
+  urlEndpoint: string | undefined;
   layout?: "fixed" | "fill" | "intrinsic" | "responsive" | undefined;
   width?: number;
   height?: number;
@@ -30,8 +32,8 @@ const StorageImage = ({
     "https://images.unsplash.com/photo-1646886273817-23cec5265907?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60";
   const src = isDevMode
     ? dummySrc
-    : image
-    ? storage_urls.image_base + image.urlEndpoint
+    : urlEndpoint
+    ? storage_urls.image_base + urlEndpoint
     : "";
 
   return (

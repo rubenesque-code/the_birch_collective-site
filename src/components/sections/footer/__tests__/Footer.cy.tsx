@@ -1,8 +1,7 @@
 import React from "react";
 
+import { Footer } from "../index";
 import "~/styles/globals.css";
-
-import { Footer } from "./index";
 
 describe("<Footer />", () => {
   it("renders with populated child components", () => {
@@ -50,7 +49,7 @@ describe("<Footer />", () => {
 
     cy.get("[test-id=org-info-snippet]").should("exist");
 
-    cy.get("[test-id=org-logo]").should("exist");
+    cy.get("[test-id=org-name-and-logo]").should("exist");
     cy.get("[test-id=phone-number]").should("exist");
     cy.get("[test-id=email]").should("exist");
 

@@ -1,4 +1,4 @@
-/** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
+/** @typedef  {import("@trivago/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
 /** @typedef  {import("prettier").Config} PrettierConfig*/
 
 /** @type { PrettierConfig | SortImportsConfig } */
@@ -11,7 +11,8 @@ const config = {
   trailingComma: "all",
   tabWidth: 2,
   plugins: [
-    "@ianvs/prettier-plugin-sort-imports",
+    // "@ianvs/prettier-plugin-sort-imports",
+    "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
   ],
   importOrder: [
@@ -25,8 +26,8 @@ const config = {
     "^~/(.*)$",
     "^[./]",
   ],
-  // importOrderSeparation: false,
-  // importOrderSortSpecifiers: true,
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
   // importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   // importOrderMergeDuplicateImports: true,

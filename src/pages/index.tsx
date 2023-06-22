@@ -5,16 +5,14 @@ import { myDb } from "~/firebase/firestore/fetch";
 import { pick } from "~/helpers/utilities";
 import { type EditableLabels, type OrgDetails } from "~/types/database";
 
-// testing
 // get set up with fetching db data:
 //  async functions
 //  validation: zod, other packages, approaches
 
-// □ @ianvs prettier plugin not working - error message in vscode output
+// □ images. inc. extension. do on cms first?
+// □ test db requests?
 
 export default function Home({ data: dbData }: { data: StaticData }) {
-  // console.log("data:", data);
-
   return (
     <Layout.Primary
       childComponentProps={{

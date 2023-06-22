@@ -1,18 +1,11 @@
 import { type GetStaticProps } from "next";
 
 import Layout from "~/components/layouts";
+import { myDb } from "~/firebase/firestore/fetch";
 import { pick } from "~/helpers/utilities";
-import { myDb } from "~/lib/firebase/firestore/fetch";
-import { type EditableLabels } from "~/types/database";
-
-// testing
-// get set up with fetching db data:
-//  async functions
-//  validation: zod, other packages, approaches
+import { type EditableLabels, type OrgDetails } from "~/types/database";
 
 export default function Home({ data: dbData }: { data: StaticData }) {
-  // console.log("data:", data);
-
   return (
     <Layout.Primary
       childComponentProps={{
@@ -25,23 +18,27 @@ export default function Home({ data: dbData }: { data: StaticData }) {
             "donate",
             "volunteer",
           ),
+          orgDetails: dbData.orgDetails,
         },
       }}
     >
-      <div>Workshops</div>
+      <div>Home</div>
     </Layout.Primary>
   );
 }
 
 type StaticData = {
   sectionLabels: EditableLabels["sections"];
+  orgDetails: OrgDetails;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const sectionLabels = await myDb.fetch.editableLabels.sections();
+  const orgDetails = await myDb.fetch.orgDetails();
 
   const data: StaticData = {
     sectionLabels,
+    orgDetails,
   };
 
   return {

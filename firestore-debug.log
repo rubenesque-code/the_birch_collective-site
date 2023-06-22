@@ -1,4 +1,4 @@
-Jun 21, 2023 4:26:32 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+Jun 22, 2023 5:13:58 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
 INFO: Started WebSocket server on ws://127.0.0.1:9150
 API endpoint: http://127.0.0.1:8080
 If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
@@ -7,19 +7,13 @@ If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment
 
 Dev App Server is now running.
 
-Jun 21, 2023 4:26:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Jun 22, 2023 5:14:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
-Jun 21, 2023 4:26:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Jun 22, 2023 5:14:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
-Jun 21, 2023 4:26:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Jun 22, 2023 5:14:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
-Jun 21, 2023 4:59:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Jun 22, 2023 5:14:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
-Jun 21, 2023 4:59:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected HTTP/2 connection.
-Jun 21, 2023 4:59:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Jun 21, 2023 5:17:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Jun 21, 2023 5:17:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Jun 22, 2023 5:14:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
