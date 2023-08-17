@@ -11,7 +11,7 @@ export type StaticData = {
     linkLabels: MyDb["singles"]["linkLabels"];
     orgDetails: MyDb["singles"]["orgDetails"];
 
-    page: MyDb["pages"]["landing"];
+    page: ReturnType<(typeof dbData)["crossProcess"]["landingPage"]>;
 
     participantTestimonials: MyDb["participant-testimonial"][];
     partners: MyDb["partner"][];
@@ -107,13 +107,24 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
     }),
   );
 
+  const pageSelfProcessed = dbData.selfProcess.landingPage(page);
+  const pageCrossProcessed = dbData.crossProcess.landingPage({
+    landingPage: pageSelfProcessed,
+    connectedDocs: {
+      images: pageImages,
+      partners: partnersValid,
+      programmes: programmesValid,
+      supporters: supportersValid,
+    },
+  });
+
   const data: StaticData["staticData"] = {
     footer,
     header,
     linkLabels,
     orgDetails,
 
-    page,
+    page: pageCrossProcessed,
 
     participantTestimonials: participantTestimonialsValid,
     partners: partnersValid,

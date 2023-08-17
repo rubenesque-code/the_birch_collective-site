@@ -51,15 +51,23 @@ const landingPage = ({
     }))
     .sort(sortByIndex);
 
+  const connectedPartners = landingPage.partners.entries
+    .map((entry) =>
+      connectedDocs.partners.find(
+        (p) => p.id === entry.dbConnections.partnerId,
+      ),
+    )
+    .flatMap((connectedPartner) => (connectedPartner ? [connectedPartner] : []))
+    .sort(sortByIndex);
+
   return {
     id: landingPage.id,
 
     bannerImage: !bannerImageConnectedImage
       ? null
       : {
-          image: bannerImageConnectedImage,
-          ...landingPage.bannerImage.infoPopover,
-          ...landingPage.bannerImage.position,
+          connectedImage: bannerImageConnectedImage,
+          ...landingPage.bannerImage,
         },
 
     orgHeadings: landingPage.orgHeadings,
@@ -97,9 +105,19 @@ const landingPage = ({
           hading: landingPage.photoAlbum.heading,
           entries: photoAlbumEntries,
         },
+
+    partners: !connectedPartners.length
+      ? null
+      : {
+          heading: landingPage.partners.heading,
+          subheading: landingPage.partners.subheading,
+          connectedPartners,
+        },
   };
 };
 
-const crossProcess = {};
+const crossProcess = {
+  landingPage,
+};
 
 export default crossProcess;

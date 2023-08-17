@@ -8,8 +8,6 @@ import { type StaticData } from "./_static-data";
 import AboutUs from "./about-us/+Entry";
 import ParticipantTestimonials from "./participant-testimonials/+Entry";
 
-import type { MyDb } from "~/types/database";
-
 // □ apply dompurify
 
 // □ different max widths for text sections
@@ -33,15 +31,10 @@ const HomePage = ({ staticData }: StaticData) => {
             ) || null,
         }}
       />
-      <BannerImage
-        data={staticData.page["bannerImage"]}
-        image={
-          staticData.images.find(
-            (image) =>
-              image.id === staticData.page.bannerImage.dbConnections.imageId,
-          ) || null
-        }
-      />
+
+      {!staticData.page.bannerImage ? null : (
+        <BannerImage data={staticData.page.bannerImage} />
+      )}
 
       <SiteLayout.Section.Spacing.Vertical />
 
@@ -63,11 +56,15 @@ const HomePage = ({ staticData }: StaticData) => {
         />
       </SiteLayout.Section.Spacing.Horizontal>
 
-      <SiteLayout.Section.Spacing.Vertical />
+      {staticData.page.aboutUs ? (
+        <>
+          <SiteLayout.Section.Spacing.Vertical />
 
-      <SiteLayout.Section.Spacing.Horizontal>
-        <AboutUs staticData={staticData.page.aboutUs} />
-      </SiteLayout.Section.Spacing.Horizontal>
+          <SiteLayout.Section.Spacing.Horizontal>
+            <AboutUs staticData={staticData.page.aboutUs} />
+          </SiteLayout.Section.Spacing.Horizontal>
+        </>
+      ) : null}
     </div>
   );
 };
@@ -76,18 +73,12 @@ export default HomePage;
 
 const BannerImage = ({
   data,
-  image,
 }: {
-  data: MyDb["pages"]["landing"]["bannerImage"];
-  image: MyDb["image"] | null;
+  data: NonNullable<StaticData["staticData"]["page"]["bannerImage"]>;
 }) => {
-  if (!image) {
-    return null;
-  }
-
   return (
     <div className="group/bannerImage relative aspect-[16/9] overflow-hidden xl:aspect-[14/3]">
-      <StorageImage urls={image.urls} position={data.position} />
+      <StorageImage urls={data.connectedImage.urls} position={data.position} />
     </div>
   );
 };
