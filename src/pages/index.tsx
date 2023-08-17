@@ -1,56 +1,10 @@
-import { type GetStaticProps } from "next";
+import { type StaticData } from "~/components/+pages/home/_static-data";
+import HomePage from "~/components/+pages/home/+Entry";
 
-import Layout from "~/components/layouts";
-import { myDb } from "~/firebase/firestore/fetch";
-import { pick } from "~/helpers/utilities";
-import { type EditableLabels, type OrgDetails } from "~/types/database";
+export { getStaticProps } from "~/components/+pages/home/_static-data";
 
-// get set up with fetching db data:
-//  async functions
-//  validation: zod, other packages, approaches
-
-// □ images. inc. extension. do on cms first?
-// □ test db requests?
-
-export default function Home({ data: dbData }: { data: StaticData }) {
-  return (
-    <Layout.Primary
-      childComponentProps={{
-        footer: {
-          siteLinkLabels: pick(
-            dbData.sectionLabels,
-            "about",
-            "programmes",
-            "workshops",
-            "donate",
-            "volunteer",
-          ),
-          orgDetails: dbData.orgDetails,
-        },
-      }}
-    >
-      <div>Home</div>
-    </Layout.Primary>
-  );
-}
-
-type StaticData = {
-  sectionLabels: EditableLabels["sections"];
-  orgDetails: OrgDetails;
+const Page = (props: StaticData) => {
+  return <HomePage staticData={props.staticData} />;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const sectionLabels = await myDb.fetch.editableLabels.sections();
-  const orgDetails = await myDb.fetch.orgDetails();
-
-  const data: StaticData = {
-    sectionLabels,
-    orgDetails,
-  };
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
+export default Page;

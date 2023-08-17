@@ -21,6 +21,18 @@ module.exports = {
       "3xl": "1800px",
     },
     extend: {
+      spacing: {
+        xxxs: ".1rem",
+        xxs: ".25rem",
+        xs: ".5rem",
+        sm: "1rem",
+        md: "1.5rem",
+        lg: "2rem",
+        xl: "3rem",
+        "2xl": "6rem",
+        "2.5xl": "7.5rem",
+        "3xl": "9rem",
+      },
       colors: {
         brandBrown: "#776e77",
         brandLightBrown: "#d3cec6",
