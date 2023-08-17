@@ -1,6 +1,6 @@
 import type { GetStaticProps } from "next";
 
-import dbData from "~/helpers/db-data";
+import dbData from "~/helpers/static-data";
 import { myDb } from "~/my-firebase/firestore";
 import type { MyDb } from "~/types/database";
 

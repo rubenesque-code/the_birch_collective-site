@@ -12,6 +12,7 @@ export type Pages = {
 
 type Landing = {
   id: "landing-page";
+
   bannerImage: {
     dbConnections: {
       imageId: string | null;
@@ -24,6 +25,7 @@ type Landing = {
       text: string;
     };
   };
+
   orgHeadings: {
     name: string;
     byline: string;

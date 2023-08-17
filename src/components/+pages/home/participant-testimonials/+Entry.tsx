@@ -1,55 +1,33 @@
-import type { ReactElement } from "react";
+import React, { type ReactElement } from "react";
 
-import { CustomisableImage } from "~/components/CustomisableImage";
-import { ConnectImage } from "~/components/DbImageWrapper";
-import { Icon } from "~/components/icons";
-import { ImagePlaceholder } from "~/components/ImagePlaceholder";
-import CmsLayout from "~/components/layouts/Cms";
-import ParticipantTestimonialsModal from "~/components/participant-testimonials-modal/+Entry";
-import { UserSelectedImageWrapper } from "~/components/UserSelectedImageWrapper";
+import { StorageImage } from "~/components/StorageImage";
 
 import { Slides } from "./slides/+Entry";
 
-import { ParticipantTestimonialCx } from "~/context/entities";
-import { UedCx } from "~/context/user-editable-data";
 import { deepSortByIndex } from "~/helpers/data/process";
 import { useHovered } from "~/hooks";
-import { MyDb } from "~/types/database";
+import type { MyDb } from "~/types/database";
 
 const ParticipantTestimonials = ({
   staticData,
 }: {
-  staticData: MyDb["participant-testimonial"][];
+  staticData: {
+    testimonials: MyDb["participant-testimonial"][];
+    images: MyDb["image"][];
+  };
 }) => {
-  const slidesInitData = [
-    ...deepSortByIndex(testimonials),
-    ...(Array(testimonials.length >= 4 ? 0 : 4 - testimonials.length).fill(
-      "dummy",
-    ) as "dummy"[]),
-  ];
+  const sorted = React.useMemo(
+    () => deepSortByIndex(staticData.testimonials),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   return (
-    <div className="group/testimonials">
-      <CmsLayout.EditBar className="opacity-40 hover:!opacity-100 group-hover/testimonials:opacity-80">
-        <ParticipantTestimonialsModal
-          button={({ openModal }) => (
-            <div
-              className="my-btn my-btn-neutral flex cursor-pointer items-center gap-xs rounded-sm border-transparent"
-              onClick={openModal}
-            >
-              <span className="text-gray-400">
-                <Icon.Configure />
-              </span>
-              <span className="">Edit testimonials</span>
-            </div>
-          )}
-        />
-      </CmsLayout.EditBar>
-
+    <div>
       <Slides
-        numSlidesTotal={testimonials.length}
+        numSlidesTotal={sorted.length}
         slides={({ leftMost, rightMost }) =>
-          slidesInitData.map((testimonial, i) => (
+          sorted.map((testimonial, i) => (
             <TestimonialWrapper
               slidesView={{
                 isFirst: i === leftMost,
@@ -57,13 +35,15 @@ const ParticipantTestimonials = ({
               }}
               key={i}
             >
-              {testimonial === "dummy" ? (
-                <TestimonialDummy />
-              ) : (
-                <ParticipantTestimonialCx.Provider testimonial={testimonial}>
-                  <TestimonialActual />
-                </ParticipantTestimonialCx.Provider>
-              )}
+              <TestimonialActual
+                testimonial={testimonial}
+                image={
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                  staticData.images.find(
+                    (image) => image.id === testimonial.image.dbConnect.imageId,
+                  )!
+                }
+              />
             </TestimonialWrapper>
           ))
         }
@@ -104,51 +84,23 @@ const TestimonialWrapper = ({
   );
 };
 
-const TestimonialDummy = () => (
-  <>
-    <div className="absolute h-full w-full">
-      <ImagePlaceholder placeholderText="" />
-    </div>
-    <div className="absolute bottom-0 z-10 flex h-4/5 w-full flex-col justify-end gap-sm rounded-b-md bg-gradient-to-t from-black to-transparent p-sm text-center text-lg text-white">
-      <div className="scrollbar-hide overflow-auto">
-        <p className="">
-          Herald sad and trumpet be, To this troop come thou not near! To
-          themselves yet either neither, Beauty brag, but tis not she; If what
-          parts can so remain...
-        </p>
-      </div>
-      <div className="shrink-0 font-medium">
-        <p>Person Name</p>
-      </div>
-    </div>
-  </>
-);
-
-const TestimonialActual = () => {
-  const { endorserName, image, text } = ParticipantTestimonialCx.use();
+const TestimonialActual = ({
+  testimonial,
+  image,
+}: {
+  image: MyDb["image"];
+  testimonial: MyDb["participant-testimonial"];
+}) => {
   return (
     <>
       <div className="absolute h-full w-full">
-        <UserSelectedImageWrapper
-          dbImageId={image.dbConnect.imageId}
-          placeholderText="background image"
-        >
-          {({ dbImageId }) => (
-            <ConnectImage dbImageId={dbImageId}>
-              {({ urls }) => (
-                <CustomisableImage urls={urls} position={image.position} />
-              )}
-            </ConnectImage>
-          )}
-        </UserSelectedImageWrapper>
+        <StorageImage urls={image.urls} position={testimonial.image.position} />
       </div>
       <div className="absolute bottom-0 z-10 h-4/5 w-full bg-gradient-to-t from-black to-transparent">
         <div className="absolute bottom-0 z-10 flex h-[63%] w-full flex-col justify-end gap-sm p-sm text-center text-lg text-white">
-          <div className="scrollbar-hide overflow-auto">
-            {text.length ? text : "Testimonial"}
-          </div>
+          <div className="overflow-auto scrollbar-hide">{testimonial.text}</div>
           <div className="shrink-0 font-medium">
-            <p>{endorserName.length ? endorserName : "Endorser name"}</p>
+            <p>{testimonial.endorserName}</p>
           </div>
         </div>
       </div>

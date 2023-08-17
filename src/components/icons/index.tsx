@@ -1,3 +1,6 @@
+import type { ComponentProps } from "react";
+import { faCottonBureau } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   ArrowCounterClockwise,
   ArrowDown,
@@ -67,6 +70,8 @@ import {
   XSquare,
 } from "@phosphor-icons/react";
 
+import type { MyOmit } from "~/types/utilities";
+
 const Icon = () => {
   throw new Error(
     "Icon exists for naming purposes only and should not be used as a component",
@@ -127,6 +132,12 @@ Icon.ExternalLink = ArrowSquareOut;
 Icon.Paid = Money;
 Icon.SignUp = HandPointing;
 Icon.Time = Clock;
+
+const AboutUsIcon = (
+  props: MyOmit<ComponentProps<typeof FontAwesomeIcon>, "icon">,
+) => <FontAwesomeIcon icon={faCottonBureau} {...props} />;
+
+Icon.AboutUs = AboutUsIcon;
 
 const BulletIcon = () => {
   throw new Error(
