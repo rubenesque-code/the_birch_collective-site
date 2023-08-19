@@ -4,9 +4,7 @@ import { Icon } from "~/components/icons";
 
 import { type StaticData } from "../_static-data";
 
-type SectionStaticData = NonNullable<
-  StaticData["staticData"]["page"]["aboutUs"]
->;
+type SectionStaticData = NonNullable<StaticData["page"]["aboutUs"]>;
 
 const AboutUs = ({ staticData }: { staticData: SectionStaticData }) => {
   return (

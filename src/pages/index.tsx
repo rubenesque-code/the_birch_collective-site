@@ -3,8 +3,8 @@ import HomePage from "~/components/+pages/home/+Entry";
 
 export { getStaticProps } from "~/components/+pages/home/_static-data";
 
-const Page = (props: StaticData) => {
-  return <HomePage staticData={props.staticData} />;
+const Page = (staticData: StaticData) => {
+  return <HomePage staticData={staticData} />;
 };
 
 export default Page;

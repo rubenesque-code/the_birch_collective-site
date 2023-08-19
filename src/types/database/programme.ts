@@ -1,3 +1,7 @@
+// · REQUIRED
+// · own-fields: mainText.length, title.length.
+// · connected-docs: banner image or summary image.
+
 export type Programme = {
   id: string;
 

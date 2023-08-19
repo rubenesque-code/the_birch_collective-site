@@ -1,7 +1,9 @@
+import type { partner } from "./partners";
+
 import { sortByIndex } from "~/helpers/data/process";
 import type { MyDb } from "~/types/database";
 
-const landingPage = ({
+export const landingPage = ({
   connectedDocs,
   landingPage,
 }: {
@@ -9,23 +11,21 @@ const landingPage = ({
   connectedDocs: {
     programmes: MyDb["programme"][];
     supporters: MyDb["supporter"][];
-    partners: MyDb["partner"][];
+    partners: ReturnType<typeof partner>[];
     images: MyDb["image"][];
   };
 }) => {
-  const bannerImageConnectedImage = connectedDocs.images.find(
-    (image) => image.id === landingPage.bannerImage.dbConnections.imageId,
-  );
+  const bannerImageConnectedImage =
+    connectedDocs.images.find(
+      (image) => image.id === landingPage.bannerImage.dbConnections.imageId,
+    ) || null;
 
-  const aboutUsBulletsValid = landingPage.aboutUs.entries.filter(
-    (bullet) => bullet.text.length,
-  );
+  const workshopsConnectedImage =
+    connectedDocs.images.find(
+      (image) => image.id === landingPage.workshops.image.dbConnections.imageId,
+    ) || null;
 
-  const workshopsConnectedImage = connectedDocs.images.find(
-    (image) => image.id === landingPage.workshops.image.dbConnections.imageId,
-  );
-
-  const connectedProgrammes = landingPage.programmes.entries
+  const programmeEntries = landingPage.programmes.entries
     .map((entry) =>
       connectedDocs.programmes.find(
         (p) => p.id === entry.dbConnections.programmeId,
@@ -43,15 +43,16 @@ const landingPage = ({
     .map((entry) => ({
       ...entry,
       image: {
-        connectedImage: connectedDocs.images.find(
-          (image) => image.id === entry.image.dbConnections.imageId,
-        ),
+        connectedImage:
+          connectedDocs.images.find(
+            (image) => image.id === entry.image.dbConnections.imageId,
+          ) || null,
         position: entry.image.position,
       },
     }))
     .sort(sortByIndex);
 
-  const connectedPartners = landingPage.partners.entries
+  const partnerEntries = landingPage.partners.entries
     .map((entry) =>
       connectedDocs.partners.find(
         (p) => p.id === entry.dbConnections.partnerId,
@@ -59,6 +60,8 @@ const landingPage = ({
     )
     .flatMap((connectedPartner) => (connectedPartner ? [connectedPartner] : []))
     .sort(sortByIndex);
+
+  const aboutUsEntries = landingPage.aboutUs.entries.sort(sortByIndex);
 
   return {
     id: landingPage.id,
@@ -72,31 +75,31 @@ const landingPage = ({
 
     orgHeadings: landingPage.orgHeadings,
 
-    aboutUs: !aboutUsBulletsValid.length
+    aboutUs: !landingPage.aboutUs.entries.length
       ? null
       : {
           buttonText: landingPage.aboutUs.buttonText,
           heading: landingPage.aboutUs.heading,
-          entries: aboutUsBulletsValid,
+          entries: aboutUsEntries,
         },
 
     workshops: !workshopsConnectedImage
       ? null
       : {
           image: {
-            image: workshopsConnectedImage,
+            connectedImage: workshopsConnectedImage,
             position: landingPage.workshops.image.position,
           },
           ...landingPage.workshops.textOverlay,
         },
 
-    programmes: !connectedProgrammes.length
+    programmes: !programmeEntries.length
       ? null
       : {
           buttonText: landingPage.programmes.buttonText,
           heading: landingPage.programmes.heading,
           subheading: landingPage.programmes.subheading,
-          entries: connectedProgrammes,
+          entries: programmeEntries,
         },
 
     photoAlbum: !photoAlbumEntries.length
@@ -106,18 +109,12 @@ const landingPage = ({
           entries: photoAlbumEntries,
         },
 
-    partners: !connectedPartners.length
+    partners: !partnerEntries.length
       ? null
       : {
           heading: landingPage.partners.heading,
           subheading: landingPage.partners.subheading,
-          connectedPartners,
+          entries: partnerEntries,
         },
   };
 };
-
-const crossProcess = {
-  landingPage,
-};
-
-export default crossProcess;

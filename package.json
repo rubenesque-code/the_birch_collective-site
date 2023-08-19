@@ -43,6 +43,7 @@
     "eslint-config-next": "^13.4.17",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-cypress": "^2.14.0",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.3.0",
     "postcss": "^8.4.28",

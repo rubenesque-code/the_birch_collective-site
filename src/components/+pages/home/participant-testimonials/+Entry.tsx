@@ -1,56 +1,38 @@
-import React, { type ReactElement } from "react";
+import { type ReactElement } from "react";
 
 import { StorageImage } from "~/components/StorageImage";
 
+import { type StaticData } from "../_static-data";
 import { Slides } from "./slides/+Entry";
 
-import { deepSortByIndex } from "~/helpers/data/process";
 import { useHovered } from "~/hooks";
-import type { MyDb } from "~/types/database";
 
 const ParticipantTestimonials = ({
   staticData,
 }: {
   staticData: {
-    testimonials: MyDb["participant-testimonial"][];
-    images: MyDb["image"][];
+    testimonials: StaticData["participantTestimonials"];
   };
-}) => {
-  const sorted = React.useMemo(
-    () => deepSortByIndex(staticData.testimonials),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
-
-  return (
-    <div>
-      <Slides
-        numSlidesTotal={sorted.length}
-        slides={({ leftMost, rightMost }) =>
-          sorted.map((testimonial, i) => (
-            <TestimonialWrapper
-              slidesView={{
-                isFirst: i === leftMost,
-                isLast: i === rightMost,
-              }}
-              key={i}
-            >
-              <TestimonialActual
-                testimonial={testimonial}
-                image={
-                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                  staticData.images.find(
-                    (image) => image.id === testimonial.image.dbConnect.imageId,
-                  )!
-                }
-              />
-            </TestimonialWrapper>
-          ))
-        }
-      />
-    </div>
-  );
-};
+}) => (
+  <div>
+    <Slides
+      numSlidesTotal={staticData.testimonials.length}
+      slides={({ leftMost, rightMost }) =>
+        staticData.testimonials.map((testimonial, i) => (
+          <TestimonialWrapper
+            slidesView={{
+              isFirst: i === leftMost,
+              isLast: i === rightMost,
+            }}
+            key={i}
+          >
+            <Testimonial testimonial={testimonial} />
+          </TestimonialWrapper>
+        ))
+      }
+    />
+  </div>
+);
 
 export default ParticipantTestimonials;
 
@@ -84,26 +66,25 @@ const TestimonialWrapper = ({
   );
 };
 
-const TestimonialActual = ({
+const Testimonial = ({
   testimonial,
-  image,
 }: {
-  image: MyDb["image"];
-  testimonial: MyDb["participant-testimonial"];
-}) => {
-  return (
-    <>
-      <div className="absolute h-full w-full">
-        <StorageImage urls={image.urls} position={testimonial.image.position} />
-      </div>
-      <div className="absolute bottom-0 z-10 h-4/5 w-full bg-gradient-to-t from-black to-transparent">
-        <div className="absolute bottom-0 z-10 flex h-[63%] w-full flex-col justify-end gap-sm p-sm text-center text-lg text-white">
-          <div className="overflow-auto scrollbar-hide">{testimonial.text}</div>
-          <div className="shrink-0 font-medium">
-            <p>{testimonial.endorserName}</p>
-          </div>
+  testimonial: StaticData["participantTestimonials"][number];
+}) => (
+  <>
+    <div className="absolute h-full w-full">
+      <StorageImage
+        urls={testimonial.image.connectedImage.urls}
+        position={testimonial.image.position}
+      />
+    </div>
+    <div className="absolute bottom-0 z-10 h-4/5 w-full bg-gradient-to-t from-black to-transparent">
+      <div className="absolute bottom-0 z-10 flex h-[63%] w-full flex-col justify-end gap-sm p-sm text-center text-lg text-white">
+        <div className="overflow-auto scrollbar-hide">{testimonial.text}</div>
+        <div className="shrink-0 font-medium">
+          <p>{testimonial.endorserName}</p>
         </div>
       </div>
-    </>
-  );
-};
+    </div>
+  </>
+);

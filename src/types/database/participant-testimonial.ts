@@ -1,3 +1,7 @@
+// · REQUIRED
+// · own-fields: endorserName.length, text.length.
+// · connected-docs: image.
+
 export type ParticipantTestimonial = {
   id: string;
   image: {

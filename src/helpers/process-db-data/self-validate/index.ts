@@ -1,4 +1,8 @@
+import { landingPage } from "./landing-page";
+
 import type { MyDb } from "~/types/database";
+
+// · self validation is to remove docs without required fields that don't depend on connected docs
 
 const participantTestimonial = ({
   endorserName,
@@ -19,15 +23,12 @@ const partner = ({ image, name }: MyDb["partner"]) => {
 
 const programme = ({
   mainText,
-  signUp,
   summary,
   title,
   bannerImage,
 }: MyDb["programme"]) => {
   const hasRequiredFields =
     mainText.length &&
-    signUp.heading.length &&
-    signUp.buttonText.length &&
     (summary.image.dbConnections.imageId ||
       bannerImage.dbConnections.imageId) &&
     title.length;
@@ -46,6 +47,7 @@ const selfValidate = {
   partner,
   programme,
   supporter,
+  landingPage,
 };
 
 export default selfValidate;

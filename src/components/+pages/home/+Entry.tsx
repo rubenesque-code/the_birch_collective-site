@@ -8,6 +8,8 @@ import { type StaticData } from "./_static-data";
 import AboutUs from "./about-us/+Entry";
 import ParticipantTestimonials from "./participant-testimonials/+Entry";
 
+// □ get form up and running
+
 // □ apply dompurify
 
 // □ different max widths for text sections
@@ -15,20 +17,15 @@ import ParticipantTestimonials from "./participant-testimonials/+Entry";
 // □ image blur in working? image load in bg
 // □ bug on testimonials slider when hover central slide has transparency
 
-const HomePage = ({ staticData }: StaticData) => {
+const HomePage = ({ staticData }: { staticData: StaticData }) => {
   return (
-    <div>
+    <div className="w-screen overflow-x-hidden">
       <Header
         staticData={{
           header: staticData.header,
           linkLabels: staticData.linkLabels,
           orgDetails: staticData.orgDetails,
-          logoImg:
-            staticData.images.find(
-              (image) =>
-                image.id ===
-                staticData.orgDetails.logoImage.dbConnections.imageId,
-            ) || null,
+          logoImg: staticData.logoImage,
         }}
       />
 
@@ -50,7 +47,6 @@ const HomePage = ({ staticData }: StaticData) => {
       <SiteLayout.Section.Spacing.Horizontal>
         <ParticipantTestimonials
           staticData={{
-            images: staticData.images,
             testimonials: staticData.participantTestimonials,
           }}
         />
@@ -74,7 +70,7 @@ export default HomePage;
 const BannerImage = ({
   data,
 }: {
-  data: NonNullable<StaticData["staticData"]["page"]["bannerImage"]>;
+  data: NonNullable<StaticData["page"]["bannerImage"]>;
 }) => {
   return (
     <div className="group/bannerImage relative aspect-[16/9] overflow-hidden xl:aspect-[14/3]">

@@ -1,5 +1,7 @@
 import type { MyDb } from "~/types/database";
 
+// · cross validation is to remove docs without required fields that depend on connected docs
+
 const participantTestimonial = ({
   partcipantTestimonial,
   connectedDocs,
@@ -42,6 +44,7 @@ const programme = ({
   const validSummaryImage = connectedDocs.images.find(
     (image) => image.id === programme.summary.image.dbConnections.imageId,
   );
+
   const validBannerImage = validSummaryImage
     ? null
     : connectedDocs.images.find(
