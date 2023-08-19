@@ -8,17 +8,15 @@ import { Slides } from "./slides/+Entry";
 import { useHovered } from "~/hooks";
 
 const ParticipantTestimonials = ({
-  staticData,
+  data,
 }: {
-  staticData: {
-    testimonials: StaticData["participantTestimonials"];
-  };
+  data: StaticData["participantTestimonials"];
 }) => (
   <div>
     <Slides
-      numSlidesTotal={staticData.testimonials.length}
+      numSlidesTotal={data.length}
       slides={({ leftMost, rightMost }) =>
-        staticData.testimonials.map((testimonial, i) => (
+        data.map((testimonial, i) => (
           <TestimonialWrapper
             slidesView={{
               isFirst: i === leftMost,

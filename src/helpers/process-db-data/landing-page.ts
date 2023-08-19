@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { filterByConnectedImage, findByImageId, notInUse } from "./_helpers";
 import { type ProcessedParticipantTestimonials } from "./participant-testimonial";
 import { type ProcessedPartners } from "./partner";
 import { type ProcessedProgrammes } from "./programme";
@@ -8,13 +10,12 @@ import type { MyDb } from "~/types/database";
 
 const crossProcess = (
   {
-    bannerImage,
-    workshops,
-    programmes,
-    photoAlbum,
-    partners,
     aboutUs,
-    orgHeadings,
+    bannerImage,
+    partners,
+    photoAlbum,
+    programmes,
+    workshops,
     ...restPage
   }: MyDb["pages"]["landing"],
   connectedDocs: {
@@ -25,44 +26,31 @@ const crossProcess = (
     participantTestimonials: ProcessedParticipantTestimonials;
   },
 ) => {
-  const bannerImageConnectedImage =
-    connectedDocs.images.find(
-      (image) => image.id === bannerImage.dbConnections.imageId,
-    ) || null;
-
-  const workshopsConnectedImage =
-    connectedDocs.images.find(
-      (image) => image.id === workshops.image.dbConnections.imageId,
-    ) || null;
-
-  const programmeEntries = programmes.entries
-    .map((entry) =>
-      connectedDocs.programmes.find(
-        (p) => p.id === entry.dbConnections.programmeId,
-      ),
-    )
-    .flatMap((p) => (p ? [p] : []))
+  const { entries: aboutUsEntries, ...restAboutUs } = aboutUs;
+  const aboutUsEntriesProcessed = aboutUsEntries
+    .filter((entry) => entry.text.length)
     .sort(sortByIndex);
+  const aboutUsProcessed = !aboutUsEntriesProcessed.length
+    ? notInUse
+    : {
+        ...restAboutUs,
+        entries: aboutUsEntriesProcessed,
+      };
 
-  const photoAlbumEntries = photoAlbum.entries
-    .filter((entry) =>
-      connectedDocs.images.find(
-        (image) => image.id === entry.image.dbConnections.imageId,
-      ),
-    )
-    .map((entry) => ({
-      ...entry,
-      image: {
-        connectedImage:
-          connectedDocs.images.find(
-            (image) => image.id === entry.image.dbConnections.imageId,
-          ) || null,
-        position: entry.image.position,
-      },
-    }))
-    .sort(sortByIndex);
+  const { dbConnections: bannerImageDbConnections, ...restBannerImage } =
+    bannerImage;
+  const bannerImageConnectedImage = connectedDocs.images.find(
+    (image) => image.id === bannerImageDbConnections.imageId,
+  );
+  const bannerImageProcessed = !bannerImageConnectedImage
+    ? notInUse
+    : {
+        connectedImage: bannerImageConnectedImage,
+        ...restBannerImage,
+      };
 
-  const partnerEntries = partners.entries
+  const { entries: partnerEntries, ...restPartners } = partners;
+  const partnerEntriesProcessed = partnerEntries
     .map((entry) =>
       connectedDocs.partners.find(
         (p) => p.id === entry.dbConnections.partnerId,
@@ -70,64 +58,84 @@ const crossProcess = (
     )
     .flatMap((connectedPartner) => (connectedPartner ? [connectedPartner] : []))
     .sort(sortByIndex);
+  const partnersProcessed = {
+    ...restPartners,
+    entries: partnerEntriesProcessed,
+  };
 
-  const aboutUsEntries = aboutUs.entries
-    .filter((entry) => entry.text.length)
+  const { entries: programmeEntries, ...restProgrammes } = programmes;
+  const programmeEntriesProcessed = programmeEntries
+    .map((entry) =>
+      connectedDocs.programmes.find(
+        (p) => p.id === entry.dbConnections.programmeId,
+      ),
+    )
+    .flatMap((p) => (p ? [p] : []))
     .sort(sortByIndex);
+  const programmesProcessed = !programmeEntriesProcessed.length
+    ? notInUse
+    : {
+        entries: programmeEntriesProcessed,
+        ...restProgrammes,
+      };
+
+  const { entries: photoAlbumEntries, ...restPhotoAlbum } = photoAlbum;
+  const photoAlbumEntriesProcessed = photoAlbumEntries
+    .filter((entry) => filterByConnectedImage(entry, connectedDocs.images))
+    .map(({ image, ...restEntry }) => {
+      const { dbConnections, ...restImage } = image;
+      const connectedImage = findByImageId(
+        dbConnections.imageId,
+        connectedDocs.images,
+      )!;
+      const processedImage = {
+        connectedImage,
+        ...restImage,
+      };
+      return {
+        ...restEntry,
+        image: processedImage,
+      };
+    })
+    .sort(sortByIndex);
+  const photoAlbumProcessed = !photoAlbumEntries.length
+    ? notInUse
+    : {
+        ...restPhotoAlbum,
+        entries: photoAlbumEntriesProcessed,
+      };
+
+  const {
+    image: { dbConnections: workshopImageDbConnections, ...restWorkshopsImage },
+    ...restWorkshops
+  } = workshops;
+  const workshopsConnectedImage = connectedDocs.images.find(
+    (image) => image.id === workshopImageDbConnections.imageId,
+  );
+  const workshopsProcessed = !workshopsConnectedImage
+    ? notInUse
+    : {
+        image: {
+          connectedImage: workshopsConnectedImage,
+          ...restWorkshopsImage,
+        },
+        ...restWorkshops,
+      };
 
   return {
     ...restPage,
 
-    bannerImage: !bannerImageConnectedImage
-      ? null
-      : {
-          connectedImage: bannerImageConnectedImage,
-          ...bannerImage,
-        },
+    aboutUs: aboutUsProcessed,
 
-    orgHeadings: orgHeadings,
+    bannerImage: bannerImageProcessed,
 
-    aboutUs: !aboutUs.entries.length
-      ? null
-      : {
-          buttonText: aboutUs.buttonText,
-          heading: aboutUs.heading,
-          entries: aboutUsEntries,
-        },
+    partners: partnersProcessed,
 
-    workshops: !workshopsConnectedImage
-      ? null
-      : {
-          image: {
-            connectedImage: workshopsConnectedImage,
-            position: workshops.image.position,
-          },
-          ...workshops.textOverlay,
-        },
+    programmes: programmesProcessed,
 
-    programmes: !programmeEntries.length
-      ? null
-      : {
-          buttonText: programmes.buttonText,
-          heading: programmes.heading,
-          subheading: programmes.subheading,
-          entries: programmeEntries,
-        },
+    photoAlbum: photoAlbumProcessed,
 
-    photoAlbum: !photoAlbumEntries.length
-      ? null
-      : {
-          hading: photoAlbum.heading,
-          entries: photoAlbumEntries,
-        },
-
-    partners: !partnerEntries.length
-      ? null
-      : {
-          heading: partners.heading,
-          subheading: partners.subheading,
-          entries: partnerEntries,
-        },
+    workshops: workshopsProcessed,
   };
 };
 

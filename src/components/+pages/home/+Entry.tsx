@@ -8,6 +8,8 @@ import { type StaticData } from "./_static-data";
 import AboutUs from "./about-us/+Entry";
 import ParticipantTestimonials from "./participant-testimonials/+Entry";
 
+import type { MyExclude } from "~/types/utilities";
+
 // □ get form up and running
 
 // □ apply dompurify
@@ -17,67 +19,63 @@ import ParticipantTestimonials from "./participant-testimonials/+Entry";
 // □ image blur in working? image load in bg
 // □ bug on testimonials slider when hover central slide has transparency
 
-const HomePage = ({ staticData }: { staticData: StaticData }) => {
-  return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: staticData.header,
-          linkLabels: staticData.linkLabels,
-          orgDetails: staticData.orgDetails,
-          logoImg: staticData.logoImage,
-        }}
+const HomePage = ({ staticData }: { staticData: StaticData }) => (
+  <div className="w-screen overflow-x-hidden">
+    <Header
+      staticData={{
+        header: staticData.header,
+        linkLabels: staticData.linkLabels,
+        orgDetails: staticData.orgDetails,
+        logoImg: staticData.logoImage,
+      }}
+    />
+
+    {staticData.page.bannerImage === "not in use" ? null : (
+      <BannerImage data={staticData.page.bannerImage} />
+    )}
+
+    <SiteLayout.Section.Spacing.Vertical />
+
+    <SiteLayout.Section.Spacing.Horizontal>
+      <Headings
+        heading={staticData.page.orgHeadings.name}
+        subheading={staticData.page.orgHeadings.byline}
       />
+    </SiteLayout.Section.Spacing.Horizontal>
 
-      {!staticData.page.bannerImage ? null : (
-        <BannerImage data={staticData.page.bannerImage} />
-      )}
+    {!staticData.participantTestimonials.length ? null : (
+      <>
+        <SiteLayout.Section.Spacing.Vertical />
 
-      <SiteLayout.Section.Spacing.Vertical />
+        <SiteLayout.Section.Spacing.Horizontal>
+          <ParticipantTestimonials data={staticData.participantTestimonials} />
+        </SiteLayout.Section.Spacing.Horizontal>
+      </>
+    )}
 
-      <SiteLayout.Section.Spacing.Horizontal>
-        <Headings
-          heading={staticData.page.orgHeadings.name}
-          subheading={staticData.page.orgHeadings.byline}
-        />
-      </SiteLayout.Section.Spacing.Horizontal>
+    {staticData.page.aboutUs === "not in use" ? null : (
+      <>
+        <SiteLayout.Section.Spacing.Vertical />
 
-      <SiteLayout.Section.Spacing.Vertical />
-
-      <SiteLayout.Section.Spacing.Horizontal>
-        <ParticipantTestimonials
-          staticData={{
-            testimonials: staticData.participantTestimonials,
-          }}
-        />
-      </SiteLayout.Section.Spacing.Horizontal>
-
-      {staticData.page.aboutUs ? (
-        <>
-          <SiteLayout.Section.Spacing.Vertical />
-
-          <SiteLayout.Section.Spacing.Horizontal>
-            <AboutUs staticData={staticData.page.aboutUs} />
-          </SiteLayout.Section.Spacing.Horizontal>
-        </>
-      ) : null}
-    </div>
-  );
-};
+        <SiteLayout.Section.Spacing.Horizontal>
+          <AboutUs staticData={staticData.page.aboutUs} />
+        </SiteLayout.Section.Spacing.Horizontal>
+      </>
+    )}
+  </div>
+);
 
 export default HomePage;
 
 const BannerImage = ({
   data,
 }: {
-  data: NonNullable<StaticData["page"]["bannerImage"]>;
-}) => {
-  return (
-    <div className="group/bannerImage relative aspect-[16/9] overflow-hidden xl:aspect-[14/3]">
-      <StorageImage urls={data.connectedImage.urls} position={data.position} />
-    </div>
-  );
-};
+  data: MyExclude<StaticData["page"]["bannerImage"], "not in use">;
+}) => (
+  <div className="group/bannerImage relative aspect-[16/9] overflow-hidden xl:aspect-[14/3]">
+    <StorageImage urls={data.connectedImage.urls} position={data.position} />
+  </div>
+);
 
 const Headings = ({
   heading,

@@ -60,10 +60,12 @@ const crossProcess = (
     return "requirements not met" as const;
   }
 
-  const bannerImageProcessed = {
-    connectedImage: connectedBannerImage,
-    position: bannerImage.position,
-  };
+  const bannerImageProcessed = !connectedBannerImage
+    ? ("not in use" as const)
+    : {
+        connectedImage: connectedBannerImage,
+        position: bannerImage.position,
+      };
 
   const infoProcessed = info
     .filter((entry) => entry.text.length || entry.title.length)

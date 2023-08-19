@@ -15,3 +15,9 @@ export function findByConnectedImage<
 >(docImage: TImage, images: MyDb["image"][]) {
   return images.find((image) => image.id === docImage.dbConnections.imageId);
 }
+
+export function findByImageId(imageId: string, images: MyDb["image"][]) {
+  return images.find((image) => image.id === imageId);
+}
+
+export const notInUse = "not in use" as const;

@@ -7,3 +7,5 @@ export type MyOmit<T, K extends keyof T> = HandleEmptyObject<
 >;
 
 type HandleEmptyObject<T> = T extends Record<string, never> ? void : T;
+
+export type MyExclude<T, U> = T extends U ? never : T;

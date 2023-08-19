@@ -13,6 +13,12 @@ export type Pages = {
 type Landing = {
   id: "landing-page";
 
+  aboutUs: {
+    heading: string;
+    buttonText: string;
+    entries: { id: string; text: string; index: number }[];
+  };
+
   bannerImage: {
     dbConnections: {
       imageId: string | null;
@@ -31,36 +37,13 @@ type Landing = {
     byline: string;
   };
 
-  aboutUs: {
-    heading: string;
-    buttonText: string;
-    entries: { id: string; text: string; index: number }[];
-  };
-
-  workshops: {
-    image: {
-      dbConnections: {
-        imageId: string | null;
-      };
-      position: {
-        x: number;
-        y: number;
-      };
-    };
-    textOverlay: {
-      heading: string;
-      body: string;
-    };
-  };
-
-  programmes: {
+  partners: {
     heading: string;
     subheading: string;
     entries: {
       id: string;
-      dbConnections: { programmeId: string };
+      dbConnections: { partnerId: string };
     }[];
-    buttonText: string;
   };
 
   photoAlbum: {
@@ -75,6 +58,25 @@ type Landing = {
       };
       id: string;
       index: number;
+    }[];
+  };
+
+  programmes: {
+    heading: string;
+    subheading: string;
+    entries: {
+      id: string;
+      dbConnections: { programmeId: string };
+    }[];
+    buttonText: string;
+  };
+
+  supporters: {
+    heading: string;
+    subheading: string;
+    entries: {
+      id: string;
+      dbConnections: { supporterId: string };
     }[];
   };
 
@@ -109,22 +111,20 @@ type Landing = {
     };
   };
 
-  supporters: {
-    heading: string;
-    subheading: string;
-    entries: {
-      id: string;
-      dbConnections: { supporterId: string };
-    }[];
-  };
-
-  partners: {
-    heading: string;
-    subheading: string;
-    entries: {
-      id: string;
-      dbConnections: { partnerId: string };
-    }[];
+  workshops: {
+    image: {
+      dbConnections: {
+        imageId: string | null;
+      };
+      position: {
+        x: number;
+        y: number;
+      };
+    };
+    textOverlay: {
+      heading: string;
+      body: string;
+    };
   };
 };
 
