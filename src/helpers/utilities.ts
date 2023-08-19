@@ -5,3 +5,10 @@ export function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
   });
   return ret;
 }
+
+export function strWithFallback(str: string, fallback: string) {
+  if (str.length) {
+    return str;
+  }
+  return fallback;
+}

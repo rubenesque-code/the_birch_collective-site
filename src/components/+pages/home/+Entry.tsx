@@ -7,6 +7,8 @@ import { StorageImage } from "~/components/StorageImage";
 import { type StaticData } from "./_static-data";
 import AboutUs from "./about-us/+Entry";
 import ParticipantTestimonials from "./participant-testimonials/+Entry";
+import Programmes from "./programmes";
+import Workshops from "./workshops/+Entry";
 
 import type { MyExclude } from "~/types/utilities";
 
@@ -58,7 +60,27 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => (
         <SiteLayout.Section.Spacing.Vertical />
 
         <SiteLayout.Section.Spacing.Horizontal>
-          <AboutUs staticData={staticData.page.aboutUs} />
+          <AboutUs data={staticData.page.aboutUs} />
+        </SiteLayout.Section.Spacing.Horizontal>
+      </>
+    )}
+
+    {staticData.page.workshops === "not in use" ? null : (
+      <>
+        <SiteLayout.Section.Spacing.Vertical />
+
+        <SiteLayout.Section.Spacing.Horizontal>
+          <Workshops data={staticData.page.workshops} />
+        </SiteLayout.Section.Spacing.Horizontal>
+      </>
+    )}
+
+    {staticData.page.programmes === "not in use" ? null : (
+      <>
+        <SiteLayout.Section.Spacing.Vertical />
+
+        <SiteLayout.Section.Spacing.Horizontal>
+          <Programmes data={staticData.page.programmes} />
         </SiteLayout.Section.Spacing.Horizontal>
       </>
     )}

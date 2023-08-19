@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { filterByConnectedImage, findByImageId, notInUse } from "./_helpers";
-import { type ProcessedParticipantTestimonials } from "./participant-testimonial";
 import { type ProcessedPartners } from "./partner";
 import { type ProcessedProgrammes } from "./programme";
 import { type ProcessedSupporters } from "./supporter";
@@ -23,7 +22,6 @@ const crossProcess = (
     partners: ProcessedPartners;
     programmes: ProcessedProgrammes;
     supporters: ProcessedSupporters;
-    participantTestimonials: ProcessedParticipantTestimonials;
   },
 ) => {
   const { entries: aboutUsEntries, ...restAboutUs } = aboutUs;

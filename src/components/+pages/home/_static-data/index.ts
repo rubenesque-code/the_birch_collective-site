@@ -16,7 +16,7 @@ export type StaticData = {
   participantTestimonials: ReturnType<
     (typeof processDbData)["participantTestimonial"]["crossProcess"]["many"]
   >;
-  partners: ReturnType<
+  /*   partners: ReturnType<
     (typeof processDbData)["partner"]["crossProcess"]["many"]
   >;
   programmes: ReturnType<
@@ -24,7 +24,7 @@ export type StaticData = {
   >;
   supporters: ReturnType<
     (typeof processDbData)["supporter"]["crossProcess"]["many"]
-  >;
+  >; */
 };
 
 // □ makes sense to seperate out validation e.g. of connected entries from processing?
@@ -119,7 +119,6 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
 
   const pageCrossProcessed = processDbData.landingPage.crossProcess(page, {
     images: connectedImages,
-    participantTestimonials: connectedDocsProcessed.participantTestimonials,
     partners: connectedDocsProcessed.partners,
     programmes: connectedDocsProcessed.programmes,
     supporters: connectedDocsProcessed.supporters,
@@ -140,9 +139,9 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
     page: pageCrossProcessed,
 
     participantTestimonials: connectedDocsProcessed.participantTestimonials,
-    partners: connectedDocsProcessed.partners,
+    /*     partners: connectedDocsProcessed.partners,
     programmes: connectedDocsProcessed.programmes,
-    supporters: connectedDocsProcessed.supporters,
+    supporters: connectedDocsProcessed.supporters, */
   };
 
   return {

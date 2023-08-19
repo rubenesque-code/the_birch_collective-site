@@ -4,19 +4,22 @@ import { Icon } from "~/components/icons";
 
 import { type StaticData } from "../_static-data";
 
+import { strWithFallback } from "~/helpers/utilities";
+import { type ExcludeNotInUse } from "~/types/database/_helpers";
+
 type SectionStaticData = NonNullable<StaticData["page"]["aboutUs"]>;
 
-const AboutUs = ({ staticData }: { staticData: SectionStaticData }) => {
-  return (
-    <div className="group/about flex flex-col items-center">
-      <Heading heading={staticData.heading} />
-      <div className="flex w-full flex-col items-center pl-2xl">
-        <Bullets staticData={staticData.entries} />
-      </div>
-      <GoToPageButton text={staticData.buttonText} />
+type Data = ExcludeNotInUse<SectionStaticData>;
+
+const AboutUs = ({ data }: { data: Data }) => (
+  <div className="group/about flex flex-col items-center">
+    <Heading heading={data.heading} />
+    <div className="flex w-full flex-col items-center pl-2xl">
+      <Bullets data={data.entries} />
     </div>
-  );
-};
+    <GoToPageButton text={strWithFallback(data.buttonText, "About Us")} />
+  </div>
+);
 
 export default AboutUs;
 
@@ -26,28 +29,20 @@ const Heading = ({ heading }: { heading: string }) => (
   </div>
 );
 
-const Bullets = ({
-  staticData,
-}: {
-  staticData: SectionStaticData["entries"];
-}) => (
+const Bullets = ({ data }: { data: Data["entries"] }) => (
   <div className="mt-xl grid w-full grid-cols-1 gap-sm">
-    {staticData.map((bullet) => (
-      <Entry staticData={bullet} key={bullet.id} />
+    {data.map((bullet) => (
+      <Entry data={bullet} key={bullet.id} />
     ))}
   </div>
 );
 
-const Entry = ({
-  staticData,
-}: {
-  staticData: SectionStaticData["entries"][number];
-}) => (
+const Entry = ({ data }: { data: Data["entries"][number] }) => (
   <div className="group/entry relative flex w-full gap-sm">
     <div className="text-2xl text-brandGreen">
       <Icon.AboutUs />
     </div>
-    <div className="flex-grow text-2xl">{staticData.text}</div>
+    <div className="flex-grow text-2xl">{data.text}</div>
   </div>
 );
 
