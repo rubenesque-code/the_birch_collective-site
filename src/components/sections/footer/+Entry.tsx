@@ -178,8 +178,12 @@ const BottomRow = ({
 }) => {
   return (
     <div className="flex items-center gap-lg">
-      <div className="text-brandGreen">{contact.phoneNumber}</div>
-      <div className="text-brandGreen">{contact.email}</div>
+      {contact.phoneNumber ? (
+        <div className="text-brandGreen">{contact.phoneNumber}</div>
+      ) : null}
+      {contact.email ? (
+        <div className="text-brandGreen">{contact.email}</div>
+      ) : null}
       <WithTooltip text="go to our message form">
         <Link href={route.message} passHref>
           <div className="text-brandGreen">{footer.message}</div>
