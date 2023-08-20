@@ -1,3 +1,4 @@
+import Page from "./Page";
 import Section from "./Section";
 
 function Ui() {
@@ -9,3 +10,4 @@ function Ui() {
 export default Ui;
 
 Ui.Section = Section;
+Ui.Page = Page;

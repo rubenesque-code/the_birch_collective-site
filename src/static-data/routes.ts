@@ -7,4 +7,7 @@ export const route = {
   programmes: "/programmes",
   volunteer: "/volunteer",
   workshops: "/workshops",
-};
+  theoryOfChange: "/theory-of-change",
+  testimonials: "/testimonials",
+  message: "/about#message",
+} as const;
