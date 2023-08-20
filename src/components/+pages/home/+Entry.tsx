@@ -27,124 +27,129 @@ import type { MyExclude } from "~/types/utilities";
 // □ bug on testimonials slider when hover central slide has transparency
 // □ block phone number + email through other means
 
-const HomePage = ({ staticData }: { staticData: StaticData }) => (
-  <div className="w-screen overflow-x-hidden">
-    <Header
-      staticData={{
-        header: staticData.header,
-        linkLabels: staticData.linkLabels,
-        orgDetails: staticData.orgDetails,
-        logoImg: staticData.logoImage,
-      }}
-    />
-
-    {staticData.page.bannerImage === "not in use" ? null : (
-      <BannerImage data={staticData.page.bannerImage} />
-    )}
-
-    <Ui.Page.VerticalSpace />
-
-    <Ui.Page.SectionHorizontalSpacing>
-      <Headings
-        heading={staticData.page.orgHeadings.name}
-        subheading={staticData.page.orgHeadings.byline}
+const HomePage = ({ staticData }: { staticData: StaticData }) => {
+  console.log("staticData:", staticData.page.photoAlbum);
+  return (
+    <div className="w-screen overflow-x-hidden">
+      <Header
+        staticData={{
+          header: staticData.header,
+          linkLabels: staticData.linkLabels,
+          orgDetails: staticData.orgDetails,
+          logoImg: staticData.logoImage,
+        }}
       />
-    </Ui.Page.SectionHorizontalSpacing>
 
-    {!staticData.participantTestimonials.length ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+      {staticData.page.bannerImage === "not in use" ? null : (
+        <BannerImage data={staticData.page.bannerImage} />
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <ParticipantTestimonials data={staticData.participantTestimonials} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      <Ui.Page.VerticalSpace />
 
-    {staticData.page.aboutUs === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+      <Ui.Page.SectionHorizontalSpacing>
+        <Headings
+          heading={staticData.page.orgHeadings.name}
+          subheading={staticData.page.orgHeadings.byline}
+        />
+      </Ui.Page.SectionHorizontalSpacing>
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <AboutUs data={staticData.page.aboutUs} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {!staticData.participantTestimonials.length ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    {staticData.page.workshops === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <ParticipantTestimonials
+              data={staticData.participantTestimonials}
+            />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <Workshops data={staticData.page.workshops} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {staticData.page.aboutUs === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    {staticData.page.programmes === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <AboutUs data={staticData.page.aboutUs} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <Programmes data={staticData.page.programmes} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {staticData.page.workshops === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    {staticData.page.photoAlbum === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <Workshops data={staticData.page.workshops} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <PhotoAlbum data={staticData.page.photoAlbum} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {staticData.page.programmes === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    {staticData.page.supportUs === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <Programmes data={staticData.page.programmes} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <SupportUs data={staticData.page.supportUs} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {staticData.page.photoAlbum === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    {staticData.page.partners === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <PhotoAlbum data={staticData.page.photoAlbum} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <Partners data={staticData.page.partners} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {staticData.page.supportUs === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    {staticData.page.supporters === "not in use" ? null : (
-      <>
-        <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <SupportUs data={staticData.page.supportUs} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-        <Ui.Page.SectionHorizontalSpacing>
-          <Supporters data={staticData.page.supporters} />
-        </Ui.Page.SectionHorizontalSpacing>
-      </>
-    )}
+      {staticData.page.partners === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    <Ui.Page.VerticalSpace />
+          <Ui.Page.SectionHorizontalSpacing>
+            <Partners data={staticData.page.partners} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
 
-    <Ui.Page.SectionHorizontalSpacing>
-      <Footer
-        footer={staticData.footer}
-        linkLabels={staticData.linkLabels}
-        logoImg={staticData.logoImage}
-        orgDetails={staticData.orgDetails}
-      />
-    </Ui.Page.SectionHorizontalSpacing>
+      {staticData.page.supporters === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
 
-    <Ui.Page.VerticalSpace />
-  </div>
-);
+          <Ui.Page.SectionHorizontalSpacing>
+            <Supporters data={staticData.page.supporters} />
+          </Ui.Page.SectionHorizontalSpacing>
+        </>
+      )}
+
+      <Ui.Page.VerticalSpace />
+
+      <Ui.Page.SectionHorizontalSpacing>
+        <Footer
+          footer={staticData.footer}
+          linkLabels={staticData.linkLabels}
+          logoImg={staticData.logoImage}
+          orgDetails={staticData.orgDetails}
+        />
+      </Ui.Page.SectionHorizontalSpacing>
+
+      <Ui.Page.VerticalSpace />
+    </div>
+  );
+};
 
 export default HomePage;
 

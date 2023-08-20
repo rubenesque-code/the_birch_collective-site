@@ -72,7 +72,7 @@ const Expanded = ({ staticData }: Props) => {
         </Link>
 
         <Menu
-          buttonLabel={staticData.linkLabels.getInTouch}
+          buttonLabel={staticData.linkLabels.getInvolved}
           xOrigin="right"
           tagline={staticData.header.getInvolved.popover.subheading}
           title={staticData.header.getInvolved.popover.heading}

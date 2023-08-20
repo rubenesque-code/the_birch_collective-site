@@ -16,20 +16,7 @@ export type StaticData = {
   participantTestimonials: ReturnType<
     (typeof processDbData)["participantTestimonial"]["crossProcess"]["many"]
   >;
-  /*   partners: ReturnType<
-    (typeof processDbData)["partner"]["crossProcess"]["many"]
-  >;
-  programmes: ReturnType<
-    (typeof processDbData)["programme"]["crossProcess"]["many"]
-  >;
-  supporters: ReturnType<
-    (typeof processDbData)["supporter"]["crossProcess"]["many"]
-  >; */
 };
-
-// □ makes sense to seperate out validation e.g. of connected entries from processing?
-
-// todo: process footer + header
 
 export const getStaticProps: GetStaticProps<StaticData> = async () => {
   const footer = await myDb.footer.fetch();
@@ -76,20 +63,28 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
 
   const connectedImageIds = [
     orgDetails.logoImage.dbConnections.imageId,
+
     page.bannerImage.dbConnections.imageId,
     page.workshops.image.dbConnections.imageId,
     page.supportUs.donate.image.dbConnections.imageId,
     page.supportUs.volunteer.image.dbConnections.imageId,
+    ...page.photoAlbum.entries.map(
+      (entry) => entry.image.dbConnections.imageId,
+    ),
+
     ...connectedDocsSelfValidated.participantTestimonials.map(
       (doc) => doc.image.dbConnect.imageId,
     ),
+
     ...connectedDocsSelfValidated.partners.map(
       (doc) => doc.image.dbConnections.imageId,
     ),
+
     ...connectedDocsSelfValidated.programmes.flatMap((programme) => [
       programme.bannerImage.dbConnections.imageId,
       programme.summary.image.dbConnections.imageId,
     ]),
+
     ...connectedDocsSelfValidated.supporters.map(
       (supporter) => supporter.image.dbConnections.imageId,
     ),
@@ -139,9 +134,6 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
     page: pageCrossProcessed,
 
     participantTestimonials: connectedDocsProcessed.participantTestimonials,
-    /*     partners: connectedDocsProcessed.partners,
-    programmes: connectedDocsProcessed.programmes,
-    supporters: connectedDocsProcessed.supporters, */
   };
 
   return {

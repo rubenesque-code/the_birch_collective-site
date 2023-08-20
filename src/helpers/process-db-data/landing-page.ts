@@ -89,7 +89,7 @@ const crossProcess = (
       };
     })
     .sort(sortByIndex);
-  const photoAlbumProcessed = !photoAlbumEntries.length
+  const photoAlbumProcessed = !photoAlbumEntriesProcessed.length
     ? notInUse
     : {
         ...restPhotoAlbum,
