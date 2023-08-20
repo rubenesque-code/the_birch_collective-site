@@ -242,6 +242,15 @@ export const fetchVolunteerPositions = async () => {
   return data;
 };
 
+export const fetchManyVolunteerPositions = async (ids: string[]) => {
+  const data = (await fetchFirestoreDocuments(
+    "volunteer-positions",
+    ids,
+  )) as unknown as MyDb["volunteer-position"][];
+
+  return data;
+};
+
 export const fetchOneCareer = async (id: string) => {
   const docRef = getDocRef("careers", id);
 
@@ -255,6 +264,15 @@ export const fetchCareers = async () => {
 
   const data = (await getCollectionData(
     collectionRef,
+  )) as unknown as MyDb["career"][];
+
+  return data;
+};
+
+export const fetchManyCareers = async (ids: string[]) => {
+  const data = (await fetchFirestoreDocuments(
+    "careers",
+    ids,
   )) as unknown as MyDb["career"][];
 
   return data;

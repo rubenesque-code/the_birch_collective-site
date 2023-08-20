@@ -8,10 +8,12 @@ import {
   fetchImages,
   fetchLandingPage,
   fetchLinkLabels,
+  fetchManyCareers,
   fetchManyImages,
   fetchManyPartners,
   fetchManyProgrammes,
   fetchManySupporters,
+  fetchManyVolunteerPositions,
   fetchOneCareer,
   fetchOneImage,
   fetchOnePartner,
@@ -105,10 +107,12 @@ export const myDb = {
   },
   ["volunteer-positions"]: {
     fetchOne: fetchOneVolunteerPosition,
+    fetchMany: fetchManyVolunteerPositions,
     fetchAll: fetchVolunteerPositions,
   },
   career: {
     fetchOne: fetchOneCareer,
+    fetchMany: fetchManyCareers,
     fetchAll: fetchCareers,
   },
 

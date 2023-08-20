@@ -140,8 +140,8 @@ type AboutUs = {
     };
   };
   heading: string;
-  subheading: string;
   mainText: string;
+  subheading: string;
   theTeam: {
     heading: string;
     text: string;
@@ -160,79 +160,6 @@ type AboutUs = {
           y: number;
         };
       };
-    }[];
-  };
-};
-
-type Programmes = {
-  id: "programmes-page";
-  bannerImage: {
-    dbConnections: {
-      imageId: string | null;
-    };
-    position: {
-      x: number;
-      y: number;
-    };
-  };
-  heading: string;
-  mainText: string;
-};
-
-type Donate = {
-  id: "donate-page";
-
-  bannerImage: {
-    dbConnections: {
-      imageId: string | null;
-    };
-    position: {
-      x: number;
-      y: number;
-    };
-  };
-
-  heading: string;
-  subheading: string;
-
-  body: {
-    heading: string;
-    text: string;
-    image: {
-      dbConnections: {
-        imageId: string | null;
-      };
-      position: {
-        x: number;
-        y: number;
-      };
-    };
-  };
-};
-
-type VolunteerPositions = {
-  id: "volunteer-positions-page";
-
-  bannerImage: {
-    dbConnections: {
-      imageId: string | null;
-    };
-    position: {
-      x: number;
-      y: number;
-    };
-  };
-
-  heading: string;
-  mainText: string;
-
-  opportunities: {
-    heading: string;
-
-    entries: {
-      id: string;
-      index: number;
-      dbConnections: { volunteerPositionId: string };
     }[];
   };
 };
@@ -267,8 +194,8 @@ type Careers = {
   };
 };
 
-type Workshops = {
-  id: "workshops-page";
+type Donate = {
+  id: "donate-page";
 
   bannerImage: {
     dbConnections: {
@@ -281,14 +208,11 @@ type Workshops = {
   };
 
   heading: string;
+  subheading: string;
 
-  mainText: string;
-
-  aboutAmy: {
-    followOnInstaText: string;
-
+  body: {
     heading: string;
-
+    text: string;
     image: {
       dbConnections: {
         imageId: string | null;
@@ -298,11 +222,22 @@ type Workshops = {
         y: number;
       };
     };
-
-    instaLink: string;
-
-    text: string;
   };
+};
+
+type Programmes = {
+  id: "programmes-page";
+  bannerImage: {
+    dbConnections: {
+      imageId: string | null;
+    };
+    position: {
+      x: number;
+      y: number;
+    };
+  };
+  heading: string;
+  mainText: string;
 };
 
 type Testimonials = {
@@ -392,4 +327,69 @@ type TheoryOfChange = {
 
     description: string | null;
   }[];
+};
+
+type VolunteerPositions = {
+  id: "volunteer-positions-page";
+
+  bannerImage: {
+    dbConnections: {
+      imageId: string | null;
+    };
+    position: {
+      x: number;
+      y: number;
+    };
+  };
+
+  heading: string;
+  mainText: string;
+
+  opportunities: {
+    heading: string;
+
+    entries: {
+      id: string;
+      index: number;
+      dbConnections: { volunteerPositionId: string };
+    }[];
+  };
+};
+
+type Workshops = {
+  id: "workshops-page";
+
+  bannerImage: {
+    dbConnections: {
+      imageId: string | null;
+    };
+    position: {
+      x: number;
+      y: number;
+    };
+  };
+
+  heading: string;
+
+  mainText: string;
+
+  aboutAmy: {
+    followOnInstaText: string;
+
+    heading: string;
+
+    image: {
+      dbConnections: {
+        imageId: string | null;
+      };
+      position: {
+        x: number;
+        y: number;
+      };
+    };
+
+    instaLink: string;
+
+    text: string;
+  };
 };
