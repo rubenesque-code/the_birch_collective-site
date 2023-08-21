@@ -19,6 +19,7 @@ import {
   CaretRight,
   CaretUp,
   Check,
+  Circle,
   Clock,
   DotsSixVertical,
   Download,
@@ -43,6 +44,7 @@ import {
   Leaf,
   LinkedinLogo,
   List,
+  Lock,
   Minus,
   Money,
   MonitorPlay,
@@ -81,6 +83,8 @@ const Icon = () => {
 export { Icon };
 
 Icon.Slides = Slideshow;
+Icon.Lock = Lock;
+Icon.Circle = Circle;
 Icon.Image = Image;
 Icon.Images = Images;
 Icon.Upload = Upload;

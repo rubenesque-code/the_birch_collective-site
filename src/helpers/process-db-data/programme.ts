@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { sortByIndex } from "../data/process";
-import { filterByConnectedImage, findByConnectedImage } from "./_helpers";
+import {
+  filterByConnectedImage,
+  findByConnectedImage,
+  notInUse,
+} from "./_helpers";
 
 import type { MyDb } from "~/types/database";
 
@@ -61,18 +65,21 @@ const crossProcess = (
   }
 
   const bannerImageProcessed = !connectedBannerImage
-    ? ("not in use" as const)
+    ? notInUse
     : {
         connectedImage: connectedBannerImage,
         position: bannerImage.position,
       };
 
-  const infoProcessed = info
+  const infoEntriesProcessed = info
     .filter((entry) => entry.text.length || entry.title.length)
     .sort(sortByIndex);
+  const infoProcessed = !infoEntriesProcessed.length
+    ? notInUse
+    : infoEntriesProcessed;
 
   const postersProcessed = !usePosters
-    ? ("not in use" as const)
+    ? notInUse
     : posters
         .filter((poster) =>
           filterByConnectedImage(poster, connectedDocs.images),
@@ -104,7 +111,7 @@ const crossProcess = (
 
   const photoAlbumProcessed =
     !photoAlbum.use || !photoAlbumEntriesProcessed?.length
-      ? ("not in use" as const)
+      ? notInUse
       : {
           heading: photoAlbum.heading,
           entries: photoAlbumEntriesProcessed,

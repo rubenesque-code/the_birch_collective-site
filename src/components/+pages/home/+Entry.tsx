@@ -17,8 +17,20 @@ import Workshops from "./workshops/+Entry";
 
 import type { MyExclude } from "~/types/utilities";
 
-// □ get form up and running
+// OVERALL TO DO
+// 1. do rest of this site apart from  donate, etc.
+// 2. get sign up form running. Send data to google sheet. Notify by email.
+// 3. add sign up email functionality to cms
+// 4. populate cms
+// 5. rest of this site
 
+// MUST DO
+// □ message form
+// □ get sign up form up and running
+// □ donate functionality
+// □ programmes + workshops pages - go over lists design
+
+// OTHER
 // □ apply dompurify
 // □ apply str fallbacks
 

@@ -3,6 +3,12 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import processDbData from "~/helpers/process-db-data";
 import { myDb } from "~/my-firebase/firestore";
 import type { MyDb } from "~/types/database";
+import { type MyExclude } from "~/types/utilities";
+
+type PageValidAndProcessed = MyExclude<
+  ReturnType<(typeof processDbData)["programme"]["crossProcess"]>,
+  "requirements not met"
+>;
 
 export type StaticData = {
   footer: MyDb["singles"]["footer"];
@@ -11,7 +17,7 @@ export type StaticData = {
   orgDetails: MyDb["singles"]["orgDetails"];
   logoImage: MyDb["image"] | null;
 
-  page: ReturnType<(typeof processDbData)["programme"]["crossProcess"]>;
+  page: PageValidAndProcessed;
 };
 
 export const getStaticProps: GetStaticProps<StaticData> = async ({
@@ -44,7 +50,7 @@ export const getStaticProps: GetStaticProps<StaticData> = async ({
 
   const pageCrossProcessed = processDbData.programme.crossProcess(page, {
     images: connectedImages,
-  });
+  }) as PageValidAndProcessed;
 
   const logoImage =
     connectedImages.find(

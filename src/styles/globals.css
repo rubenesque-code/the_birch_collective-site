@@ -39,3 +39,7 @@ body {
     @apply my-0;
   }
 }
+
+.firebase-emulator-warning {
+  display: none !important;
+}
