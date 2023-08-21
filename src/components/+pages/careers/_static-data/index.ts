@@ -44,9 +44,15 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
 
   const connectedImages = await myDb.image.fetchMany(connectedImageIds);
 
+  const connectedDocsProcessed = {
+    careers: processDbData.career.process.many(
+      connectedDocsSelfValidated.careers,
+    ),
+  };
+
   const pageCrossProcessed = processDbData.careersPage.crossProcess(page, {
     images: connectedImages,
-    careers: connectedDocsSelfValidated.careers,
+    careers: connectedDocsProcessed.careers,
   });
 
   const logoImage =

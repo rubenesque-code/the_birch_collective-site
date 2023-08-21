@@ -16,7 +16,7 @@ const Heading = ({
   className?: string;
 }) => (
   <h3
-    className={`text-center font-display text-5xl font-bold tracking-wide text-displayGreen md:text-7xl ${
+    className={`text-center font-display text-5xl font-bold tracking-wide md:text-7xl ${
       className || ""
     }`}
   >
@@ -47,3 +47,17 @@ Section.Subheading = Subheading;
 const VerticalSpace = () => <div className="mt-6 xs:mt-8 sm:mt-10 md:mt-12" />;
 
 Section.VerticalSpace = VerticalSpace;
+
+const Description = ({
+  children,
+  className,
+}: {
+  children: string;
+  className?: string;
+}) => (
+  <div className={`custom-prose prose w-full max-w-full ${className || ""}`}>
+    <Markdown>{children}</Markdown>
+  </div>
+);
+
+Section.Description = Description;

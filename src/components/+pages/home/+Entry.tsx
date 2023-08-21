@@ -20,6 +20,7 @@ import type { MyExclude } from "~/types/utilities";
 // □ get form up and running
 
 // □ apply dompurify
+// □ apply str fallbacks
 
 // □ different max widths for text sections
 
@@ -28,7 +29,6 @@ import type { MyExclude } from "~/types/utilities";
 // □ block phone number + email through other means
 
 const HomePage = ({ staticData }: { staticData: StaticData }) => {
-  console.log("staticData:", staticData.page.photoAlbum);
   return (
     <div className="w-screen overflow-x-hidden">
       <Header
@@ -46,22 +46,22 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
 
       <Ui.Page.VerticalSpace />
 
-      <Ui.Page.SectionHorizontalSpacing>
+      <Ui.Page.HorizontalSpace>
         <Headings
           heading={staticData.page.orgHeadings.name}
           subheading={staticData.page.orgHeadings.byline}
         />
-      </Ui.Page.SectionHorizontalSpacing>
+      </Ui.Page.HorizontalSpace>
 
       {!staticData.participantTestimonials.length ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <ParticipantTestimonials
               data={staticData.participantTestimonials}
             />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -69,9 +69,9 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <AboutUs data={staticData.page.aboutUs} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -79,9 +79,9 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <Workshops data={staticData.page.workshops} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -89,9 +89,9 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <Programmes data={staticData.page.programmes} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -99,9 +99,9 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <PhotoAlbum data={staticData.page.photoAlbum} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -109,9 +109,9 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <SupportUs data={staticData.page.supportUs} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -119,9 +119,9 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <Partners data={staticData.page.partners} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
@@ -129,22 +129,22 @@ const HomePage = ({ staticData }: { staticData: StaticData }) => {
         <>
           <Ui.Page.VerticalSpace />
 
-          <Ui.Page.SectionHorizontalSpacing>
+          <Ui.Page.HorizontalSpace>
             <Supporters data={staticData.page.supporters} />
-          </Ui.Page.SectionHorizontalSpacing>
+          </Ui.Page.HorizontalSpace>
         </>
       )}
 
       <Ui.Page.VerticalSpace />
 
-      <Ui.Page.SectionHorizontalSpacing>
+      <Ui.Page.HorizontalSpace>
         <Footer
           footer={staticData.footer}
           linkLabels={staticData.linkLabels}
           logoImg={staticData.logoImage}
           orgDetails={staticData.orgDetails}
         />
-      </Ui.Page.SectionHorizontalSpacing>
+      </Ui.Page.HorizontalSpace>
 
       <Ui.Page.VerticalSpace />
     </div>

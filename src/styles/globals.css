@@ -2,10 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 @layer base {
   button,
   input,
   textarea {
     @apply outline-none focus:outline-none;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .custom-prose > span > p:first-of-type {
+    @apply mt-0;
+  }
+  .custom-prose > div > p:first-of-type {
+    @apply mt-0;
+  }
+
+  .custom-prose_no-p-margin > span > p {
+    @apply my-0;
   }
 }

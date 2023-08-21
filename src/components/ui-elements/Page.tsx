@@ -1,6 +1,10 @@
 import React from "react";
 import Markdown from "markdown-to-jsx";
 
+import { StorageImage } from "../StorageImage";
+
+import type { MyDb } from "~/types/database";
+
 function Page() {
   throw new Error(
     "Section exists for naming purposes only and should not be used as a component",
@@ -8,6 +12,22 @@ function Page() {
 }
 
 export default Page;
+
+type BannerImage = {
+  connectedImage: MyDb["image"];
+  position: {
+    x: number;
+    y: number;
+  };
+};
+
+const BannerImage = ({ data }: { data: BannerImage }) => (
+  <div className="group/bannerImage relative aspect-[16/9] overflow-hidden xl:aspect-[14/3]">
+    <StorageImage urls={data.connectedImage.urls} position={data.position} />
+  </div>
+);
+
+Page.BannerImage = BannerImage;
 
 const Heading = ({
   children,
@@ -35,7 +55,7 @@ const Subheading = ({
   className?: string;
 }) => (
   <div
-    className={`text-base uppercase tracking-wide xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl ${
+    className={`mb-xs text-xl font-light uppercase tracking-wide text-display md:text-2xl ${
       className || ""
     }`}
   >
@@ -45,15 +65,15 @@ const Subheading = ({
 
 Page.Subheading = Subheading;
 
-const VerticalSpace = () => <div className="mt-8 xs:mt-16 lg:mt-24" />;
+const VerticalSpace = ({ double }: { double?: boolean }) => (
+  <div
+    className={!double ? "mt-8 xs:mt-16 lg:mt-24" : "mt-16 xs:mt-32 lg:mt-48"}
+  />
+);
 
 Page.VerticalSpace = VerticalSpace;
 
-const SectionHorizontalSpacing = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => (
+const HorizontalSpace = ({ children }: { children: React.ReactNode }) => (
   <div className="grid place-items-center">
     <div className="w-screen max-w-[1600px] px-4 xs:px-8 sm:px-12 md:px-16 lg:px-24">
       {children}
@@ -61,4 +81,22 @@ const SectionHorizontalSpacing = ({
   </div>
 );
 
-Page.SectionHorizontalSpacing = SectionHorizontalSpacing;
+Page.HorizontalSpace = HorizontalSpace;
+
+const MainText = ({
+  children,
+  className,
+}: {
+  children: string;
+  className?: string;
+}) => (
+  <div
+    className={`custom-prose prose mt-sm w-full max-w-full md:columns-2 md:gap-10 ${
+      className || ""
+    }`}
+  >
+    <Markdown>{children}</Markdown>
+  </div>
+);
+
+Page.MainText = MainText;

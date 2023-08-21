@@ -3,9 +3,10 @@ import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
-import TheTeam from "./the-team/+Entry";
+import JobPosts from "./job-posts/+Entry";
+import MainText from "./main-text/+Entry";
 
-const AboutPage = ({
+const CareersPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
 }: {
   staticData: StaticData;
@@ -26,27 +27,23 @@ const AboutPage = ({
       )}
 
       <Ui.Page.HorizontalSpace>
-        <Ui.Page.Subheading>{page.subheading}</Ui.Page.Subheading>
+        <Ui.Section.VerticalSpace />
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
       </Ui.Page.HorizontalSpace>
 
-      {page.mainText.length ? (
-        <>
-          <Ui.Page.HorizontalSpace>
-            <Ui.Section.VerticalSpace />
-            <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
-          </Ui.Page.HorizontalSpace>
-        </>
-      ) : null}
+      <Ui.Page.HorizontalSpace>
+        <Ui.Section.VerticalSpace />
+        <MainText page={page} socialMediaLinks={orgDetails.socialMediaLinks} />
+      </Ui.Page.HorizontalSpace>
 
-      {page.theTeam === "not in use" ? null : (
+      {page.careers === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <TheTeam {...page.theTeam} />
+            <JobPosts {...page.careers} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
@@ -67,4 +64,4 @@ const AboutPage = ({
   );
 };
 
-export default AboutPage;
+export default CareersPage;

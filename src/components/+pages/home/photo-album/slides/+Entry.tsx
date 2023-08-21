@@ -16,8 +16,6 @@ type Data = ExcludeNotInUse<StaticData["page"]["photoAlbum"]>["entries"];
 const Slides = ({ data }: { data: Data }) => {
   const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
 
-  console.log("data:", data);
-
   return (
     <div className="absolute h-full w-full overflow-visible">
       <Swiper

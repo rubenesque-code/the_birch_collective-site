@@ -1,13 +1,13 @@
 export type Pages = {
   landing: Landing;
   aboutUs: AboutUs;
-  programmes: Programmes;
-  donate: Donate;
-  ["volunteer-positions"]: VolunteerPositions;
   careers: Careers;
-  workshops: Workshops;
+  donate: Donate;
+  programmes: Programmes;
+  ["volunteer-positions"]: VolunteerPositions;
   testimonials: Testimonials;
   "theory-of-change": TheoryOfChange;
+  workshops: Workshops;
 };
 
 type Landing = {
@@ -177,11 +177,6 @@ type Careers = {
     };
   };
 
-  heading: string;
-  mainText: string;
-
-  followOnSocialMediaText: string;
-
   careers: {
     heading: string;
 
@@ -192,6 +187,12 @@ type Careers = {
       dbConnections: { careerId: string };
     }[];
   };
+
+  heading: string;
+
+  mainText: string;
+
+  followOnSocialMediaText: string;
 };
 
 type Donate = {

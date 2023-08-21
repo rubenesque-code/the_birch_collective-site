@@ -40,7 +40,7 @@ const crossProcess = (
 
     bannerImage: bannerImageProcessed,
 
-    bodyProcessed,
+    body: bodyProcessed,
   };
 };
 

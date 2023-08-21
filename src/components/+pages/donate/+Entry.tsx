@@ -3,9 +3,10 @@ import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
-import TheTeam from "./the-team/+Entry";
+import Body from "./body/+Entry";
+import PaymentWidget from "./payment-widget/+Entry";
 
-const AboutPage = ({
+const DonatePage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
 }: {
   staticData: StaticData;
@@ -26,32 +27,24 @@ const AboutPage = ({
       )}
 
       <Ui.Page.HorizontalSpace>
-        <Ui.Page.Subheading>{page.subheading}</Ui.Page.Subheading>
+        <Ui.Section.VerticalSpace />
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
       </Ui.Page.HorizontalSpace>
 
-      {page.mainText.length ? (
-        <>
-          <Ui.Page.HorizontalSpace>
-            <Ui.Section.VerticalSpace />
-            <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
-          </Ui.Page.HorizontalSpace>
-        </>
-      ) : null}
-
-      {page.theTeam === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
-
-          <Ui.Page.HorizontalSpace>
-            <TheTeam {...page.theTeam} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+      <Ui.Page.HorizontalSpace>
+        <Ui.Section.VerticalSpace />
+        <PaymentWidget />
+      </Ui.Page.HorizontalSpace>
 
       <Ui.Page.VerticalSpace />
+
+      <Ui.Page.HorizontalSpace>
+        <Body {...page.body} />
+      </Ui.Page.HorizontalSpace>
+
+      <Ui.Page.VerticalSpace double />
 
       <Ui.Page.HorizontalSpace>
         <Footer
@@ -67,4 +60,4 @@ const AboutPage = ({
   );
 };
 
-export default AboutPage;
+export default DonatePage;

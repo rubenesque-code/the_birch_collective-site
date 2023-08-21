@@ -1,3 +1,5 @@
+import { sortByIndex } from "../data/process";
+
 import type { MyDb } from "~/types/database";
 
 const selfValidate = ({ description, title }: MyDb["career"]) => {
@@ -11,8 +13,28 @@ const selfValidateMany = (careers: MyDb["career"][]) =>
 
 selfValidate.many = selfValidateMany;
 
+const process = ({ docLinkButtons, ...restTestimonial }: MyDb["career"]) => {
+  const docLinkButtonsProcessed = docLinkButtons
+    .filter((button) => button.link.length && button.text.length)
+    .sort(sortByIndex);
+
+  return {
+    ...restTestimonial,
+    docLinkButtons: docLinkButtonsProcessed,
+  };
+};
+
+const processMany = (carrers: MyDb["career"][]) => {
+  const processed = carrers.map((career) => process(career));
+
+  return processed;
+};
+
+process.many = processMany;
+
 export type ProcessedCareers = ReturnType<typeof selfValidateMany>;
 
 export const processCareer = {
   selfValidate,
+  process,
 };
