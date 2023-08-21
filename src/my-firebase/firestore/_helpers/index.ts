@@ -77,7 +77,10 @@ export const fetchFirestoreDocuments = async (
 
   idBatches.forEach((idBatch) => {
     const docsRefs = query(
-      collection(firestore, collectionKey),
+      collection(
+        firestore,
+        firestore_file_system_names.collections[collectionKey],
+      ),
       where("id", "in", idBatch),
     );
     const getDocsSnap = getDocs(docsRefs);

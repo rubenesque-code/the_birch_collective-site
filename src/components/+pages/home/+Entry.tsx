@@ -23,6 +23,7 @@ import type { MyExclude } from "~/types/utilities";
 // 3. add sign up email functionality to cms
 // 4. populate cms
 // 5. rest of this site
+// 6. career download is working
 
 // MUST DO
 // □ message form

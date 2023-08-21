@@ -3,6 +3,7 @@ import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
+import Opportunities from "./opportunites/+Entry";
 
 const VolunteerPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
@@ -39,6 +40,14 @@ const VolunteerPage = ({
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
+
+      <>
+        <Ui.Page.HorizontalSpace>
+          <Ui.Section.VerticalSpace />
+
+          <Opportunities {...page.opportunities} />
+        </Ui.Page.HorizontalSpace>
+      </>
 
       <Ui.Page.VerticalSpace double />
 

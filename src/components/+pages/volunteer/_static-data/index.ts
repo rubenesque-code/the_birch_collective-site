@@ -27,18 +27,21 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
       (entry) => entry.dbConnections.volunteerPositionId,
     ),
   };
+  console.log("connectedDocIds:", connectedDocIds);
 
   const connectedDocsFetched = {
     positions: await myDb["volunteer-positions"].fetchMany(
       connectedDocIds.positions,
     ),
   };
+  console.log("connectedDocsFetched:", connectedDocsFetched);
 
   const connectedDocsSelfValidated = {
     positions: processDbData.volunteerPosition.selfValidate.many(
       connectedDocsFetched.positions,
     ),
   };
+  console.log("connectedDocsSelfValidated:", connectedDocsSelfValidated);
 
   const connectedImageIds = [
     orgDetails.logoImage.dbConnections.imageId,

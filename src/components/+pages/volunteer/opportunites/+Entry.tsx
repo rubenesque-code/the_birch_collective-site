@@ -1,41 +1,40 @@
-import { TextInputForm } from "~/components/forms";
-import { UedCx } from "~/context/user-editable-data";
-import Positions from "./positions/+Entry";
+import Ui from "~/components/ui-elements";
 
-const Opportunities = () => (
+import type { StaticData } from "../_static-data";
+
+import { type ExcludeNotInUse } from "~/types/database/_helpers";
+
+type Data = ExcludeNotInUse<StaticData["page"]["opportunities"]>;
+
+const Opportunities = ({ entries, heading }: Data) => (
   <div>
-    <Heading />
+    <Ui.Section.Heading className="text-brandOrange">
+      {heading}
+    </Ui.Section.Heading>
+
     <div className="mt-md">
-      <Positions />
+      {entries.length ? (
+        <div className="mt-lg grid grid-cols-2 gap-x-lg gap-y-xl">
+          {entries.map((entry) => (
+            <Position {...entry} key={entry.id} />
+          ))}
+        </div>
+      ) : (
+        <p className="custom-prose prose">
+          None at the moment. Please check back later.
+        </p>
+      )}
     </div>
   </div>
 );
 
 export default Opportunities;
 
-const Heading = () => {
-  const {
-    store: {
-      data: {
-        opportunities: { heading },
-      },
-      actions: { opportunities: opportunitiesAction },
-    },
-    revision: { undoKey },
-  } = UedCx.Pages.VolunteerPositions.use();
-
-  return (
-    <div className="text-center font-display text-6xl text-brandOrange">
-      <TextInputForm
-        localStateValue={heading}
-        onSubmit={opportunitiesAction.heading}
-        input={{
-          placeholder: "Opportunities heading",
-          styles: "text-center font-bold",
-        }}
-        tooltip="Click to edit opportunities heading"
-        key={undoKey}
-      />
+const Position = ({ name, text }: Data["entries"][number]) => (
+  <div className="group/position">
+    <div className="text-center font-display text-3xl font-bold tracking-wide text-brandOrange">
+      {name}
     </div>
-  );
-};
+    <div className="custom-prose prose mt-sm w-full max-w-full">{text}</div>
+  </div>
+);
