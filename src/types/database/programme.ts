@@ -100,6 +100,8 @@ export type Programme = {
     text: string;
 
     buttonText: string;
+
+    notifyEmails: string[];
   };
 
   subtitle: string;
