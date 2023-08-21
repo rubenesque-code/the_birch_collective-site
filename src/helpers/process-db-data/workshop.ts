@@ -35,6 +35,7 @@ const crossProcess = (
     info,
     photoAlbum,
     sections,
+    tickets,
     ...restWorkshop
   }: MyDb["workshop"],
   connectedDocs: { images: MyDb["image"][] },
@@ -69,9 +70,12 @@ const crossProcess = (
         position: bannerImage.position,
       };
 
-  const infoProcessed = info
+  const infoEntriesProcessed = info
     .filter((entry) => entry.text.length || entry.title.length)
     .sort(sortByIndex);
+  const infoProcessed = !infoEntriesProcessed.length
+    ? notInUse
+    : infoEntriesProcessed;
 
   const photoAlbumEntriesProcessed = !photoAlbum.use
     ? null
@@ -115,6 +119,8 @@ const crossProcess = (
     mainText: summary.mainText,
   };
 
+  const ticketsProcessed = !tickets.signUpButton.link ? notInUse : tickets;
+
   return {
     ...restWorkshop,
 
@@ -127,6 +133,8 @@ const crossProcess = (
     sections: sectionsProcessed,
 
     summary: summaryProcessed,
+
+    tickets: ticketsProcessed,
   };
 };
 

@@ -1,24 +1,24 @@
 import type { StaticData } from "../_static-data";
-import PosterSlides from "./poster-slides/+Entry";
+import PhotoAlbum from "./photo-album/+Entry";
 
 import type { MyExclude } from "~/types/utilities";
 
 type Data = {
   info: StaticData["page"]["info"];
-  posters: StaticData["page"]["posters"];
+  photoAlbum: StaticData["page"]["photoAlbum"];
 };
 
-const InfoAndPosters = ({ info, posters }: Data) => (
-  <div className="grid grid-cols-2 gap-lg">
+const InfoAndPosters = ({ info, photoAlbum }: Data) => (
+  <div className="flex gap-lg">
     {info === "not in use" ? null : (
       <div className="">
         <Info data={info} />
       </div>
     )}
 
-    {posters === "not in use" ? null : (
-      <div className="">
-        <Posters data={posters} />
+    {photoAlbum === "not in use" ? null : (
+      <div className="flex-grow">
+        <PhotoAlbum data={photoAlbum} />
       </div>
     )}
   </div>
@@ -41,18 +41,5 @@ const Entry = ({
   <div className="group/entry relative flex items-start gap-xs">
     <div className="relative font-bold">{title}</div>
     <div className="w-full text-gray-800">{text}</div>
-  </div>
-);
-
-type PostersData = MyExclude<StaticData["page"]["posters"], "not in use">;
-
-const Posters = ({ data }: { data: PostersData }) => (
-  <div className="group/posters relative">
-    <div>
-      <div className="relative ml-xl h-[400px] overflow-visible ">
-        <PosterSlides data={data} />
-      </div>
-    </div>
-    <div className="text-right text-sm text-gray-500">flyers!</div>
   </div>
 );

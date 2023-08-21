@@ -28,12 +28,14 @@ import type { MyExclude } from "~/types/utilities";
 // MUST DO
 // □ message form
 // □ get sign up form up and running
-// □ donate functionality
+// □ donate functionality. inc donate-success page
 // □ programmes + workshops pages - go over lists design
 
 // OTHER
 // □ apply dompurify
 // □ apply str fallbacks
+// □ 404 page
+// □ seo
 
 // □ different max widths for text sections
 

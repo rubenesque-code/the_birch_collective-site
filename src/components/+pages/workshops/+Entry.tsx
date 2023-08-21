@@ -3,11 +3,18 @@ import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
-import Body from "./body/+Entry";
-import PaymentWidget from "./payment-widget/+Entry";
+import WorkshopsList from "./workshops-list/+Entry";
 
-const DonatePage = ({
-  staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
+const ProgrammePage = ({
+  staticData: {
+    footer,
+    header,
+    linkLabels,
+    logoImage,
+    orgDetails,
+    page,
+    workshops,
+  },
 }: {
   staticData: StaticData;
 }) => {
@@ -28,21 +35,32 @@ const DonatePage = ({
 
       <Ui.Page.HorizontalSpace>
         <Ui.Section.VerticalSpace />
+
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
       </Ui.Page.HorizontalSpace>
 
-      <Ui.Page.HorizontalSpace>
-        <Ui.Section.VerticalSpace />
-        <PaymentWidget />
-      </Ui.Page.HorizontalSpace>
+      {page.mainText.length ? (
+        <>
+          <Ui.Page.HorizontalSpace>
+            <Ui.Section.VerticalSpace />
+            <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
+          </Ui.Page.HorizontalSpace>
+        </>
+      ) : null}
 
-      <Ui.Page.VerticalSpace />
+      {workshops.length ? (
+        <>
+          <Ui.Page.VerticalSpace />
 
-      <Ui.Page.HorizontalSpace>
-        <Body {...page.body} />
-      </Ui.Page.HorizontalSpace>
+          <Ui.Page.HorizontalSpace>
+            <WorkshopsList data={workshops} />
+          </Ui.Page.HorizontalSpace>
+        </>
+      ) : (
+        <p>No programmes listed at the moment. Check back later.</p>
+      )}
 
       <Ui.Page.VerticalSpace double />
 
@@ -60,4 +78,4 @@ const DonatePage = ({
   );
 };
 
-export default DonatePage;
+export default ProgrammePage;

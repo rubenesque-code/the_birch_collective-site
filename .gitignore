@@ -36,3 +36,7 @@ next-env.d.ts
 
 #
 /db-local-data
+
+#
+/src/pages/donate.tsx
+/src/components/+pages/donate
