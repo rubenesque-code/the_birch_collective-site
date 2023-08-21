@@ -36,7 +36,7 @@ type Gender = {
   isSelected: boolean;
 };
 type Event = {
-  name: string;
+  label: string;
   isSelected: boolean;
 };
 type Sources = {
@@ -48,9 +48,10 @@ type Sources = {
   otherDetails: string;
 };
 
-const Slides = () => {
+const Slides = ({ closeModal }: { closeModal: () => void }) => {
   const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
+  const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   const [numViewedSlides, setNumViewedSlides] = React.useState(1);
 
@@ -213,14 +214,14 @@ const Slides = () => {
     const programmes = programmesQuery.data
       .filter((programme) => programme.title.length)
       .map((programme) => ({
-        name: programme.title,
+        label: programme.title,
         isSelected: false,
       }));
 
     const workshops = workshopsQuery.data
       .filter((workshop) => workshop.type === "free" && workshop.title.length)
       .map((workshop) => ({
-        name: workshop.title,
+        label: workshop.title,
         isSelected: false,
       }));
 
@@ -277,6 +278,14 @@ const Slides = () => {
     }
 
     if (currentSlideIndex === 7) {
+      if (
+        !emergencyContact.name.length ||
+        !emergencyContact.phoneNumber.length ||
+        !emergencyContact.relationship.length
+      ) {
+        setShowErrorMessage(true);
+        return;
+      }
       input.onGoToSlide();
     }
 
@@ -289,10 +298,18 @@ const Slides = () => {
     }
 
     if (currentSlideIndex === 9) {
+      if (!ethnicity.length) {
+        setShowErrorMessage(true);
+        return;
+      }
       input.onGoToSlide();
     }
 
     if (currentSlideIndex === 10) {
+      if (!genders.find((g) => g.isSelected)) {
+        setShowErrorMessage(true);
+        return;
+      }
       input.onGoToSlide();
     }
 
@@ -301,6 +318,10 @@ const Slides = () => {
     }
 
     if (currentSlideIndex === 12) {
+      if (!lifeSavingMedications.length) {
+        setShowErrorMessage(true);
+        return;
+      }
       input.onGoToSlide();
     }
 
@@ -376,352 +397,454 @@ const Slides = () => {
     });
   };
 
+  const optionsToStr = (options: { label: string; isSelected: boolean }[]) => {
+    const selected = options
+      .filter((o) => o.isSelected)
+      .map((o) => o.label)
+      .join(",");
+
+    return selected;
+  };
+
+  const handleSubmit = async () => {
+    const identitiesStr = optionsToStr(identities);
+    const gendersStr = optionsToStr(genders);
+    const eventsStr = optionsToStr(events);
+
+    const data = {
+      name: name,
+      dateOfBirth: `${dateOfBirth.day}/${dateOfBirth.month}/${dateOfBirth.year}`,
+      email: email,
+      phoneNumber: phoneNumber,
+      emergencyContact: `name:${emergencyContact.name} | phone number: ${emergencyContact.phoneNumber} | relationship: ${emergencyContact.relationship}`,
+      identities: identitiesStr,
+      ethnicity: ethnicity,
+      genders: gendersStr,
+      healthIssues: healthIssues,
+      lifeSavingMedications: lifeSavingMedications,
+      events: eventsStr,
+      hopeToGet: hopeToGet,
+      sources: `${optionsToStr(
+        sources.entries,
+      )} | medical professional details: ${
+        sources.medicalProDetails
+      } | other details: ${sources.otherDetails}`,
+      newsletterOptIn: receiveNewsLetter ? "yes" : "no",
+      imageOptIn: imagePermission ? "yes" : "no",
+    };
+
+    setFormSubmitted(true);
+
+    setTimeout(() => {
+      closeModal();
+    }, 600);
+
+    await fetch("/api/sheets", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  };
+
   return (
-    <SlidesContainer
-      bottomPanel={
-        currentSlideIndex === 0 ? (
-          <div className="absolute -bottom-xs flex w-full translate-y-full justify-center">
-            <div className="flex items-center gap-xxs text-sm text-gray-500">
-              <span>
-                <Icon.Time />
-              </span>
-              <span>Takes 2 minutes</span>
-            </div>
+    <div className="">
+      {formSubmitted ? (
+        <div className="absolute left-1/2 top-1/2 z-10 grid h-full w-full -translate-x-1/2 -translate-y-1/2 place-items-center rounded-lg bg-white/90 p-xl">
+          <div className="text-2xl font-medium text-brandGreen">
+            Thanks, form received!
           </div>
-        ) : null
-      }
-      buttonText={
-        currentSlideIndex === 0
-          ? "Start"
-          : currentSlideIndex === 1
-          ? "Got it"
-          : currentSlideIndex === 2
-          ? "I understand"
-          : "Okay"
-      }
-      goNext={handleGoNext}
-      goPrev={handleGoPrev}
-      isFinalSlide={currentSlideIndex + 1 === numSlides}
-      showQuickNextButton={currentSlideIndex + 1 < numViewedSlides}
-      showQuickPrevButton={currentSlideIndex > 0}
-      textSlides={
-        <Swiper
-          spaceBetween={0}
-          slidesPerView={1}
-          direction="vertical"
-          onSwiper={(swiper) => setSwiper(swiper)}
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          [
-          <SwiperSlide key="slide-1">
-            <SlideWrapper>
-              <Slide1 />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-2">
-            <SlideWrapper>
-              <Slide2 />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-3">
-            <SlideWrapper>
-              <Slide3 />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-4">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                errorMessage={{
-                  message: "Oops...please enter your full name",
-                  show: showErrorMessage,
-                }}
-                heading="Your full name:"
-                inputs={
-                  <Slide4
-                    name={name}
-                    setName={setName}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                isRequired
-                questionNumber={1}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-5">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                errorMessage={{
-                  message: "Oops...please enter a valid date.",
-                  show: showErrorMessage,
-                }}
-                heading="Your date of birth:"
-                inputs={
-                  <Slide5
-                    dateOfBirth={dateOfBirth}
-                    setDateOfBirth={setDateOfBirth}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                isRequired
-                questionNumber={2}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-6">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                errorMessage={{
-                  message: "Oops...please enter a valid email.",
-                  show: showErrorMessage,
-                }}
-                heading="Your email address:"
-                inputs={
-                  <Slide6
-                    email={email}
-                    setEmail={setEmail}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                isRequired
-                questionNumber={3}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-7">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                errorMessage={{
-                  message: "Oops...please enter a valid phone number.",
-                  show: showErrorMessage,
-                }}
-                heading="Your phone number:"
-                inputs={
-                  <Slide7
-                    number={phoneNumber}
-                    setNumber={setPhoneNumber}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                isRequired
-                questionNumber={4}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-8">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Emergency contact details:"
-                inputs={
-                  <Slide8
-                    emergencyContact={emergencyContact}
-                    setEmergencyContact={setEmergencyContact}
-                  />
-                }
-                questionNumber={5}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-9">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Do you identify as any of the following?"
-                inputs={
-                  <Slide9
-                    identities={identities}
-                    setIdentities={setIdentities}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                questionNumber={6}
-                errorMessage={{
-                  message: "Oops...please enter one of the options",
-                  show: showErrorMessage,
-                }}
-                isRequired
-                subheading="Tick all that apply to you."
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-10">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Your ethnicity"
-                inputs={
-                  <Slide10 ethnicity={ethnicity} setEthnicity={setEthnicity} />
-                }
-                questionNumber={7}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-11">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Do you identify as any of the following?"
-                inputs={<Slide11 genders={genders} setGenders={setGenders} />}
-                questionNumber={8}
-                subheading="Tick all that apply to you."
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-12">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Do you consider yourself to have any physical health issues or medical conditions, e.g ASD, Asthma or allergies, ?"
-                inputs={
-                  <Slide12
-                    healthIssues={healthIssues}
-                    setHealthIssues={setHealthIssues}
-                  />
-                }
-                questionNumber={9}
-                subheading="If yes, please provide us with some detail."
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-13">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Do you require any regular life saving medication, e.g inhalers, epipen or other?"
-                inputs={
-                  <Slide13
-                    lifeSavingMedication={lifeSavingMedications}
-                    setLifeSavingMedication={setLifeSavingMedications}
-                  />
-                }
-                questionNumber={10}
-                subheading="If yes, please provide us with some detail."
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-14">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Which programmes and workshops are you interested in and would like some more information about?"
-                inputs={
-                  <Slide14
-                    events={events}
-                    setEvents={setEvents}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                questionNumber={11}
-                errorMessage={{
-                  message: "Oops...please enter at least one option.",
-                  show: showErrorMessage,
-                }}
-                isRequired
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-15">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="What do you hope to get out of going to The Birch Collective's sessions or programmes?"
-                inputs={
-                  <Slide15 hopeToGet={hopeToGet} setHopeToGet={setHopeToGet} />
-                }
-                questionNumber={12}
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-16">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="How did you hear about The Birch Collective"
-                inputs={<Slide16 setSources={setSources} sources={sources} />}
-                questionNumber={13}
-                subheading="Tick all that apply."
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-17">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Would you like to be added to the Birch Collectives monthly newsletter to hear about new workshops, programmes and services we are running?"
-                inputs={
-                  <Slide17
-                    receiveNewsLetter={receiveNewsLetter}
-                    setReceiveNewsLetter={setReceiveNewsLetter}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                questionNumber={14}
-                errorMessage={{
-                  message: "Oops...please enter one of the options",
-                  show: showErrorMessage,
-                }}
-                isRequired
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-18">
-            <SlideWrapper>
-              <QuestionnaireSlideWrapper
-                heading="Would you like to be added to the Birch Collectives monthly newsletter to hear about new workshops, programmes and services we are running?"
-                inputs={
-                  <Slide18
-                    imagePermission={imagePermission}
-                    setImagePermission={setImagePermission}
-                    handleResetShowErrorMessage={() =>
-                      showErrorMessage && setShowErrorMessage(false)
-                    }
-                  />
-                }
-                questionNumber={14}
-                errorMessage={{
-                  message: "Oops...please enter one of the options",
-                  show: showErrorMessage,
-                }}
-                isRequired
-              />
-            </SlideWrapper>
-          </SwiperSlide>
-          ,
-          <SwiperSlide key="slide-19">
-            <SlideWrapper>
-              <Slide19 submit={() => null} />
-            </SlideWrapper>
-          </SwiperSlide>
-          ]
-        </Swiper>
-      }
-    />
+        </div>
+      ) : null}
+
+      <SlidesContainer
+        bottomPanel={
+          currentSlideIndex === 0 ? (
+            <div className="absolute -bottom-xs flex w-full translate-y-full justify-center">
+              <div className="flex items-center gap-xxs text-sm text-gray-500">
+                <span>
+                  <Icon.Time />
+                </span>
+                <span>Takes 2 minutes</span>
+              </div>
+            </div>
+          ) : null
+        }
+        buttonText={
+          currentSlideIndex === 0
+            ? "Start"
+            : currentSlideIndex === 1
+            ? "Got it"
+            : currentSlideIndex === 2
+            ? "I understand"
+            : "Okay"
+        }
+        goNext={handleGoNext}
+        goPrev={handleGoPrev}
+        isFinalSlide={currentSlideIndex + 1 === numSlides}
+        showQuickNextButton={currentSlideIndex + 1 < numViewedSlides}
+        showQuickPrevButton={currentSlideIndex > 0}
+        textSlides={
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            direction="vertical"
+            onSwiper={(swiper) => setSwiper(swiper)}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            [
+            <SwiperSlide key="slide-1">
+              <SlideWrapper>
+                <Slide1 />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-2">
+              <SlideWrapper>
+                <Slide2 />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-3">
+              <SlideWrapper>
+                <Slide3 />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-4">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  errorMessage={{
+                    message: "Oops...please enter your full name",
+                    show: showErrorMessage,
+                  }}
+                  heading="Your full name:"
+                  inputs={
+                    <Slide4
+                      name={name}
+                      setName={setName}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  isRequired
+                  questionNumber={1}
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-5">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  errorMessage={{
+                    message: "Oops...please enter a valid date.",
+                    show: showErrorMessage,
+                  }}
+                  heading="Your date of birth:"
+                  inputs={
+                    <Slide5
+                      dateOfBirth={dateOfBirth}
+                      setDateOfBirth={setDateOfBirth}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  isRequired
+                  questionNumber={2}
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-6">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  errorMessage={{
+                    message: "Oops...please enter a valid email.",
+                    show: showErrorMessage,
+                  }}
+                  heading="Your email address:"
+                  inputs={
+                    <Slide6
+                      email={email}
+                      setEmail={setEmail}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  isRequired
+                  questionNumber={3}
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-7">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  errorMessage={{
+                    message: "Oops...please enter a valid phone number.",
+                    show: showErrorMessage,
+                  }}
+                  heading="Your phone number:"
+                  inputs={
+                    <Slide7
+                      number={phoneNumber}
+                      setNumber={setPhoneNumber}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  isRequired
+                  questionNumber={4}
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-8">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  errorMessage={{
+                    message: "Please provide contact details.",
+                    show: showErrorMessage,
+                  }}
+                  heading="Emergency contact details:"
+                  inputs={
+                    <Slide8
+                      emergencyContact={emergencyContact}
+                      setEmergencyContact={setEmergencyContact}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={5}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-9">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Do you identify as any of the following?"
+                  inputs={
+                    <Slide9
+                      identities={identities}
+                      setIdentities={setIdentities}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={6}
+                  errorMessage={{
+                    message: "Oops...please enter one of the options",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                  subheading="Tick all that apply to you."
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-10">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Your ethnicity"
+                  inputs={
+                    <Slide10
+                      ethnicity={ethnicity}
+                      setEthnicity={setEthnicity}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={7}
+                  errorMessage={{
+                    message: "Oops...please provide answer",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-11">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Do you identify as any of the following?"
+                  inputs={
+                    <Slide11
+                      genders={genders}
+                      setGenders={setGenders}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={8}
+                  subheading="Tick all that apply to you."
+                  errorMessage={{
+                    message: "Oops...please select one of the options",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-12">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Do you consider yourself to have any physical health issues or medical conditions, e.g ASD, Asthma or allergies, ?"
+                  inputs={
+                    <Slide12
+                      healthIssues={healthIssues}
+                      setHealthIssues={setHealthIssues}
+                    />
+                  }
+                  questionNumber={9}
+                  subheading="If yes, please provide us with some detail."
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-13">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Do you require any regular life saving medication, e.g inhalers, epipen or other?"
+                  inputs={
+                    <Slide13
+                      lifeSavingMedication={lifeSavingMedications}
+                      setLifeSavingMedication={setLifeSavingMedications}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={10}
+                  subheading="If yes, please provide us with some detail. If no, please type 'no'"
+                  isRequired
+                  errorMessage={{
+                    message: "Please enter details or type 'no'",
+                    show: showErrorMessage,
+                  }}
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-14">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Which programmes and workshops are you interested in and would like some more information about?"
+                  inputs={
+                    <Slide14
+                      events={events}
+                      setEvents={setEvents}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={11}
+                  errorMessage={{
+                    message: "Please select at least one option.",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-15">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="What do you hope to get out of going to The Birch Collective's sessions or programmes?"
+                  inputs={
+                    <Slide15
+                      hopeToGet={hopeToGet}
+                      setHopeToGet={setHopeToGet}
+                    />
+                  }
+                  questionNumber={12}
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-16">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="How did you hear about The Birch Collective"
+                  inputs={<Slide16 setSources={setSources} sources={sources} />}
+                  questionNumber={13}
+                  subheading="Tick all that apply."
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-17">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Would you like to be added to the Birch Collectives monthly newsletter to hear about new workshops, programmes and services we are running?"
+                  inputs={
+                    <Slide17
+                      receiveNewsLetter={receiveNewsLetter}
+                      setReceiveNewsLetter={setReceiveNewsLetter}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={14}
+                  errorMessage={{
+                    message: "Oops...please select one of the options",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-18">
+              <SlideWrapper>
+                <QuestionnaireSlideWrapper
+                  heading="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
+                  subheading="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
+                  inputs={
+                    <Slide18
+                      imagePermission={imagePermission}
+                      setImagePermission={setImagePermission}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={14}
+                  errorMessage={{
+                    message: "Oops...please select one of the options",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-19">
+              <SlideWrapper>
+                <Slide19 submit={() => void handleSubmit()} />
+              </SlideWrapper>
+            </SwiperSlide>
+            ]
+          </Swiper>
+        }
+      />
+    </div>
   );
 };
 
@@ -958,7 +1081,7 @@ const Slide5 = ({
             day
           </label>
           <input
-            className="w-[80px]  text-lg"
+            className="w-[80px] text-lg"
             id="day"
             value={dateOfBirth.day}
             onChange={(e) => {
@@ -1077,10 +1200,11 @@ const Slide7 = ({
 const Slide8 = ({
   emergencyContact,
   setEmergencyContact,
+  handleResetShowErrorMessage,
 }: {
   emergencyContact: EmergencyContact;
   setEmergencyContact: Updater<EmergencyContact>;
-}) => (
+} & SlideErrorProps) => (
   <div className="flex flex-col gap-sm">
     <div>
       <label className="text-sm text-gray-500" htmlFor="emergency-name">
@@ -1094,6 +1218,7 @@ const Slide8 = ({
           setEmergencyContact((draft) => {
             draft.name = e.target.value;
           });
+          handleResetShowErrorMessage();
         }}
         type="text"
         placeholder="Enter name here"
@@ -1117,6 +1242,7 @@ const Slide8 = ({
         placeholder="Enter phone number here"
       />
     </div>
+
     <div>
       <label className="text-sm text-gray-500" htmlFor="emergency-phone">
         Relationship
@@ -1197,15 +1323,17 @@ const Slide9 = ({
 const Slide10 = ({
   ethnicity,
   setEthnicity,
+  handleResetShowErrorMessage,
 }: {
   ethnicity: string;
   setEthnicity: (ethnicity: string) => void;
-}) => (
+} & SlideErrorProps) => (
   <input
     className="mt-sm w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
     value={ethnicity}
     onChange={(e) => {
       setEthnicity(e.target.value);
+      handleResetShowErrorMessage();
     }}
     type="text"
     placeholder="Enter ethnicity here"
@@ -1215,10 +1343,11 @@ const Slide10 = ({
 const Slide11 = ({
   genders,
   setGenders,
+  handleResetShowErrorMessage,
 }: {
   genders: Gender[];
   setGenders: Updater<Gender[]>;
-}) => (
+} & SlideErrorProps) => (
   <div className="flex flex-col gap-xs">
     {genders.map((option) => (
       <div className="flex items-center gap-sm" key={option.label}>
@@ -1227,6 +1356,8 @@ const Slide11 = ({
             id={option.label}
             checked={option.isSelected}
             onChange={(e) => {
+              handleResetShowErrorMessage();
+
               const labelStr = e.currentTarget.id;
 
               setGenders((draft) => {
@@ -1276,14 +1407,18 @@ const Slide12 = ({
 const Slide13 = ({
   lifeSavingMedication,
   setLifeSavingMedication,
+  handleResetShowErrorMessage,
 }: {
   lifeSavingMedication: string;
   setLifeSavingMedication: (value: string) => void;
-}) => (
+} & SlideErrorProps) => (
   <textarea
     className="w-full resize-none border-b border-b-[#2F4858] text-lg text-[#2F4858]"
     value={lifeSavingMedication}
-    onChange={(e) => setLifeSavingMedication(e.currentTarget.value)}
+    onChange={(e) => {
+      setLifeSavingMedication(e.currentTarget.value);
+      handleResetShowErrorMessage();
+    }}
     placeholder="Enter life saving medication here"
   />
 );
@@ -1300,17 +1435,17 @@ const Slide14 = ({
     <>
       <div className="mt-md flex flex-col gap-xs">
         {events.map((option) => (
-          <div className="flex items-center gap-sm" key={option.name}>
+          <div className="flex items-center gap-sm" key={option.label}>
             <div>
               <input
-                id={option.name}
+                id={option.label}
                 checked={option.isSelected}
                 onChange={(e) => {
                   const name = e.currentTarget.id;
 
                   setEvents((draft) => {
                     const index = draft.findIndex(
-                      (option) => option.name === name,
+                      (option) => option.label === name,
                     );
 
                     if (index < 0) {
@@ -1325,8 +1460,8 @@ const Slide14 = ({
                 type="checkbox"
               />
             </div>
-            <label className="text-lg text-[#2F4858]" htmlFor={option.name}>
-              {option.name}
+            <label className="text-lg text-[#2F4858]" htmlFor={option.label}>
+              {option.label}
             </label>
           </div>
         ))}
@@ -1394,9 +1529,13 @@ const Slide16 = ({
               className="w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
               value={sources.medicalProDetails}
               onChange={(e) => {
-                setSources(
-                  (draft) => (draft.medicalProDetails = e.currentTarget.value),
-                );
+                const value = e.currentTarget.value;
+
+                if (value) {
+                  setSources((draft) => {
+                    draft.medicalProDetails = value;
+                  });
+                }
               }}
               type="text"
               placeholder="Enter medical professional details"
@@ -1413,9 +1552,13 @@ const Slide16 = ({
               className="w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
               value={sources.otherDetails}
               onChange={(e) => {
-                setSources(
-                  (draft) => (draft.otherDetails = e.currentTarget.value),
-                );
+                const value = e.currentTarget.value;
+
+                if (value) {
+                  setSources((draft) => {
+                    draft.otherDetails = value;
+                  });
+                }
               }}
               type="text"
               placeholder="Enter details"

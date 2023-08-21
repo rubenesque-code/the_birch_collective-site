@@ -14,11 +14,11 @@ const SignUpFormModal = ({
     <ComponentApiCx.Provider {...contextProps}>
       <Modal.WithVisibilityProvider
         button={button}
-        panelContent={
+        panelContent={({ closeModal }) => (
           <div className="relative grid max-h-[70vh] w-[90vw] max-w-[1200px] place-items-center rounded-2xl border-4  border-orange bg-white p-xl text-left shadow-xl">
-            <Slides />
+            <Slides closeModal={closeModal} />
           </div>
-        }
+        )}
       />
     </ComponentApiCx.Provider>
   );

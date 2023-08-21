@@ -42,6 +42,7 @@ import type { MyExclude } from "~/types/utilities";
 // □ image blur in working? image load in bg
 // □ bug on testimonials slider when hover central slide has transparency
 // □ block phone number + email through other means
+// □ no res returned from sheets post. Should really confirm receipt, and warn if not received. Is possible to do it properly?
 
 const HomePage = ({ staticData }: { staticData: StaticData }) => {
   return (
