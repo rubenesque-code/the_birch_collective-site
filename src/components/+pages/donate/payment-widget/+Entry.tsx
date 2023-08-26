@@ -1,22 +1,22 @@
-import React from "react";
-import { useQuery } from "react-query";
-
 import { Icon } from "~/components/icons";
 
-import { ComponentCx } from "./_state";
+import { ComponentCx, StripeCx } from "./_state";
 import Slide1 from "./Slide1";
+import Slide2 from "./Slide2";
 import { SwiperApiCx } from "./swiper-base/_state";
 import SwiperBase from "./swiper-base/+Entry";
 
-import { fetchPostJSON } from "~/helpers/api";
+// todo: see slide 2
 
 const NewOne = () => (
   <SwiperApiCx.Provider>
     <ComponentCx.Provider>
-      <div className="w-[650px] border border-brandGreen bg-white">
-        <Header />
-        <Body />
-      </div>
+      <StripeCx.Provider>
+        <div className="w-[650px] border border-brandGreen bg-white">
+          <Header />
+          <Body />
+        </div>
+      </StripeCx.Provider>
     </ComponentCx.Provider>
   </SwiperApiCx.Provider>
 );
@@ -56,86 +56,11 @@ const Header = () => {
 
 const Body = () => (
   <SwiperBase>
-    [
     <SwiperBase.Slide key="slide-0">
       <Slide1 />
     </SwiperBase.Slide>
-    ,
-    {/* <Swiper.Slide key="slide-1">
-        <Slide2Content />
-      </Swiper.Slide> */}
-    , ]
+    <SwiperBase.Slide key="slide-1">
+      <Slide2 />
+    </SwiperBase.Slide>
   </SwiperBase>
 );
-
-type MyPaymentIntentRes = { amount: number; client_secret: string };
-
-const PaymentWidget = () => {
-  const [donationAmount, setDonationAmount] = React.useState<
-    number | "not-selected"
-  >("not-selected");
-
-  const [showAmountNotSelectedError, setShowAmountNotSelectedError] =
-    React.useState(false);
-
-  const paymentIntentQuery = useQuery(
-    "payment-intent",
-    async () =>
-      (await fetchPostJSON("/api/payment_intents", {
-        amount: 10,
-      })) as Promise<MyPaymentIntentRes>,
-  );
-
-  const onSetDonationAmount = (value: number) => {
-    setDonationAmount(value);
-    setShowAmountNotSelectedError(false);
-  };
-
-  return (
-    <SwiperBase
-      onGoToSlide2={({ goToSlide2 }) => {
-        if (donationAmount === "not-selected") {
-          setShowAmountNotSelectedError(true);
-          return;
-        }
-        goToSlide2();
-      }}
-    >
-      {({ goToSlide1, goToSlide2 }) => [
-        <SwiperBase.Slide key="slide-0">
-          <Slide1Content
-            donationAmount={donationAmount}
-            setDonationAmount={onSetDonationAmount}
-            showNoAmountSelectedError={showAmountNotSelectedError}
-            onClickContinue={() => {
-              if (donationAmount === "not-selected") {
-                setShowAmountNotSelectedError(true);
-                return;
-              }
-              goToSlide2();
-            }}
-          />
-        </SwiperBase.Slide>,
-
-        <SwiperBase.Slide key="slide-1">
-          <Slide2Content
-            donationAmount={donationAmount as number}
-            paymentIntent={
-              paymentIntentQuery.isError
-                ? "isError"
-                : paymentIntentQuery.isFetching
-                ? "isFetching"
-                : !paymentIntentQuery.data?.amount ||
-                  !paymentIntentQuery.data.client_secret
-                ? "isError"
-                : {
-                    amount: paymentIntentQuery.data.amount,
-                    client_secret: paymentIntentQuery.data.client_secret,
-                  }
-            }
-          />
-        </SwiperBase.Slide>,
-      ]}
-    </SwiperBase>
-  );
-};

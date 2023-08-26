@@ -5,33 +5,48 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { type PaymentIntent } from "@stripe/stripe-js";
+import { type Stripe, type StripeElements } from "@stripe/stripe-js";
 import absoluteUrl from "next-absolute-url";
 
 import { Icon } from "~/components/icons";
 
-import { fetchPostJSON } from "~/helpers/api";
-import { getStripe } from "~/lib/stripe";
+import { ComponentCx, StripeCx } from "./_state";
 
-const Slide2Content = ({
-  donationAmount,
-  payment,
-  paymentIntent,
-}: {
-  donationAmount: number;
-  paymentIntent:
-    | "isError"
-    | "isFetching"
-    | { amount: number; client_secret: string };
-}) =>
-  paymentIntent === "isError" ? (
-    <p>Something went wrong...</p>
-  ) : paymentIntent === "isFetching" ? (
+// todo: need access to birch stripe account.
+// have set donation amount to 1 pound below
+
+const Slide2 = () => {
+  const { paymentIntentMutation, loadStripeQuery } = StripeCx.use();
+
+  console.log("paymentIntentMutation:", paymentIntentMutation);
+
+  const { donationAmount } = ComponentCx.use();
+
+  React.useEffect(() => {
+    if (
+      paymentIntentMutation.data?.amount ===
+      (donationAmount as number) * 100
+    ) {
+      return;
+    }
+
+    paymentIntentMutation.mutate({ amount: 1 });
+    // paymentIntentMutation.mutate({ amount: donationAmount as number });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return paymentIntentMutation.isLoading || loadStripeQuery.isLoading ? (
     <p>Loading...</p>
+  ) : paymentIntentMutation.isError ||
+    !paymentIntentMutation.data ||
+    loadStripeQuery.isError ||
+    !loadStripeQuery.data ? (
+    <p>Something went wrong </p>
   ) : (
     <div className="relative border border-gray-300 px-2 pb-8 pt-2 sm:px-12 sm:pb-16 sm:pt-4">
       <Elements
-        stripe={getStripe()}
+        stripe={loadStripeQuery.data}
         options={{
           appearance: {
             variables: {
@@ -42,63 +57,34 @@ const Slide2Content = ({
               fontFamily: "Karla, Open Sans, Segoe UI, sans-serif",
             },
           },
-          clientSecret: paymentIntent.client_secret,
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          clientSecret: paymentIntentMutation.data.client_secret!,
         }}
       >
-        <PaymentForm
-          donationAmount={donationAmount}
-          paymentIntent={paymentIntent}
-          payment={payment}
-          setErrorMessage={setErrorMessage}
-          setPayment={setPayment}
-        />
+        <PaymentForm />
       </Elements>
     </div>
   );
+};
 
-export default Slide2Content;
+export default Slide2;
 
-const PaymentForm = ({
-  donationAmount,
-  paymentIntent,
-  setPayment,
-  setErrorMessage,
-  payment,
-}: {
-  donationAmount: number;
-  paymentIntent: PaymentIntent;
-  setPayment: (arg0: { status: string } | PaymentIntent) => void;
-  setErrorMessage: (arg0: string) => void;
-  payment: { status: string } | PaymentIntent;
-}) => {
-  const stripe = useStripe();
-  const elements = useElements();
+const PaymentForm = () => {
+  // · below stripe hooks return positive because load-stripe passed as resolved to the ElementsProvider above
+  const stripe = useStripe() as Stripe;
+  const elements = useElements() as StripeElements;
+
+  const { donationAmount } = ComponentCx.use();
+
+  // const { paymentIntentMutation } = StripeCx.use();
 
   const { origin } = absoluteUrl();
 
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
     if (!e.currentTarget.reportValidity()) return;
-
-    if (!elements || !stripe) return;
-
-    setPayment({ status: "processing" });
-
-    const paymentIntentId = paymentIntent.id as string;
-
-    const response = (await fetchPostJSON("/api/payment_intents", {
-      amount: donationAmount,
-      payment_intent_id: paymentIntentId,
-    })) as PaymentIntent;
-
-    setPayment(response);
-
-    if ((response.statusCode as number) === 500) {
-      setPayment({ status: "error" });
-      setErrorMessage(response.message);
-      return;
-    }
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -107,12 +93,7 @@ const PaymentForm = ({
       },
     });
 
-    if (error) {
-      setPayment({ status: "error" });
-      setErrorMessage(error.message ?? "An unknown error occurred");
-    } else if (paymentIntent) {
-      setPayment(paymentIntent);
-    }
+    console.log("error:", error);
   };
 
   return (
@@ -128,10 +109,10 @@ const PaymentForm = ({
         <button
           className="flex items-center gap-3 whitespace-nowrap rounded-md bg-displayGreen px-16 py-4 text-xl font-medium text-white"
           type="submit"
-          disabled={
+          /*           disabled={
             !["initial", "succeeded", "error"].includes(payment.status) ||
             !stripe
-          }
+          } */
         >
           <span className="text-gray-300">
             <Icon.Lock />

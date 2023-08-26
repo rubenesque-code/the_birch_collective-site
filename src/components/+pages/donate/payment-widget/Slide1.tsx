@@ -46,15 +46,21 @@ const Slide1 = () => {
 export default Slide1;
 
 const DonationButton = ({ amount }: { amount: number }) => {
-  const { donationAmount: selectedDonationAmount, setDonationAmount } =
-    ComponentCx.use();
+  const {
+    donationAmount: selectedDonationAmount,
+    setDonationAmount,
+    setShowAmountNotSelectedError,
+  } = ComponentCx.use();
 
   return (
     <button
       className={`rounded-md border-2 border-gray-300 px-6 py-2 text-xl font-semibold text-displayGreen transition-all ease-in-out sm:px-8 sm:py-4 ${
         amount === selectedDonationAmount ? "bg-gray-100" : ""
       }`}
-      onClick={() => setDonationAmount(amount)}
+      onClick={() => {
+        setDonationAmount(amount);
+        setShowAmountNotSelectedError(false);
+      }}
       type="button"
     >
       £{amount}
@@ -63,8 +69,11 @@ const DonationButton = ({ amount }: { amount: number }) => {
 };
 
 const CustomDonationInput = () => {
-  const { donationAmount: selectedDonationAmount, setDonationAmount } =
-    ComponentCx.use();
+  const {
+    donationAmount: selectedDonationAmount,
+    setDonationAmount,
+    setShowAmountNotSelectedError,
+  } = ComponentCx.use();
 
   return (
     <div className="relative flex flex-col">
@@ -85,6 +94,8 @@ const CustomDonationInput = () => {
             const value = Math.round(Number(e.target.value));
 
             setDonationAmount(value);
+
+            setShowAmountNotSelectedError(false);
           }}
           placeholder="Custom amount"
         />

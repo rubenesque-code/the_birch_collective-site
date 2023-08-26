@@ -17,7 +17,6 @@ const Provider = ({
 }) => {
   const [swiper, setSwiper] = React.useState<null | SwiperType>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
-  console.log("swiper:", swiper);
 
   const value: ContextValue = {
     currentSlideIndex,

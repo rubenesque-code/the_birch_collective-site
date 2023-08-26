@@ -9,6 +9,7 @@ type ContextValue = {
   setDonationAmount: (arg0: DonationAmount) => void;
   handleGoToSlide2: () => void;
   showAmountNotSelectedError: boolean;
+  setShowAmountNotSelectedError: (arg0: boolean) => void;
 };
 
 const Context = React.createContext<ContextValue | null>(null);
@@ -39,6 +40,7 @@ const Provider = ({
     setDonationAmount,
     handleGoToSlide2,
     showAmountNotSelectedError,
+    setShowAmountNotSelectedError,
   };
 
   return (

@@ -1,6 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 
-const getStripe = async () => {
+const myLoadStripe = async () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const stripe = await loadStripe(
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -11,4 +11,4 @@ const getStripe = async () => {
   return stripe;
 };
 
-export { getStripe };
+export { myLoadStripe };
