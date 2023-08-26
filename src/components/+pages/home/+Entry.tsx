@@ -26,10 +26,13 @@ import type { MyExclude } from "~/types/utilities";
 // 6. career download is working
 
 // MUST DO
+// □ programme + workshop type change (emails)
 // □ message form
 // □ get sign up form up and running
 // □ donate functionality. inc donate-success page
 // □ programmes + workshops pages - go over lists design
+// □ download image/s button for posters
+// □ click on poster to zoom
 
 // OTHER
 // □ apply dompurify
