@@ -3,6 +3,7 @@ import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
+import GetInTouch from "./get-in-touch/+Entry";
 import TheTeam from "./the-team/+Entry";
 
 const AboutPage = ({
@@ -10,6 +11,7 @@ const AboutPage = ({
 }: {
   staticData: StaticData;
 }) => {
+  console.log("page:", page);
   return (
     <div className="w-screen overflow-x-hidden">
       <Header
@@ -52,6 +54,12 @@ const AboutPage = ({
       )}
 
       <Ui.Page.VerticalSpace />
+
+      <Ui.Page.HorizontalSpace>
+        <GetInTouch orgDetails={orgDetails} />
+      </Ui.Page.HorizontalSpace>
+
+      <Ui.Page.VerticalSpace double />
 
       <Ui.Page.HorizontalSpace>
         <Footer

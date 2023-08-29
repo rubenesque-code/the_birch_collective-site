@@ -26,7 +26,6 @@ import type { MyExclude } from "~/types/utilities";
 // 6. career download is working
 
 // MUST DO
-// □ programme + workshop type change (emails)
 // □ message form
 // □ get sign up form up and running
 // □ donate functionality. inc donate-success page
