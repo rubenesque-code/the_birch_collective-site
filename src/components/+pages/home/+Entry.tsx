@@ -25,19 +25,28 @@ import type { MyExclude } from "~/types/utilities";
 // 5. rest of this site
 // 6. career download is working
 
+// GO LIVE CHECKLIST
+// □ get email codes from formsubmit email each member
+// □ change formsubmit endpoints in formsubmit.ts
+
+// COMMUNICATE TO TIM
+// □ each member needs to activate formsubmit. Plus give me provided code.
+
 // MUST DO
-// □ message form
-// □ get sign up form up and running
-// □ donate functionality. inc donate-success page
-// □ programmes + workshops pages - go over lists design
 // □ download image/s button for posters
 // □ click on poster to zoom
+// □ programmes + workshops pages - go over lists design
+// □ images background
+// □ go over all pages + elements responsiveness
+// □ donate functionality. inc donate-success page
 
 // OTHER
 // □ apply dompurify
+// □ put get in touch form on each page? Yes, but collapsable?
 // □ apply str fallbacks
 // □ 404 page
 // □ seo
+// □ smooth scroll to section (with id)
 
 // □ different max widths for text sections
 

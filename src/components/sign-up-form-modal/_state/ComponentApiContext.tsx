@@ -1,7 +1,11 @@
 import { createContext, useContext, type ReactNode } from "react";
 
 type ContextValue = {
-  hello?: string;
+  notifyEmails: string[];
+  event: {
+    type: "workshop" | "programme";
+    name: string;
+  };
 };
 
 const Context = createContext<ContextValue | null>(null);

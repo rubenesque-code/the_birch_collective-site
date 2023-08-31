@@ -39,6 +39,9 @@ const Slides = ({
   const [containerRef, { width: containerWidth, height: containerHeight }] =
     useMeasure<HTMLDivElement>();
 
+  console.log("containerWidth:", containerWidth);
+  console.log("containerHeight:", containerHeight);
+
   return (
     <div className="h-full w-full">
       <div
@@ -59,40 +62,13 @@ const Slides = ({
             return (
               <SwiperSlide key={i}>
                 {containerWidth && containerHeight ? (
-                  <>
-                    {() => {
-                      const aspectRatio =
-                        entry.image.connectedImage.naturalDimensions.width /
-                        entry.image.connectedImage.naturalDimensions.height;
-
-                      const isLandscape =
-                        entry.image.connectedImage.naturalDimensions.width >
-                        entry.image.connectedImage.naturalDimensions.height;
-
-                      let width: number;
-                      let height: number;
-
-                      if (isLandscape) {
-                        width = containerWidth;
-                        height = containerWidth / aspectRatio;
-                      } else {
-                        height = containerHeight;
-                        width = containerHeight * aspectRatio;
-                      }
-
-                      return (
-                        <div
-                          className="absolute right-0 top-1/2 grid -translate-y-1/2 place-items-center bg-gray-100"
-                          style={{ width, height }}
-                        >
-                          <StorageImage
-                            urls={entry.image.connectedImage.urls}
-                            objectFit="contain"
-                          />
-                        </div>
-                      );
+                  <SwiperSlideContent
+                    containerDimensions={{
+                      height: containerHeight,
+                      width: containerWidth,
                     }}
-                  </>
+                    entry={entry}
+                  />
                 ) : null}
               </SwiperSlide>
             );
@@ -112,6 +88,52 @@ const Slides = ({
           <div>{heading}</div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const SwiperSlideContent = ({
+  containerDimensions,
+  entry,
+}: {
+  containerDimensions: { width: number; height: number };
+  entry: Data["entries"][number];
+}) => {
+  const [width, setWidth] = React.useState<number | null>(null);
+  const [height, setHeight] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    const aspectRatio =
+      entry.image.connectedImage.naturalDimensions.width /
+      entry.image.connectedImage.naturalDimensions.height;
+
+    const isLandscape =
+      entry.image.connectedImage.naturalDimensions.width >
+      entry.image.connectedImage.naturalDimensions.height;
+
+    if (isLandscape) {
+      setWidth(containerDimensions.width);
+      setHeight(containerDimensions.width / aspectRatio);
+    } else {
+      setHeight(containerDimensions.height);
+      setWidth(containerDimensions.height * aspectRatio);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!width || !height) {
+    return null;
+  }
+
+  return (
+    <div
+      className="absolute right-0 top-1/2 grid -translate-y-1/2 place-items-center bg-gray-100"
+      style={{ width, height }}
+    >
+      <StorageImage
+        urls={entry.image.connectedImage.urls}
+        objectFit="contain"
+      />
     </div>
   );
 };

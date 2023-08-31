@@ -45,7 +45,7 @@ const AboutPage = ({
 
       {page.theTeam === "not in use" ? null : (
         <>
-          <Ui.Page.VerticalSpace />
+          <Ui.Page.VerticalSpace double />
 
           <Ui.Page.HorizontalSpace>
             <TheTeam {...page.theTeam} />
@@ -53,7 +53,7 @@ const AboutPage = ({
         </>
       )}
 
-      <Ui.Page.VerticalSpace />
+      <Ui.Page.VerticalSpace double />
 
       <Ui.Page.HorizontalSpace>
         <GetInTouch orgDetails={orgDetails} />

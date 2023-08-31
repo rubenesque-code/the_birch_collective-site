@@ -1,4 +1,4 @@
-Aug 29, 2023 5:20:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+Aug 31, 2023 12:08:10 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
 INFO: Started WebSocket server on ws://127.0.0.1:9150
 API endpoint: http://127.0.0.1:8080
 If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
@@ -7,130 +7,590 @@ If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment
 
 Dev App Server is now running.
 
-Aug 29, 2023 5:21:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:21:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:21:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:21:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:21:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 12:08:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 12:08:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:21:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
-Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
-Aug 29, 2023 5:22:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:23:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:24:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:25:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:26:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:27:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:29:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:30:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:30:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:32:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:32:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:34:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:35:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:36:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:37:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:38:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:39:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:40:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:41:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:41:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:42:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:43:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:44:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:45:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:46:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:47:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:49:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:50:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:51:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:51:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:52:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:53:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:55:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:55:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:56:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:57:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:58:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:59:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
-INFO: Detected non-HTTP/2 connection.
-Aug 29, 2023 5:59:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
-*** shutting down gRPC server since JVM is shutting down
-*** server shut down
-230829 17:59:53.033:I 1 [main] [com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer.stop:80] Stopping WebSocket server...
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:24:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:25:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:25:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:25:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:25:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:25:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:25:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 1:28:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:28:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:31:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:31:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:31:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:31:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:31:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:31:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:45:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 1:49:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 1:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 2:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 2:57:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 2:57:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:13:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 3:13:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:30:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 3:30:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:39:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:41:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.
+Aug 31, 2023 4:43:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Multiple projectIds are not recommended in single project mode. Requested project ID birch-collective-develop, but the emulator is configured for birch-collective. To opt-out of single project mode add/set the '"singleProjectMode": false' property in the firebase.json emulators config.

@@ -15,17 +15,19 @@ export const StorageImage = ({
   position = { x: 50, y: 50 },
   objectFit = "cover",
   isCircle = false,
-}: Props) => (
-  <NextImage
-    alt=""
-    fill
-    src={urls.large}
-    blurDataURL={urls.blur}
-    placeholder="blur"
-    className={`${isCircle ? "rounded-full" : ""}`}
-    style={{
-      objectFit,
-      objectPosition: `${position.x}% ${position.y}%`,
-    }}
-  />
-);
+}: Props) => {
+  return (
+    <NextImage
+      alt=""
+      fill
+      src={urls.large}
+      blurDataURL={urls.blur}
+      placeholder="blur"
+      className={`${isCircle ? "rounded-full" : ""}`}
+      style={{
+        objectFit,
+        objectPosition: `${position.x}% ${position.y}%`,
+      }}
+    />
+  );
+};

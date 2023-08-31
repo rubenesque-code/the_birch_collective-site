@@ -47,7 +47,7 @@ const ProgrammePage = ({
       <Ui.Page.VerticalSpace />
 
       <Ui.Page.HorizontalSpace>
-        <SignUp {...page.signUp} />
+        <SignUp {...page.signUp} title={page.title} />
       </Ui.Page.HorizontalSpace>
 
       {page.info === "not in use" && page.posters === "not in use" ? null : (

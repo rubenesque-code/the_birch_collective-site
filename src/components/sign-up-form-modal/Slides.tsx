@@ -1,6 +1,7 @@
 import "swiper/css";
 
 import React, { useEffect } from "react";
+import { Transition } from "@headlessui/react";
 import { isFinite } from "lodash";
 import { useQuery } from "react-query";
 import type { Swiper as SwiperType } from "swiper";
@@ -10,8 +11,10 @@ import { useImmer, type Updater } from "use-immer";
 import { Icon } from "~/components/icons";
 
 import { WithTooltip } from "../WithTooltip";
+import { ComponentApiCx } from "./_state";
 
 import { validateEmail, validatePhoneNumber } from "~/helpers/form";
+import { formsubmit } from "~/lib/formsubmit";
 import { myDb } from "~/my-firebase/firestore";
 
 // todo: should probs place error message beside the submit form
@@ -51,7 +54,6 @@ type Sources = {
 const Slides = ({ closeModal }: { closeModal: () => void }) => {
   const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
-  const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   const [numViewedSlides, setNumViewedSlides] = React.useState(1);
 
@@ -122,7 +124,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
     },
 
     {
-      label: "bay/man/male",
+      label: "boy/man/male",
       isSelected: false,
     },
 
@@ -406,7 +408,15 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
     return selected;
   };
 
-  const handleSubmit = async () => {
+  const [submitFormStatus, setSubmitFormStatus] = React.useState<
+    "idle" | "loading" | "success"
+  >("idle");
+
+  const { notifyEmails } = ComponentApiCx.use();
+
+  const handleSubmitForm = () => {
+    setSubmitFormStatus("loading");
+
     const identitiesStr = optionsToStr(identities);
     const gendersStr = optionsToStr(genders);
     const eventsStr = optionsToStr(events);
@@ -433,27 +443,23 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
       imageOptIn: imagePermission ? "yes" : "no",
     };
 
-    setFormSubmitted(true);
-
-    setTimeout(() => {
-      closeModal();
-    }, 600);
-
-    await fetch("/api/sheets", {
+    void fetch("/api/sheets", {
       method: "POST",
       body: JSON.stringify(data),
     });
+
+    void formsubmit.notifySignUp({ emails: notifyEmails });
+
+    setTimeout(() => {
+      setSubmitFormStatus("success");
+    }, 500);
   };
 
+  // const submitFormMutation = useMutation("submit-form", handleSubmitForm);
+
   return (
-    <div className="">
-      {formSubmitted ? (
-        <div className="absolute left-1/2 top-1/2 z-10 grid h-full w-full -translate-x-1/2 -translate-y-1/2 place-items-center rounded-lg bg-white/90 p-xl">
-          <div className="text-2xl font-medium text-brandGreen">
-            Thanks, form received!
-          </div>
-        </div>
-      ) : null}
+    <div className="relative">
+      <FormStatusOverlay closeModal={closeModal} status={submitFormStatus} />
 
       <SlidesContainer
         bottomPanel={
@@ -837,7 +843,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
             ,
             <SwiperSlide key="slide-19">
               <SlideWrapper>
-                <Slide19 submit={() => void handleSubmit()} />
+                <Slide19 submit={handleSubmitForm} />
               </SlideWrapper>
             </SwiperSlide>
             ]
@@ -849,6 +855,55 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
 };
 
 export default Slides;
+
+const FormStatusOverlay = ({
+  status,
+  closeModal,
+}: {
+  status: "error" | "idle" | "loading" | "success";
+  closeModal: () => void;
+}) => (
+  <Transition
+    show={status === "error" || status === "loading" || status === "success"}
+    as="div"
+    className="absolute left-0 top-0 z-20 grid h-full w-full place-items-center bg-white/90 text-lg font-medium"
+    enter="transition duration-300 ease-out"
+    enterFrom="transform opacity-0"
+    enterTo="transform opacity-100"
+    leave="transition duration-500 ease-out"
+    leaveFrom="transform opacity-100"
+    leaveTo="transform opacity-0"
+  >
+    <div className={`flex flex-col items-center leading-loose text-gray-700`}>
+      <p className={`mt-sm text-center`}>
+        {status === "error" ? (
+          <>
+            Something went wrong.
+            <br />
+            Please try again.
+          </>
+        ) : status === "loading" ? (
+          "Sending..."
+        ) : (
+          <>
+            Form submitted successfully.
+            <br />
+            Thanks!
+          </>
+        )}
+      </p>
+      {status !== "loading" ? (
+        <button
+          className="mt-md rounded-md border border-brandOrange bg-white px-sm font-bold text-brandGreen transition-all duration-75 ease-in-out hover:bg-gray-100"
+          onClick={closeModal}
+          type="button"
+        >
+          Ok
+        </button>
+      ) : null}
+    </div>
+  </Transition>
+);
 
 const SlidesContainer = (props: {
   goNext: () => void;

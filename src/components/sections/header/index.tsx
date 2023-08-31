@@ -5,6 +5,7 @@ import { useClickOutside } from "@react-hookz/web";
 import { Icon } from "~/components/icons";
 import { StorageImage } from "~/components/StorageImage";
 
+import { route } from "~/static-data/routes";
 import type { MyDb } from "~/types/database";
 
 type Props = {
@@ -50,7 +51,7 @@ const Expanded = ({ staticData }: Props) => {
             label={staticData.linkLabels.meetTheTeam}
           />
           <MenuItem
-            route="/about#get-in-touch"
+            route={route.getInTouch}
             label={staticData.linkLabels.getInTouch}
           />
           <MenuItem

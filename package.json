@@ -18,6 +18,7 @@
     "@react-hookz/web": "^23.1.0",
     "@stripe/react-stripe-js": "^2.1.2",
     "@stripe/stripe-js": "^2.1.0",
+    "axios": "^1.5.0",
     "dompurify": "^3.0.5",
     "firebase": "^9.23.0",
     "immer": "^10.0.2",
