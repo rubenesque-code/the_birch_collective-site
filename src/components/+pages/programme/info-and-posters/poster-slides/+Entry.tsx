@@ -13,11 +13,18 @@ import { type MyExclude } from "~/types/utilities";
 
 type Data = MyExclude<StaticData["page"]["posters"], "not in use">;
 
+// TODO: need to position posters to the right
+// TODO: complete download button.
+
 const PosterSlides = ({ data }: { data: Data }) => {
   const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
 
   return (
     <div className="relative flex h-full w-full justify-end">
+      <div className="absolute -bottom-xxxs left-xl translate-y-full  text-gray-500">
+        <Icon.Download />
+      </div>
+
       <Swiper
         spaceBetween={0}
         slidesPerView={1}

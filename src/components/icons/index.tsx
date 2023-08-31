@@ -23,6 +23,7 @@ import {
   Clock,
   DotsSixVertical,
   Download,
+  DownloadSimple,
   FacebookLogo,
   Feather,
   FileImage,
@@ -82,6 +83,7 @@ const Icon = () => {
 
 export { Icon };
 
+Icon.Download = DownloadSimple;
 Icon.Slides = Slideshow;
 Icon.Lock = Lock;
 Icon.Circle = Circle;
