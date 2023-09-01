@@ -39,9 +39,6 @@ const Slides = ({
   const [containerRef, { width: containerWidth, height: containerHeight }] =
     useMeasure<HTMLDivElement>();
 
-  console.log("containerWidth:", containerWidth);
-  console.log("containerHeight:", containerHeight);
-
   return (
     <div className="h-full w-full">
       <div

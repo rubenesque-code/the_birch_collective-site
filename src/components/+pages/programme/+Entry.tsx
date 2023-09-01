@@ -55,7 +55,11 @@ const ProgrammePage = ({
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <InfoAndPosters info={page.info} posters={page.posters} />
+            <InfoAndPosters
+              info={page.info}
+              posters={page.posters}
+              programmeTitle={page.title}
+            />
           </Ui.Page.HorizontalSpace>
         </>
       )}

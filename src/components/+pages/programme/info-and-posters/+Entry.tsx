@@ -6,9 +6,10 @@ import type { MyExclude } from "~/types/utilities";
 type Data = {
   info: StaticData["page"]["info"];
   posters: StaticData["page"]["posters"];
+  programmeTitle: string;
 };
 
-const InfoAndPosters = ({ info, posters }: Data) => (
+const InfoAndPosters = ({ info, posters, programmeTitle }: Data) => (
   <div className="grid grid-cols-2 gap-lg">
     {info === "not in use" ? null : (
       <div className="">
@@ -18,7 +19,7 @@ const InfoAndPosters = ({ info, posters }: Data) => (
 
     {posters === "not in use" ? null : (
       <div className="">
-        <Posters data={posters} />
+        <Posters data={{ entries: posters, programmeTitle }} />
       </div>
     )}
   </div>
@@ -44,7 +45,10 @@ const Entry = ({
   </div>
 );
 
-type PostersData = MyExclude<StaticData["page"]["posters"], "not in use">;
+type PostersData = {
+  entries: MyExclude<StaticData["page"]["posters"], "not in use">;
+  programmeTitle: string;
+};
 
 const Posters = ({ data }: { data: PostersData }) => (
   <div className="group/posters relative">
@@ -53,6 +57,6 @@ const Posters = ({ data }: { data: PostersData }) => (
         <PosterSlides data={data} />
       </div>
     </div>
-    <div className="text-right text-sm text-gray-500">flyers!</div>
+    {/* <div className="text-right text-sm text-gray-500">flyers!</div> */}
   </div>
 );
