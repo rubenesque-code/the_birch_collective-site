@@ -57,6 +57,5 @@ const Posters = ({ data }: { data: PostersData }) => (
         <PosterSlides data={data} />
       </div>
     </div>
-    {/* <div className="text-right text-sm text-gray-500">flyers!</div> */}
   </div>
 );

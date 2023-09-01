@@ -1,6 +1,7 @@
 import "swiper/css";
 
 import React from "react";
+import { Transition } from "@headlessui/react";
 import { saveAs } from "file-saver";
 import { useMeasure } from "react-use";
 import type { Swiper as SwiperType } from "swiper";
@@ -12,6 +13,7 @@ import { WithTooltip } from "~/components/WithTooltip";
 
 import type { StaticData } from "../../_static-data";
 
+import type { MyDb } from "~/types/database";
 import { type MyExclude } from "~/types/utilities";
 
 type Data = {
@@ -45,6 +47,15 @@ const Slides = ({
 }) => {
   const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
+  const [showZoomedImage, setShowZoomedImage] = React.useState(false);
+
+  React.useEffect(() => {
+    if (showZoomedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [showZoomedImage]);
 
   const currentSlide = entries[currentSlideIndex];
 
@@ -52,23 +63,28 @@ const Slides = ({
     useMeasure<HTMLDivElement>();
 
   return (
-    <div className="h-full w-full">
-      <div
-        className="relative flex h-full w-full justify-end"
-        ref={containerRef}
-      >
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={1}
-          onSwiper={(swiper) => setSwiper(swiper)}
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-          }}
+    <>
+      <ZoomedImage
+        image={currentSlide.connectedImage}
+        show={showZoomedImage}
+        close={() => setShowZoomedImage(false)}
+      />
+      <div className="h-full w-full">
+        <div
+          className="relative flex h-full w-full justify-end"
+          ref={containerRef}
         >
-          {entries.map((entry, i) => {
-            return (
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1}
+            onSwiper={(swiper) => setSwiper(swiper)}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            {entries.map((entry, i) => (
               <SwiperSlide key={i}>
                 {containerWidth && containerHeight ? (
                   <SwiperSlideContent
@@ -77,68 +93,71 @@ const Slides = ({
                       width: containerWidth,
                     }}
                     entry={entry}
+                    onClick={() => setShowZoomedImage(true)}
                   />
                 ) : null}
               </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
+            ))}
+          </Swiper>
+        </div>
 
-      <div className="flex justify-end">
-        <div className="mt-xs inline-flex items-center justify-end gap-xl">
-          {entries.length > 1 ? (
-            <Navigation
-              swipeLeft={() => {
-                if (currentSlideIndex === 0) {
-                  return;
-                }
+        <div className="flex justify-end">
+          <div className="mt-xs inline-flex items-center justify-end gap-xl">
+            {entries.length > 1 ? (
+              <Navigation
+                swipeLeft={() => {
+                  if (currentSlideIndex === 0) {
+                    return;
+                  }
 
-                swiper?.slidePrev();
+                  swiper?.slidePrev();
 
-                setCurrentSlideIndex(currentSlideIndex - 1);
-              }}
-              swipeRight={() => {
-                if (currentSlideIndex === entries.length - 1) {
-                  return;
-                }
+                  setCurrentSlideIndex(currentSlideIndex - 1);
+                }}
+                swipeRight={() => {
+                  if (currentSlideIndex === entries.length - 1) {
+                    return;
+                  }
 
-                swiper?.slideNext();
+                  swiper?.slideNext();
 
-                setCurrentSlideIndex(currentSlideIndex + 1);
-              }}
-            />
-          ) : null}
+                  setCurrentSlideIndex(currentSlideIndex + 1);
+                }}
+              />
+            ) : null}
 
-          <div>{heading}</div>
+            <div>{heading}</div>
 
-          <WithTooltip text="Download poster">
-            <div
-              className="mr-xs cursor-pointer text-gray-400 transition-colors duration-75 ease-in-out hover:text-gray-600"
-              onClick={() => {
-                saveAs(
-                  currentSlide.connectedImage.urls.large,
-                  `${programmeTitle} poster ${
-                    entries.length > 1 ? currentSlideIndex + 1 : ""
-                  }`,
-                );
-              }}
-            >
-              <Icon.Download />
-            </div>
-          </WithTooltip>
+            <WithTooltip text="Download poster">
+              <div
+                className="mr-xs cursor-pointer text-gray-400 transition-colors duration-75 ease-in-out hover:text-gray-600"
+                onClick={() => {
+                  saveAs(
+                    currentSlide.connectedImage.urls.large,
+                    `${programmeTitle} poster ${
+                      entries.length > 1 ? currentSlideIndex + 1 : ""
+                    }`,
+                  );
+                }}
+              >
+                <Icon.Download />
+              </div>
+            </WithTooltip>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 const SwiperSlideContent = ({
   containerDimensions,
   entry,
+  onClick,
 }: {
   containerDimensions: { width: number; height: number };
   entry: Data["entries"][number];
+  onClick: () => void;
 }) => {
   const [width, setWidth] = React.useState<number | null>(null);
   const [height, setHeight] = React.useState<number | null>(null);
@@ -168,7 +187,8 @@ const SwiperSlideContent = ({
 
   return (
     <div
-      className="absolute right-0 top-1/2 grid -translate-y-1/2 place-items-center bg-gray-100"
+      className="absolute right-0 top-1/2 grid -translate-y-1/2 cursor-zoom-in place-items-center bg-gray-100"
+      onClick={onClick}
       style={{ width, height }}
     >
       <StorageImage urls={entry.connectedImage.urls} objectFit="contain" />
@@ -200,4 +220,45 @@ const Navigation = ({
       <Icon.CaretRight />
     </button>
   </div>
+);
+
+const ZoomedImage = ({
+  show,
+  image,
+  close,
+}: {
+  show: boolean;
+  image: MyDb["image"];
+  close: () => void;
+}) => (
+  <Transition show={show}>
+    <Transition.Child
+      as="div"
+      className="fixed inset-0 z-[60] overflow-auto bg-white/90"
+      enter="transition ease-out duration-100"
+      enterFrom="transform opacity-0 scale-95"
+      enterTo="transform opacity-100 scale-100"
+      leave="transition ease-in duration-75"
+      leaveFrom="transform opacity-100 scale-100"
+      leaveTo="transform opacity-0 scale-95"
+    >
+      <div className="flex justify-end">
+        <div
+          className="cursor-pointer rounded-md px-sm py-xs transition-all duration-75 ease-in-out hover:bg-gray-100"
+          onClick={close}
+        >
+          Close
+        </div>
+      </div>
+      <div
+        className={`relative w-full min-w-[400px]`}
+        style={{
+          aspectRatio:
+            image.naturalDimensions.width / image.naturalDimensions.height,
+        }}
+      >
+        <StorageImage urls={image.urls} objectFit="contain" />
+      </div>
+    </Transition.Child>
+  </Transition>
 );

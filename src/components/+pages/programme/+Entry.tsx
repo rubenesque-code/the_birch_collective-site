@@ -4,6 +4,7 @@ import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import InfoAndPosters from "./info-and-posters/+Entry";
+import PhotoAlbum from "./photo-album/+Entry";
 import Sections from "./sections/+Entry";
 import SignUp from "./sign-up/+Entry";
 
@@ -60,6 +61,16 @@ const ProgrammePage = ({
               posters={page.posters}
               programmeTitle={page.title}
             />
+          </Ui.Page.HorizontalSpace>
+        </>
+      )}
+
+      {page.photoAlbum === "not in use" ? null : (
+        <>
+          <Ui.Page.VerticalSpace />
+
+          <Ui.Page.HorizontalSpace>
+            <PhotoAlbum {...page.photoAlbum} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
