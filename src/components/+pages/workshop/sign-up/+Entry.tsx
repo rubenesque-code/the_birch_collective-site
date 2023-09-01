@@ -8,9 +8,9 @@ import type { StaticData } from "../_static-data";
 import { strWithFallback } from "~/helpers/utilities";
 import { type ExcludeNotInUse } from "~/types/database/_helpers";
 
-type Data = ExcludeNotInUse<StaticData["page"]["signUp"]>;
+type Data = ExcludeNotInUse<StaticData["page"]["signUp"]> & { title: string };
 
-const SignUp = ({ buttonText, heading, text }: Data) => {
+const SignUp = ({ buttonText, heading, text, notifyEmails, title }: Data) => {
   return (
     <div className="">
       <div className="text-center font-display text-5xl text-brandLightOrange">
@@ -40,6 +40,11 @@ const SignUp = ({ buttonText, heading, text }: Data) => {
               {strWithFallback(buttonText, "Sign Up")}
             </div>
           )}
+          notifyEmails={notifyEmails}
+          event={{
+            name: title,
+            type: "workshop",
+          }}
         />
       </div>
     </div>

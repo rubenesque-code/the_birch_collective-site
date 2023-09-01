@@ -54,7 +54,7 @@ const WorkshopPage = ({
         {page.type === "paid" && page.tickets !== "not in use" ? (
           <Tickets {...page.tickets} />
         ) : (
-          <SignUp {...page.signUp} />
+          <SignUp {...page.signUp} title={page.title} />
         )}
       </Ui.Page.HorizontalSpace>
 
