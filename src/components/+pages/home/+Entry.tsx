@@ -20,6 +20,7 @@ import type { MyExclude } from "~/types/utilities";
 // OVERALL TO DO
 // 1. do rest of this site apart from  donate, etc.
 // 2. rest of this site
+// 2. add keyword image search to image
 // 3. career download is working
 
 // GO LIVE CHECKLIST
@@ -30,9 +31,9 @@ import type { MyExclude } from "~/types/utilities";
 // □ each member needs to activate formsubmit. Plus give me provided code.
 
 // MUST DO
-// □ programmes + workshops pages - go over lists design
 // □ do a once over of all pages styling
 // □ go over all pages + elements responsiveness
+// □ go over each page in production. Need to add keywords array to images.
 // □ images background
 // □ donate functionality. inc donate-success page
 
