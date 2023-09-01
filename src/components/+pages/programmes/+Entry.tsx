@@ -29,7 +29,9 @@ const ProgrammePage = ({
         }}
       />
 
-      {page.bannerImage === "not in use" ? null : (
+      {page.bannerImage === "not in use" ? (
+        <Ui.Section.VerticalSpace />
+      ) : (
         <Ui.Page.BannerImage data={page.bannerImage} />
       )}
 

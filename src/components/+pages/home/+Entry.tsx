@@ -19,11 +19,8 @@ import type { MyExclude } from "~/types/utilities";
 
 // OVERALL TO DO
 // 1. do rest of this site apart from  donate, etc.
-// 2. get sign up form running. Send data to google sheet. Notify by email.
-// 3. add sign up email functionality to cms
-// 4. populate cms
-// 5. rest of this site
-// 6. career download is working
+// 2. rest of this site
+// 3. career download is working
 
 // GO LIVE CHECKLIST
 // □ get email codes from formsubmit email each member
@@ -33,11 +30,10 @@ import type { MyExclude } from "~/types/utilities";
 // □ each member needs to activate formsubmit. Plus give me provided code.
 
 // MUST DO
-// □ download image/s button for posters
-// □ click on poster to zoom
 // □ programmes + workshops pages - go over lists design
-// □ images background
+// □ do a once over of all pages styling
 // □ go over all pages + elements responsiveness
+// □ images background
 // □ donate functionality. inc donate-success page
 
 // OTHER

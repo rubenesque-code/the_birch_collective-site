@@ -1,11 +1,10 @@
 import Link from "next/link";
+import Markdown from "markdown-to-jsx";
 
 import { StorageImage } from "~/components/StorageImage";
-import { WithTooltip } from "~/components/WithTooltip";
 
 import type { StaticData } from "../_static-data";
 
-import { useHovered } from "~/hooks";
 import { route } from "~/static-data/routes";
 
 type Data = StaticData["workshops"];
@@ -25,50 +24,31 @@ const Workshop = ({
 }: {
   data: Data[number];
 }) => {
-  const [linkElementIsHovered, { hoverHandlers }] = useHovered();
-
   return (
-    <div className={`${linkElementIsHovered ? "bg-gray-100" : ""}`}>
-      <div className={"flex gap-md"}>
-        <div className="w-full max-w-[350px]">
-          <WithTooltip text="go to page">
-            <Link href={`${route.workshops}/${id}`}>
-              <div
-                className="group/image relative aspect-[4/3] w-full"
-                {...hoverHandlers}
-              >
-                <StorageImage
-                  urls={summary.image.connectedImage.urls}
-                  position={summary.image.position}
-                />
-              </div>
-            </Link>
-          </WithTooltip>
+    <Link href={`${route.workshops}/${id}`}>
+      <div className="flex cursor-pointer flex-col rounded-xl px-2xl py-lg hover:bg-gray-100">
+        <div className="font-display text-5xl font-bold tracking-wider text-brandOrange">
+          {title}
         </div>
 
-        <div className="flex-grow">
-          <WithTooltip text="go to page">
-            <Link href={`${route.workshops}/${id}`}>
-              <div
-                className="font-display text-5xl text-brandOrange"
-                {...hoverHandlers}
-              >
-                {title}
-              </div>
-            </Link>
-          </WithTooltip>
+        <div className="mt-sm font-display text-2xl font-bold tracking-wide text-brandOrange opacity-90">
+          {subtitle}
+        </div>
 
-          <div className="mt-xxs font-display text-3xl text-brandOrange">
-            {subtitle}
+        <div className="mt-md grid w-full grid-cols-2 gap-lg">
+          <div className="group/image relative aspect-[4/3] w-full">
+            <StorageImage
+              urls={summary.image.connectedImage.urls}
+              position={summary.image.position}
+            />
           </div>
-
-          {summary.mainText.length ? (
-            <div className="custom-prose_no-p-margin prose mt-xs max-w-full font-medium">
-              {summary.mainText}
+          <div>
+            <div className="custom-prose prose max-w-full font-medium">
+              <Markdown>{summary.mainText}</Markdown>
             </div>
-          ) : null}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

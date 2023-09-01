@@ -21,9 +21,6 @@ type Data = {
   programmeTitle: string;
 };
 
-// TODO: need to position posters to the right
-// TODO: complete download button.
-
 const PhotoAlbum = ({ data }: { data: Data }) => (
   <div className="relative h-[400px] overflow-visible">
     <Slides
