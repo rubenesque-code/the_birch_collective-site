@@ -1,9 +1,9 @@
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import Opportunities from "./opportunites/+Entry";
+
+import { PageFrame } from "~/frames";
 
 const VolunteerPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
@@ -11,22 +11,24 @@ const VolunteerPage = ({
   staticData: StaticData;
 }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: header,
-          linkLabels: linkLabels,
-          orgDetails: orgDetails,
-          logoImg: logoImage,
-        }}
-      />
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
+      {page.bannerImage === "not in use" ? (
+        <Ui.Page.VerticalSpace sizing="half" />
+      ) : (
+        <>
+          <Ui.Page.BannerImage data={page.bannerImage} />
 
-      {page.bannerImage === "not in use" ? null : (
-        <Ui.Page.BannerImage data={page.bannerImage} />
+          <Ui.Page.VerticalSpace sizing="half" />
+        </>
       )}
 
       <Ui.Page.HorizontalSpace>
-        <Ui.Section.VerticalSpace />
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
@@ -36,32 +38,18 @@ const VolunteerPage = ({
         <>
           <Ui.Page.HorizontalSpace>
             <Ui.Section.VerticalSpace />
+
             <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
 
-      <>
-        <Ui.Page.HorizontalSpace>
-          <Ui.Section.VerticalSpace />
-
-          <Opportunities {...page.opportunities} />
-        </Ui.Page.HorizontalSpace>
-      </>
-
-      <Ui.Page.VerticalSpace double />
+      <Ui.Page.VerticalSpace />
 
       <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={footer}
-          linkLabels={linkLabels}
-          logoImg={logoImage}
-          orgDetails={orgDetails}
-        />
+        <Opportunities {...page.opportunities} />
       </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 

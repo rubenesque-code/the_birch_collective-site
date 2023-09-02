@@ -1,8 +1,6 @@
 import Markdown from "markdown-to-jsx";
 
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
-import { StorageImage } from "~/components/StorageImage";
+import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -15,7 +13,7 @@ import SupportUs from "./support-us/+Entry";
 import Supporters from "./supporters/+Entry";
 import Workshops from "./workshops/+Entry";
 
-import type { MyExclude } from "~/types/utilities";
+import { PageFrame } from "~/frames";
 
 // OVERALL TO DO
 // 1. do rest of this site apart from  donate, etc.
@@ -33,6 +31,8 @@ import type { MyExclude } from "~/types/utilities";
 
 // MUST DO
 // □ do a once over of all pages styling
+// □ landing banner image info popover
+// □ not putting placeholder data in cms so go over with local data too. e.g. for professional testimonials.
 // □ go over all pages + elements responsiveness
 // □ go over each page in production. Need to add keywords array to images.
 // □ images background
@@ -40,6 +40,8 @@ import type { MyExclude } from "~/types/utilities";
 
 // OTHER
 // □ apply dompurify
+// □ headings subheading abstraction
+// □ probs should process singles e.g. social media links might not be in use
 // □ put get in touch form on each page? Yes, but collapsable?
 // □ apply str fallbacks
 // □ 404 page
@@ -53,140 +55,120 @@ import type { MyExclude } from "~/types/utilities";
 // □ block phone number + email through other means
 // □ no res returned from sheets post. Should really confirm receipt, and warn if not received. Is possible to do it properly?
 
-const HomePage = ({ staticData }: { staticData: StaticData }) => {
+const HomePage = ({
+  footer,
+  header,
+  linkLabels,
+  logoImage,
+  orgDetails,
+  page,
+  participantTestimonials,
+}: StaticData) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: staticData.header,
-          linkLabels: staticData.linkLabels,
-          orgDetails: staticData.orgDetails,
-          logoImg: staticData.logoImage,
-        }}
-      />
-
-      {staticData.page.bannerImage === "not in use" ? null : (
-        <BannerImage data={staticData.page.bannerImage} />
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
+      {page.bannerImage === "not in use" ? null : (
+        <BannerImage data={page.bannerImage} />
       )}
 
       <Ui.Page.VerticalSpace />
 
       <Ui.Page.HorizontalSpace>
         <Headings
-          heading={staticData.page.orgHeadings.name}
-          subheading={staticData.page.orgHeadings.byline}
+          heading={page.orgHeadings.name}
+          subheading={page.orgHeadings.byline}
         />
       </Ui.Page.HorizontalSpace>
 
-      {!staticData.participantTestimonials.length ? null : (
+      {!participantTestimonials.length ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <ParticipantTestimonials
-              data={staticData.participantTestimonials}
-            />
+            <ParticipantTestimonials data={participantTestimonials} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.aboutUs === "not in use" ? null : (
+      {page.aboutUs === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <AboutUs data={staticData.page.aboutUs} />
+            <AboutUs data={page.aboutUs} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.workshops === "not in use" ? null : (
+      {page.workshops === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Workshops data={staticData.page.workshops} />
+            <Workshops data={page.workshops} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.programmes === "not in use" ? null : (
+      {page.programmes === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Programmes data={staticData.page.programmes} />
+            <Programmes data={page.programmes} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.photoAlbum === "not in use" ? null : (
+      {page.photoAlbum === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <PhotoAlbum data={staticData.page.photoAlbum} />
+            <PhotoAlbum data={page.photoAlbum} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.supportUs === "not in use" ? null : (
+      {page.supportUs === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <SupportUs data={staticData.page.supportUs} />
+            <SupportUs data={page.supportUs} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.partners === "not in use" ? null : (
+      {page.partners === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Partners data={staticData.page.partners} />
+            <Partners data={page.partners} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
 
-      {staticData.page.supporters === "not in use" ? null : (
+      {page.supporters === "not in use" ? null : (
         <>
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Supporters data={staticData.page.supporters} />
+            <Supporters data={page.supporters} />
           </Ui.Page.HorizontalSpace>
         </>
       )}
-
-      <Ui.Page.VerticalSpace />
-
-      <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={staticData.footer}
-          linkLabels={staticData.linkLabels}
-          logoImg={staticData.logoImage}
-          orgDetails={staticData.orgDetails}
-        />
-      </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 
 export default HomePage;
-
-const BannerImage = ({
-  data,
-}: {
-  data: MyExclude<StaticData["page"]["bannerImage"], "not in use">;
-}) => (
-  <div className="group/bannerImage relative aspect-[16/9] overflow-hidden xl:aspect-[14/3]">
-    <StorageImage urls={data.connectedImage.urls} position={data.position} />
-  </div>
-);
 
 const Headings = ({
   heading,

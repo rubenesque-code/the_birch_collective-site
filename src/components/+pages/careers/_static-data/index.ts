@@ -5,9 +5,9 @@ import { myDb } from "~/my-firebase/firestore";
 import { queryForCommonData } from "~/pre-render-helpers/dbQuery";
 import { type CommonData } from "~/pre-render-helpers/types";
 
-export type StaticData = CommonData & PageData;
+export type StaticData = CommonData & PageSpecificData;
 
-type PageData = {
+type PageSpecificData = {
   page: ReturnType<(typeof processDbData)["careersPage"]["crossProcess"]>;
 };
 

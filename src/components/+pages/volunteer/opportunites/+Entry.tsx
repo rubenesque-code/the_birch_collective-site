@@ -12,9 +12,11 @@ const Opportunities = ({ entries, heading }: Data) => (
       {heading}
     </Ui.Section.Heading>
 
-    <div className="mt-md">
+    <Ui.Section.VerticalSpace />
+
+    <div className="">
       {entries.length ? (
-        <div className="mt-lg grid grid-cols-2 gap-x-lg gap-y-xl">
+        <div className="grid grid-cols-2 gap-x-xl gap-y-xl">
           {entries.map((entry) => (
             <Position {...entry} key={entry.id} />
           ))}

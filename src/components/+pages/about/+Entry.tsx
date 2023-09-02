@@ -1,10 +1,10 @@
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import GetInTouch from "./get-in-touch/+Entry";
 import TheTeam from "./the-team/+Entry";
+
+import { PageFrame } from "~/frames";
 
 const AboutPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
@@ -12,22 +12,24 @@ const AboutPage = ({
   staticData: StaticData;
 }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: header,
-          linkLabels: linkLabels,
-          orgDetails: orgDetails,
-          logoImg: logoImage,
-        }}
-      />
-
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
       {page.bannerImage === "not in use" ? null : (
-        <Ui.Page.BannerImage data={page.bannerImage} />
+        <>
+          <Ui.Page.BannerImage data={page.bannerImage} />
+
+          <Ui.Page.VerticalSpace sizing="half" />
+        </>
       )}
 
       <Ui.Page.HorizontalSpace>
         <Ui.Page.Subheading>{page.subheading}</Ui.Page.Subheading>
+
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
@@ -37,6 +39,7 @@ const AboutPage = ({
         <>
           <Ui.Page.HorizontalSpace>
             <Ui.Section.VerticalSpace />
+
             <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
           </Ui.Page.HorizontalSpace>
         </>
@@ -44,7 +47,7 @@ const AboutPage = ({
 
       {page.theTeam === "not in use" ? null : (
         <>
-          <Ui.Page.VerticalSpace double />
+          <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
             <TheTeam {...page.theTeam} />
@@ -52,25 +55,12 @@ const AboutPage = ({
         </>
       )}
 
-      <Ui.Page.VerticalSpace double />
+      <Ui.Page.VerticalSpace />
 
       <Ui.Page.HorizontalSpace>
         <GetInTouch orgDetails={orgDetails} />
       </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace double />
-
-      <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={footer}
-          linkLabels={linkLabels}
-          logoImg={logoImage}
-          orgDetails={orgDetails}
-        />
-      </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 

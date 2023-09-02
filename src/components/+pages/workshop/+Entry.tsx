@@ -1,5 +1,4 @@
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
+import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -8,30 +7,35 @@ import Sections from "./sections/+Entry";
 import SignUp from "./sign-up/+Entry";
 import Tickets from "./tickets/+Entry";
 
+import { PageFrame } from "~/frames";
+
 const WorkshopPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
 }: {
   staticData: StaticData;
 }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: header,
-          linkLabels: linkLabels,
-          orgDetails: orgDetails,
-          logoImg: logoImage,
-        }}
-      />
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
+      {page.bannerImage === "not in use" ? (
+        <Ui.Page.VerticalSpace sizing="half" />
+      ) : (
+        <>
+          <BannerImage data={page.bannerImage} />
 
-      {page.bannerImage === "not in use" ? null : (
-        <Ui.Page.BannerImage data={page.bannerImage} />
+          <Ui.Page.VerticalSpace sizing="half" />
+        </>
       )}
 
       <Ui.Page.HorizontalSpace>
-        <Ui.Section.VerticalSpace />
-
-        <Ui.Page.Subheading>{page.subtitle}</Ui.Page.Subheading>
+        {page.subtitle.length ? (
+          <Ui.Page.Subheading>{page.subtitle}</Ui.Page.Subheading>
+        ) : null}
 
         <Ui.Page.Heading className="text-brandGreen">
           {page.title}
@@ -77,20 +81,7 @@ const WorkshopPage = ({
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
-
-      <Ui.Page.VerticalSpace double />
-
-      <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={footer}
-          linkLabels={linkLabels}
-          logoImg={logoImage}
-          orgDetails={orgDetails}
-        />
-      </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 

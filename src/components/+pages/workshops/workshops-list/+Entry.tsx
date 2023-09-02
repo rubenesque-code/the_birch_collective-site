@@ -23,32 +23,30 @@ const Workshop = ({
   data: { id, summary, title, subtitle },
 }: {
   data: Data[number];
-}) => {
-  return (
-    <Link href={`${route.workshops}/${id}`}>
-      <div className="flex cursor-pointer flex-col rounded-xl px-2xl py-lg hover:bg-gray-100">
-        <div className="font-display text-5xl font-bold tracking-wider text-brandOrange">
-          {title}
-        </div>
+}) => (
+  <Link href={`${route.workshops}/${id}`}>
+    <div className="flex max-w-[850px] cursor-pointer flex-col rounded-xl px-2xl py-lg hover:bg-gray-100">
+      <div className="font-display text-5xl font-bold tracking-wider text-brandOrange">
+        {title}
+      </div>
 
-        <div className="mt-sm font-display text-2xl font-bold tracking-wide text-brandOrange opacity-90">
-          {subtitle}
-        </div>
+      <div className="mt-sm font-display text-2xl font-bold tracking-wide text-brandOrange opacity-90">
+        {subtitle}
+      </div>
 
-        <div className="mt-md grid w-full grid-cols-2 gap-lg">
-          <div className="group/image relative aspect-[4/3] w-full">
-            <StorageImage
-              urls={summary.image.connectedImage.urls}
-              position={summary.image.position}
-            />
-          </div>
-          <div>
-            <div className="custom-prose prose max-w-full font-medium">
-              <Markdown>{summary.mainText}</Markdown>
-            </div>
+      <div className="mt-md grid w-full grid-cols-2 gap-lg">
+        <div className="group/image relative aspect-[4/3] w-full">
+          <StorageImage
+            urls={summary.image.connectedImage.urls}
+            position={summary.image.position}
+          />
+        </div>
+        <div>
+          <div className="custom-prose prose max-w-full font-medium">
+            <Markdown>{summary.mainText}</Markdown>
           </div>
         </div>
       </div>
-    </Link>
-  );
-};
+    </div>
+  </Link>
+);

@@ -7,3 +7,14 @@ export type CommonData = {
   orgDetails: MyDb["singles"]["orgDetails"];
   logoImage: MyDb["image"] | null;
 };
+
+export type BannerImage = {
+  position: {
+    x: number;
+    y: number;
+  };
+  infoPopover?: {
+    text: string;
+  };
+  connectedImage: MyDb["image"];
+};

@@ -1,10 +1,11 @@
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
+import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import JobPosts from "./job-posts/+Entry";
 import MainText from "./main-text/+Entry";
+
+import { PageFrame } from "~/frames";
 
 const CareersPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
@@ -12,22 +13,20 @@ const CareersPage = ({
   staticData: StaticData;
 }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: header,
-          linkLabels: linkLabels,
-          orgDetails: orgDetails,
-          logoImg: logoImage,
-        }}
-      />
-
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
       {page.bannerImage === "not in use" ? null : (
-        <Ui.Page.BannerImage data={page.bannerImage} />
+        <BannerImage data={page.bannerImage} />
       )}
 
       <Ui.Page.HorizontalSpace>
         <Ui.Section.VerticalSpace />
+
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
@@ -35,6 +34,7 @@ const CareersPage = ({
 
       <Ui.Page.HorizontalSpace>
         <Ui.Section.VerticalSpace />
+
         <MainText page={page} socialMediaLinks={orgDetails.socialMediaLinks} />
       </Ui.Page.HorizontalSpace>
 
@@ -47,20 +47,7 @@ const CareersPage = ({
           </Ui.Page.HorizontalSpace>
         </>
       )}
-
-      <Ui.Page.VerticalSpace />
-
-      <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={footer}
-          linkLabels={linkLabels}
-          logoImg={logoImage}
-          orgDetails={orgDetails}
-        />
-      </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 

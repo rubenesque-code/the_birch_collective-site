@@ -19,7 +19,7 @@ type Props = {
 
 const Header = ({ staticData }: Props) => (
   <div className="z-50 hidden w-screen items-center justify-between bg-white px-4 py-6 md:flex lg:px-8 2xl:px-12">
-    <Logo staticData={staticData} />
+    <LogoAndOrgName staticData={staticData} />
 
     <div className="flex items-center justify-between gap-3 lg:gap-6">
       <AboutUsMenu staticData={staticData} />
@@ -39,11 +39,11 @@ const Header = ({ staticData }: Props) => (
 
 export default Header;
 
-const Logo = ({ staticData }: Props) => (
+const LogoAndOrgName = ({ staticData }: Props) => (
   <Link href="/" passHref>
-    <div className="flex cursor-pointer items-center gap-2">
+    <div className="flex cursor-pointer items-center gap-xs">
       {staticData.logoImg ? (
-        <div className="relative aspect-[1/1] w-[70px]">
+        <div className="relative aspect-[1/1] w-[60px]">
           <StorageImage urls={staticData.logoImg.urls} />
         </div>
       ) : null}

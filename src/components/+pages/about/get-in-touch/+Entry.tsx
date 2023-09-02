@@ -305,15 +305,17 @@ const OtherContacts = ({
   orgDetails: MyDb["singles"]["orgDetails"];
 }) => (
   <div className="flex flex-col gap-lg">
-    <div>
-      <h3 className="font-display text-4xl tracking-wide text-brandOrange">
-        call
-      </h3>
-      <p className="mt-md italic text-gray-400">
-        Only answered on Thursdays at the moment!
-      </p>
-      <p className="mt-xs text-gray-700">{orgDetails.contact.phoneNumber}</p>
-    </div>
+    {orgDetails.contact.phoneNumber.length ? (
+      <div>
+        <h3 className="font-display text-4xl tracking-wide text-brandOrange">
+          call
+        </h3>
+        <p className="mt-md italic text-gray-400">
+          Only answered on Thursdays at the moment!
+        </p>
+        <p className="mt-xs text-gray-700">{orgDetails.contact.phoneNumber}</p>
+      </div>
+    ) : null}
 
     <div>
       <h3 className="font-display text-4xl tracking-wide text-brandOrange">
@@ -322,14 +324,18 @@ const OtherContacts = ({
       <p className="mt-md text-gray-700">{orgDetails.contact.email}</p>
     </div>
 
-    <div>
-      <h3 className="font-display text-4xl tracking-wide text-brandOrange">
-        social media
-      </h3>
-      <div className="mt-md">
-        <SocialMediaLinks socialMediaLinks={orgDetails.socialMediaLinks} />
+    {orgDetails.socialMediaLinks.facebook.length ||
+    orgDetails.socialMediaLinks.instagram.length ||
+    orgDetails.socialMediaLinks.linkedIn.length ? (
+      <div>
+        <h3 className="font-display text-4xl tracking-wide text-brandOrange">
+          social media
+        </h3>
+        <div className="mt-md">
+          <SocialMediaLinks socialMediaLinks={orgDetails.socialMediaLinks} />
+        </div>
       </div>
-    </div>
+    ) : null}
   </div>
 );
 

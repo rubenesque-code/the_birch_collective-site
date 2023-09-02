@@ -17,7 +17,7 @@ const InfoAndPosters = ({ info, photoAlbum }: Data) => (
     )}
 
     {photoAlbum === "not in use" ? null : (
-      <div className="flex-grow">
+      <div className="min-w-[400px] flex-grow">
         <PhotoAlbum data={photoAlbum} />
       </div>
     )}

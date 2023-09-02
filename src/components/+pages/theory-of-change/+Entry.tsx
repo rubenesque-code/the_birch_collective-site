@@ -1,9 +1,9 @@
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import Sections from "./sections/+Entry";
+
+import { PageFrame } from "~/frames";
 
 const TestimonialsPage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
@@ -11,16 +11,13 @@ const TestimonialsPage = ({
   staticData: StaticData;
 }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: header,
-          linkLabels: linkLabels,
-          orgDetails: orgDetails,
-          logoImg: logoImage,
-        }}
-      />
-
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
       {page.bannerImage === "not in use" ? null : (
         <Ui.Page.BannerImage data={page.bannerImage} />
       )}
@@ -50,20 +47,7 @@ const TestimonialsPage = ({
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
-
-      <Ui.Page.VerticalSpace double />
-
-      <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={footer}
-          linkLabels={linkLabels}
-          logoImg={logoImage}
-          orgDetails={orgDetails}
-        />
-      </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 

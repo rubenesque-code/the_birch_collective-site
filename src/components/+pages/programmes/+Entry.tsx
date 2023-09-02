@@ -1,9 +1,9 @@
-import Footer from "~/components/sections/footer/+Entry";
-import Header from "~/components/sections/header";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import ProgrammesList from "./programmes-list/+Entry";
+
+import { PageFrame } from "~/frames";
 
 const ProgrammePage = ({
   staticData: {
@@ -19,20 +19,21 @@ const ProgrammePage = ({
   staticData: StaticData;
 }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
-      <Header
-        staticData={{
-          header: header,
-          linkLabels: linkLabels,
-          orgDetails: orgDetails,
-          logoImg: logoImage,
-        }}
-      />
-
+    <PageFrame
+      footer={footer}
+      header={header}
+      linkLabels={linkLabels}
+      logoImage={logoImage}
+      orgDetails={orgDetails}
+    >
       {page.bannerImage === "not in use" ? (
         <Ui.Section.VerticalSpace />
       ) : (
-        <Ui.Page.BannerImage data={page.bannerImage} />
+        <>
+          <Ui.Page.BannerImage data={page.bannerImage} />
+
+          <Ui.Page.VerticalSpace sizing="half" />
+        </>
       )}
 
       <Ui.Page.HorizontalSpace>
@@ -45,6 +46,7 @@ const ProgrammePage = ({
         <>
           <Ui.Page.HorizontalSpace>
             <Ui.Section.VerticalSpace />
+
             <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
           </Ui.Page.HorizontalSpace>
         </>
@@ -61,20 +63,7 @@ const ProgrammePage = ({
       ) : (
         <p>No programmes listed at the moment. Check back later.</p>
       )}
-
-      <Ui.Page.VerticalSpace double />
-
-      <Ui.Page.HorizontalSpace>
-        <Footer
-          footer={footer}
-          linkLabels={linkLabels}
-          logoImg={logoImage}
-          orgDetails={orgDetails}
-        />
-      </Ui.Page.HorizontalSpace>
-
-      <Ui.Page.VerticalSpace />
-    </div>
+    </PageFrame>
   );
 };
 

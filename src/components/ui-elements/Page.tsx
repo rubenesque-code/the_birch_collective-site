@@ -7,7 +7,7 @@ import type { MyDb } from "~/types/database";
 
 function Page() {
   throw new Error(
-    "Section exists for naming purposes only and should not be used as a component",
+    "Page exists for naming purposes only and should not be used as a component",
   );
 }
 
@@ -65,9 +65,19 @@ const Subheading = ({
 
 Page.Subheading = Subheading;
 
-const VerticalSpace = ({ double }: { double?: boolean }) => (
+const VerticalSpace = ({
+  sizing = "default",
+}: {
+  sizing?: "half" | "default" | "double";
+}) => (
   <div
-    className={!double ? "mt-8 xs:mt-16 lg:mt-24" : "mt-16 xs:mt-32 lg:mt-48"}
+    className={
+      sizing === "half"
+        ? "mt-4 xs:mt-8 lg:mt-12"
+        : sizing === "double"
+        ? "mt-16 xs:mt-32 lg:mt-48"
+        : "mt-8 xs:mt-16 lg:mt-24"
+    }
   />
 );
 

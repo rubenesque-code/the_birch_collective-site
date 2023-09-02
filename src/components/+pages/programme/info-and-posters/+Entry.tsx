@@ -40,7 +40,7 @@ const Entry = ({
   title,
 }: MyExclude<Data["info"], "not in use">[number]) => (
   <div className="group/entry relative flex items-start gap-xs">
-    <div className="relative font-bold">{title}</div>
+    <div className="relative whitespace-nowrap font-bold">{title}</div>
     <div className="w-full text-gray-800">{text}</div>
   </div>
 );
@@ -53,7 +53,7 @@ type PostersData = {
 const Posters = ({ data }: { data: PostersData }) => (
   <div className="group/posters relative">
     <div>
-      <div className="relative ml-xl h-[400px] overflow-visible ">
+      <div className="relative ml-xl h-[400px] overflow-visible">
         <PosterSlides data={data} />
       </div>
     </div>

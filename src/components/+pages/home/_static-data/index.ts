@@ -2,15 +2,12 @@ import type { GetStaticProps } from "next";
 
 import processDbData from "~/helpers/process-db-data";
 import { myDb } from "~/my-firebase/firestore";
-import type { MyDb } from "~/types/database";
+import { queryForCommonData } from "~/pre-render-helpers/dbQuery";
+import type { CommonData } from "~/pre-render-helpers/types";
 
-export type StaticData = {
-  footer: MyDb["singles"]["footer"];
-  header: MyDb["singles"]["header"];
-  linkLabels: MyDb["singles"]["linkLabels"];
-  orgDetails: MyDb["singles"]["orgDetails"];
-  logoImage: MyDb["image"] | null;
+export type StaticData = CommonData & PageSpecificData;
 
+type PageSpecificData = {
   page: ReturnType<(typeof processDbData)["landingPage"]["crossProcess"]>;
 
   participantTestimonials: ReturnType<
@@ -19,10 +16,7 @@ export type StaticData = {
 };
 
 export const getStaticProps: GetStaticProps<StaticData> = async () => {
-  const footer = await myDb.footer.fetch();
-  const header = await myDb.header.fetch();
-  const linkLabels = await myDb.linkLabels.fetch();
-  const orgDetails = await myDb.orgDetails.fetch();
+  const { footer, header, linkLabels, orgDetails } = await queryForCommonData();
 
   const page = await myDb.pages.landing.fetch();
 

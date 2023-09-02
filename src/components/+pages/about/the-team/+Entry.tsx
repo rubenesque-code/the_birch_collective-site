@@ -27,13 +27,11 @@ const TheTeam = ({ heading, members, text }: Data) => (
 export default TheTeam;
 
 const Members = ({ members }: { members: Data["members"] }) => (
-  <div>
-    <div className="flex justify-center">
-      <div className="grid grid-cols-2 gap-lg">
-        {members.map((member) => (
-          <Member member={member} key={member.id} />
-        ))}
-      </div>
+  <div className="flex justify-center">
+    <div className="grid grid-cols-2 gap-lg">
+      {members.map((member) => (
+        <Member member={member} key={member.id} />
+      ))}
     </div>
   </div>
 );

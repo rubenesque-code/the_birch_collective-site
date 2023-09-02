@@ -14,12 +14,17 @@ const MainText = ({
     <div className="group/main">
       <div className="custom-prose prose mt-sm w-full max-w-full">
         {page.mainText}
-        <div className="mt-md">
-          <div>{page.followOnSocialMediaText}</div>
-          <div className="mt-sm">
-            <SocialMediaLinks socialMediaLinks={socialMediaLinks} />
+
+        {socialMediaLinks.facebook.length ||
+        socialMediaLinks.instagram.length ||
+        socialMediaLinks.linkedIn.length ? (
+          <div className="mt-md">
+            <div>{page.followOnSocialMediaText}</div>
+            <div className="mt-sm">
+              <SocialMediaLinks socialMediaLinks={socialMediaLinks} />
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
