@@ -39,7 +39,7 @@ const Subheading = ({
       className || ""
     }`}
   >
-    <div className="custom-prose prose max-w-[60ch] text-center font-light xs:text-lg sm:text-xl ">
+    <div className="custom-prose prose max-w-[60ch] text-center font-light text-gray-900 xs:text-lg sm:text-xl ">
       <Markdown>{children}</Markdown>
     </div>
   </div>

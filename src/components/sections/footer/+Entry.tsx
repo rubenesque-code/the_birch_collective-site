@@ -18,21 +18,43 @@ type Data = {
   logoImg: MyDb["image"] | null;
 };
 
+// todo: responsiveness needs going over!
+
 const Footer = ({ footer, linkLabels, logoImg, orgDetails }: Data) => (
-  <div className="flex items-center gap-xl">
+  <div className="grid items-center gap-x-xl md:grid-cols-2">
     <div className="flex-grow">
       <SocialMediaLinks socialMediaLinks={orgDetails.socialMediaLinks} />
       <div className="mt-md">
         <PageLinks linkLabels={linkLabels} />
       </div>
-      <div className="mt-md">
+      <div className="mt-md flex gap-sm">
         <InfoRow footer={footer} />
+
+        <div className="flex flex-col items-center gap-sm md:hidden">
+          {logoImg ? (
+            <div className="relative aspect-[1/1] w-[50px] opacity-90">
+              <StorageImage urls={logoImg?.urls} />
+            </div>
+          ) : null}
+
+          <div className="relative aspect-[1/1] w-[75px]">
+            <NextImage
+              alt=""
+              src={livingWageLogo}
+              fill
+              placeholder="blur"
+              style={{
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        </div>
       </div>
       <div className="mt-md">
         <BottomRow contact={orgDetails.contact} footer={footer} />
       </div>
     </div>
-    <SecondColumn logoImg={logoImg} />
+    <SecondColumnLrg logoImg={logoImg} />
   </div>
 );
 
@@ -133,41 +155,37 @@ const PageLink = ({
   </Link>
 );
 
-const InfoRow = ({ footer }: { footer: Data["footer"] }) => {
-  return (
-    <div className="">
-      <div className="text-gray-800">
-        <Markdown>{footer.orgDescription}</Markdown>
-      </div>
-      <div className="mt-xxxs text-gray-800">
-        <Markdown>{footer.livingWageEmployer.text}</Markdown>
-      </div>
+const InfoRow = ({ footer }: { footer: Data["footer"] }) => (
+  <div className="">
+    <div className="text-gray-800">
+      <Markdown>{footer.orgDescription}</Markdown>
     </div>
-  );
-};
+    <div className="mt-sm text-gray-800 md:mt-xxxs">
+      <Markdown>{footer.livingWageEmployer.text}</Markdown>
+    </div>
+  </div>
+);
 
-const SecondColumn = ({ logoImg }: { logoImg: Data["logoImg"] }) => {
-  return (
-    <div className="flex items-center gap-lg">
-      <div className="relative aspect-[1/1] w-[100px]">
-        <NextImage
-          alt=""
-          src={livingWageLogo}
-          fill
-          placeholder="blur"
-          style={{
-            objectFit: "contain",
-          }}
-        />
-      </div>
-      {logoImg ? (
-        <div className="relative aspect-[1/1] w-[70px]">
-          <StorageImage urls={logoImg?.urls} />
-        </div>
-      ) : null}
+const SecondColumnLrg = ({ logoImg }: { logoImg: Data["logoImg"] }) => (
+  <div className="hidden items-center gap-lg md:flex">
+    <div className="relative aspect-[1/1] w-[100px]">
+      <NextImage
+        alt=""
+        src={livingWageLogo}
+        fill
+        placeholder="blur"
+        style={{
+          objectFit: "contain",
+        }}
+      />
     </div>
-  );
-};
+    {logoImg ? (
+      <div className="relative aspect-[1/1] w-[70px]">
+        <StorageImage urls={logoImg?.urls} />
+      </div>
+    ) : null}
+  </div>
+);
 
 const BottomRow = ({
   footer,
@@ -177,7 +195,7 @@ const BottomRow = ({
   contact: Data["orgDetails"]["contact"];
 }) => {
   return (
-    <div className="flex items-center gap-lg">
+    <div className="flex flex-wrap items-center gap-x-lg gap-y-sm">
       {contact.phoneNumber ? (
         <div className="text-brandGreen">{contact.phoneNumber}</div>
       ) : null}

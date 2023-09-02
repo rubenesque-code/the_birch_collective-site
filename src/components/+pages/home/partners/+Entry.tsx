@@ -25,7 +25,7 @@ const Partners = ({
 
     <Ui.Section.VerticalSpace />
 
-    <div className="g grid grid-cols-4 gap-md">
+    <div className="grid grid-cols-3 gap-md xs:grid-cols-3 md:grid-cols-4 md:gap-md">
       {entries.map((partner) => (
         <Partner data={partner} key={partner.id} />
       ))}
@@ -45,7 +45,7 @@ const Partner = ({ data }: { data: Data["entries"][number] }) => (
       className={`${
         !data.url
           ? "pointer-events-none"
-          : "cursor-pointer rounded-md p-sm transition-all duration-75 ease-in-out hover:bg-gray-100 "
+          : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm "
       }`}
       target="_blank"
     >

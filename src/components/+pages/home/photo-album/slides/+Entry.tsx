@@ -59,7 +59,7 @@ const Navigation = ({
   swipeRight: () => void;
 }) => (
   <div
-    className={`absolute left-0 top-0 z-20 flex h-full -translate-x-1/2 flex-col justify-center bg-opacity-70`}
+    className={`absolute left-0 top-0 z-20 flex h-full flex-col justify-center bg-opacity-70 sm:-translate-x-1/2`}
   >
     <div>
       <button

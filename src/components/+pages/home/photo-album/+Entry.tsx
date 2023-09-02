@@ -10,8 +10,8 @@ type Data = ExcludeNotInUse<StaticData["page"]["photoAlbum"]>;
 
 const PhotoAlbum = ({ data: { entries, heading } }: { data: Data }) => (
   <div className="mt-md flex justify-end">
-    <div className="w-3/4">
-      <div className="flex items-center justify-end gap-xs text-gray-600">
+    <div className="w-full sm:w-3/4">
+      <div className="flex items-center justify-end gap-xs text-sm text-gray-500 sm:text-base">
         {strWithFallback(heading, "Photos from our events!")}
         <Icon.ArrowRight />
       </div>

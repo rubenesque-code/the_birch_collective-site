@@ -179,7 +179,7 @@ const Headings = ({
   subheading: string;
 }) => (
   <div className=" bg-[url('/images/icon-bg.png')] bg-cover bg-clip-text bg-center text-center text-transparent">
-    <h1 className=" font-display text-5xl font-bold tracking-wider xs:text-7xl md:text-8xl">
+    <h1 className="font-display text-5xl font-bold tracking-wider xs:text-7xl md:text-8xl">
       {heading}
     </h1>
     <h2 className="mt-4 text-base uppercase tracking-wide xs:text-xl sm:text-2xl md:mt-8 md:text-3xl lg:text-4xl">

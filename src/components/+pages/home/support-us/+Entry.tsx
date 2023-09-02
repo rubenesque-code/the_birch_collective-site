@@ -25,7 +25,7 @@ const SupportUs = ({
 
     <Section.VerticalSpace />
 
-    <div className="grid grid-cols-2 gap-md">
+    <div className="grid gap-md px-sm md:grid-cols-2 md:px-0">
       <Donate data={donate} />
       <Volunteer data={volunteer} />
     </div>

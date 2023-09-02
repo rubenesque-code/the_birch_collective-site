@@ -73,10 +73,10 @@ const VerticalSpace = ({
   <div
     className={
       sizing === "half"
-        ? "mt-4 xs:mt-8 lg:mt-12"
+        ? "mt-6 xs:mt-8 lg:mt-12"
         : sizing === "double"
         ? "mt-16 xs:mt-32 lg:mt-48"
-        : "mt-8 xs:mt-16 lg:mt-24"
+        : "mt-12 xs:mt-16 lg:mt-24"
     }
   />
 );

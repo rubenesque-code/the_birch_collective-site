@@ -110,7 +110,7 @@ const LogoAndOrgName = ({ staticData }: Props) => (
   <Link href="/" passHref>
     <div className="flex cursor-pointer flex-nowrap items-center gap-xs">
       {staticData.logoImg ? (
-        <div className="relative aspect-[1/1] w-[50px] sm:w-[60px]">
+        <div className="relative aspect-[1/1] w-[45px] xs:w-[50px] sm:w-[60px]">
           <StorageImage urls={staticData.logoImg.urls} />
         </div>
       ) : null}
@@ -213,7 +213,9 @@ const PageLinksSmall = ({ staticData }: Props) => (
         <Menu.Button className="text-2xl">
           {({ open }) =>
             !open ? (
-              <Icon.HeaderMenu />
+              <span className="text-brandBrown">
+                <Icon.HeaderMenu weight="bold" />
+              </span>
             ) : (
               <span className="text-brandGreen">
                 <Icon.Close weight="bold" />

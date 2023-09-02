@@ -31,13 +31,13 @@ const AboutUs = ({ data }: { data: Data }) => (
 export default AboutUs;
 
 const Heading = ({ heading }: { heading: string }) => (
-  <div className="w-full text-center font-display text-6xl font-bold text-brandGreen">
+  <div className="w-full text-center font-display text-4xl font-bold text-brandGreen sm:text-5xl md:text-6xl">
     <Markdown>{heading}</Markdown>
   </div>
 );
 
 const Bullets = ({ data }: { data: Data["entries"] }) => (
-  <div className="grid grid-cols-1 gap-sm">
+  <div className="grid grid-cols-1 gap-sm px-sm">
     {data.map((bullet) => (
       <Entry data={bullet} key={bullet.id} />
     ))}
@@ -50,14 +50,14 @@ const Entry = ({ data }: { data: Data["entries"][number] }) => (
       <Icon.AboutUs />
     </div>
 
-    <div className="custom-prose prose prose-lg flex-grow text-xl">
+    <div className="custom-prose prose flex-grow text-lg sm:text-xl">
       <Markdown>{data.text}</Markdown>
     </div>
   </div>
 );
 
 const GoToPageButton = ({ text }: { text: string }) => (
-  <div className="flex cursor-pointer items-center gap-sm rounded-sm bg-brandGreen px-4 py-2 text-lg font-bold uppercase tracking-wide text-white sm:gap-2 sm:px-5 sm:py-3 sm:text-xl">
+  <div className="flex cursor-pointer items-center gap-sm rounded-sm bg-brandGreen px-4 py-2 font-bold uppercase tracking-wide text-white xs:text-lg sm:gap-2 sm:px-5 sm:py-3 sm:text-xl">
     <span>{text}</span>
 
     <div className="">
