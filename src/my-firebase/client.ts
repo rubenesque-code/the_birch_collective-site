@@ -19,7 +19,7 @@ const firestore = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
 
-/* if (process.env.NODE_ENV === "development" && app) {
+if (process.env.NODE_ENV === "development" && app) {
   connectAuthEmulator(auth, "http://127.0.0.1:9099/");
   connectStorageEmulator(storage, "127.0.0.1", 9199);
 
@@ -29,6 +29,6 @@ const storage = getStorage(app);
   if (!firestore._settingsFrozen) {
     connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
   }
-} */
+}
 
 export { auth, firestore, storage };
