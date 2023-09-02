@@ -26,6 +26,7 @@ import type { MyExclude } from "~/types/utilities";
 // GO LIVE CHECKLIST
 // □ get email codes from formsubmit email each member
 // □ change formsubmit endpoints in formsubmit.ts
+// □ env values
 
 // COMMUNICATE TO TIM
 // □ each member needs to activate formsubmit. Plus give me provided code.

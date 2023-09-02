@@ -11,7 +11,6 @@ const AboutPage = ({
 }: {
   staticData: StaticData;
 }) => {
-  console.log("page:", page);
   return (
     <div className="w-screen overflow-x-hidden">
       <Header
