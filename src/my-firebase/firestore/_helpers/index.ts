@@ -59,6 +59,10 @@ export const fetchFirestoreDocuments = async (
   collectionKey: keyof typeof firestore_file_system_names.collections,
   docIds: string[],
 ) => {
+  if (!docIds.length) {
+    return [];
+  }
+
   const idBatches: string[][] = [[]];
 
   docIds.forEach((id, i) => {
@@ -76,6 +80,10 @@ export const fetchFirestoreDocuments = async (
   const promises: Promise<QuerySnapshot<DocumentData>>[] = [];
 
   idBatches.forEach((idBatch) => {
+    if (!idBatch.length) {
+      return;
+    }
+
     const docsRefs = query(
       collection(
         firestore,

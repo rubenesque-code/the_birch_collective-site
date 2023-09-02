@@ -33,12 +33,15 @@ const Subheading = ({
   children: string;
   className?: string;
 }) => (
+  // · -mb-[1.25em] to account for that on prose
   <div
-    className={`mt-3 text-center font-light xs:mt-4 xs:text-lg sm:mt-6 sm:text-xl lg:text-2xl ${
+    className={`-mb-[1.25em] mt-3 flex justify-center xs:mt-4 xs:text-lg sm:mt-6 sm:text-xl ${
       className || ""
     }`}
   >
-    <Markdown>{children}</Markdown>
+    <div className="custom-prose prose max-w-[60ch] text-center text-xl font-light">
+      <Markdown>{children}</Markdown>
+    </div>
   </div>
 );
 
@@ -61,3 +64,27 @@ const Description = ({
 );
 
 Section.Description = Description;
+
+const Text = ({
+  children,
+  className,
+}: {
+  children: string;
+  className?: string;
+}) => (
+  <div className={`custom-prose prose ${className || ""}`}>
+    <Markdown>{children}</Markdown>
+  </div>
+);
+
+Section.Text = Text;
+
+const TextMaxWidth = ({
+  children,
+  className,
+}: {
+  children: string;
+  className?: string;
+}) => <div className={`max-w-[65ch] ${className || ""}`}>{children}</div>;
+
+Text.MaxWidth = TextMaxWidth;

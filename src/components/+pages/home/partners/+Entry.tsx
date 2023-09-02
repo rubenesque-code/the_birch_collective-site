@@ -15,17 +15,17 @@ const Partners = ({
   data: Data;
 }) => (
   <div className="">
-    <div className="">
-      <Ui.Section.Heading>
-        {strWithFallback(heading, "Partners")}
-      </Ui.Section.Heading>
+    <Ui.Section.Heading className="text-brandLightOrange">
+      {strWithFallback(heading, "Partners")}
+    </Ui.Section.Heading>
 
-      {subheading.length ? (
-        <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
-      ) : null}
-    </div>
+    {subheading.length ? (
+      <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
+    ) : null}
 
-    <div className="mt-lg grid grid-cols-4 gap-lg">
+    <Ui.Section.VerticalSpace />
+
+    <div className="g grid grid-cols-4 gap-md">
       {entries.map((partner) => (
         <Partner data={partner} key={partner.id} />
       ))}
@@ -42,7 +42,11 @@ const Partner = ({ data }: { data: Data["entries"][number] }) => (
   >
     <a
       href={data.url}
-      className={`${!data.url ? "pointer-events-none" : "cursor-pointer"}`}
+      className={`${
+        !data.url
+          ? "pointer-events-none"
+          : "cursor-pointer rounded-md p-sm transition-all duration-75 ease-in-out hover:bg-gray-100 "
+      }`}
       target="_blank"
     >
       <div className="relative">

@@ -12,7 +12,8 @@ const ParticipantTestimonials = ({
 }: {
   data: StaticData["participantTestimonials"];
 }) => (
-  <div>
+  // · -my-[50px] because 50px padding added within Slides to make space for hover scale-up effect.
+  <div className="-my-[50px]">
     <Slides
       numSlidesTotal={data.length}
       slides={({ leftMost, rightMost }) =>

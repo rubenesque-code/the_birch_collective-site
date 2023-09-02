@@ -1,6 +1,7 @@
 import Markdown from "markdown-to-jsx";
 
 import { Icon } from "~/components/icons";
+import Section from "~/components/ui-elements/Section";
 
 import { type StaticData } from "../_static-data";
 
@@ -14,9 +15,15 @@ type Data = ExcludeNotInUse<SectionStaticData>;
 const AboutUs = ({ data }: { data: Data }) => (
   <div className="group/about flex flex-col items-center">
     <Heading heading={data.heading} />
-    <div className="flex w-full flex-col items-center pl-2xl">
+
+    <Section.VerticalSpace />
+
+    <div className="flex w-full flex-col items-center">
       <Bullets data={data.entries} />
     </div>
+
+    <Section.VerticalSpace />
+
     <GoToPageButton text={strWithFallback(data.buttonText, "About Us")} />
   </div>
 );
@@ -30,7 +37,7 @@ const Heading = ({ heading }: { heading: string }) => (
 );
 
 const Bullets = ({ data }: { data: Data["entries"] }) => (
-  <div className="mt-xl grid w-full grid-cols-1 gap-sm">
+  <div className="grid grid-cols-1 gap-sm">
     {data.map((bullet) => (
       <Entry data={bullet} key={bullet.id} />
     ))}
@@ -38,17 +45,21 @@ const Bullets = ({ data }: { data: Data["entries"] }) => (
 );
 
 const Entry = ({ data }: { data: Data["entries"][number] }) => (
-  <div className="group/entry relative flex w-full gap-sm">
-    <div className="text-2xl text-brandGreen">
+  <div className="group/entry relative flex w-full max-w-[62ch] items-center gap-sm">
+    <div className="text-3xl text-brandGreen">
       <Icon.AboutUs />
     </div>
-    <div className="flex-grow text-2xl">{data.text}</div>
+
+    <div className="custom-prose prose prose-lg flex-grow text-xl">
+      <Markdown>{data.text}</Markdown>
+    </div>
   </div>
 );
 
 const GoToPageButton = ({ text }: { text: string }) => (
   <div className="flex cursor-pointer items-center gap-sm rounded-sm bg-brandGreen px-4 py-2 text-lg font-bold uppercase tracking-wide text-white sm:gap-2 sm:px-5 sm:py-3 sm:text-xl">
     <span>{text}</span>
+
     <div className="">
       <Icon.ArrowRight />
     </div>

@@ -15,17 +15,17 @@ const Supporters = ({
   data: Data;
 }) => (
   <div className="">
-    <div className="">
-      <Ui.Section.Heading>
-        {strWithFallback(heading, "Supporters")}
-      </Ui.Section.Heading>
+    <Ui.Section.Heading className="text-brandOrange">
+      {strWithFallback(heading, "Supporters")}
+    </Ui.Section.Heading>
 
-      {subheading.length ? (
-        <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
-      ) : null}
-    </div>
+    {subheading.length ? (
+      <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
+    ) : null}
 
-    <div className="mt-lg grid grid-cols-4 gap-lg">
+    <Ui.Section.VerticalSpace />
+
+    <div className="grid grid-cols-4 gap-md">
       {entries.map((supporter) => (
         <Supporter data={supporter} key={supporter.id} />
       ))}
@@ -42,7 +42,11 @@ const Supporter = ({ data }: { data: Data["entries"][number] }) => (
   >
     <a
       href={data.url}
-      className={`${!data.url ? "pointer-events-none" : "cursor-pointer"}`}
+      className={`${
+        !data.url
+          ? "pointer-events-none"
+          : "cursor-pointer rounded-md p-sm transition-all duration-75 ease-in-out hover:bg-gray-100"
+      }`}
       target="_blank"
     >
       <div className="relative">

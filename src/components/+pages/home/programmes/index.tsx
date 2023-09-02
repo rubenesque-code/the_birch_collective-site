@@ -32,25 +32,25 @@ const Programmes = ({
     <Ui.Section.VerticalSpace />
 
     <div className="">
-      <div className="flex flex-wrap justify-center gap-y-6">
+      <div className="flex w-full flex-wrap gap-y-sm">
         {entries.map((programme) => (
           <Link
             href={`${route.programmes}/${programme.id}`}
             passHref
+            as="div"
+            className="w-1/2 cursor-pointer rounded-lg px-sm py-sm text-center transition-all duration-100 ease-in-out hover:bg-gray-100"
             key={programme.id}
           >
-            <div className="w-full cursor-pointer px-5 text-center md:w-1/2">
-              <div className="flex flex-col items-center">
-                <span className="whitespace-nowrap font-display text-3xl font-bold uppercase tracking-wider text-brandLightOrange">
-                  <Markdown>{programme.title}</Markdown>
-                </span>
-                <span className="uppercase text-display xs:text-lg lg:text-xl">
-                  <Markdown>{programme.subtitle}</Markdown>
-                </span>
-                <p className="text-center text-base font-light xs:font-normal lg:text-lg">
-                  <Markdown>{programme.summary.mainText}</Markdown>
-                </p>
-              </div>
+            <div className="flex flex-col items-center">
+              <span className="text-center font-display text-4xl font-bold tracking-wider text-brandLightOrange opacity-90">
+                <Markdown>{programme.title}</Markdown>
+              </span>
+              <span className="mt-xxs uppercase text-brandBrown opacity-90 xs:text-lg lg:text-xl">
+                <Markdown>{programme.subtitle}</Markdown>
+              </span>
+              <p className="custom-prose prose mt-xxs max-w-[290px] text-center text-base font-light">
+                <Markdown>{programme.summary.mainText}</Markdown>
+              </p>
             </div>
           </Link>
         ))}

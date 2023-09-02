@@ -2,6 +2,7 @@ import Markdown from "markdown-to-jsx";
 
 import { StorageImage } from "~/components/StorageImage";
 import Ui from "~/components/ui-elements";
+import Section from "~/components/ui-elements/Section";
 
 import type { StaticData } from "../_static-data";
 
@@ -16,10 +17,13 @@ const SupportUs = ({
   data: Data;
 }) => (
   <div className="">
-    <Ui.Section.Heading>
+    <Ui.Section.Heading className="text-brandGreen">
       {strWithFallback(heading, "Support The Birch Collective")}
     </Ui.Section.Heading>
-    <div className="mt-xl grid grid-cols-2 gap-md">
+
+    <Section.VerticalSpace />
+
+    <div className="grid grid-cols-2 gap-md">
       <Donate data={donate} />
       <Volunteer data={volunteer} />
     </div>
@@ -46,7 +50,7 @@ const Donate = ({
     </div>
 
     <div className="mt-5 xs:mt-6 md:mt-8">
-      <div className="text-center font-normal lg:text-xl">
+      <div className="custom-prose prose text-center font-normal lg:text-xl">
         <Markdown>{description}</Markdown>
       </div>
     </div>
@@ -71,7 +75,7 @@ const Volunteer = ({
     </div>
 
     <div className="mt-5 xs:mt-6 md:mt-8">
-      <div className="text-center font-normal lg:text-xl">
+      <div className="custom-prose prose text-center font-normal lg:text-xl">
         <Markdown>{description}</Markdown>
       </div>
     </div>

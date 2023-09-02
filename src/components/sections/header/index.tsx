@@ -17,88 +17,95 @@ type Props = {
   };
 };
 
-const Header = (props: Props) => <Expanded {...props} />;
+const Header = ({ staticData }: Props) => (
+  <div className="z-50 hidden w-screen items-center justify-between bg-white px-4 py-6 md:flex lg:px-8 2xl:px-12">
+    <Logo staticData={staticData} />
+
+    <div className="flex items-center justify-between gap-3 lg:gap-6">
+      <AboutUsMenu staticData={staticData} />
+
+      <Link href="/programmes" passHref>
+        <PageLinkLabel>{staticData.linkLabels.programmes}</PageLinkLabel>
+      </Link>
+
+      <GetInvolvedMenu staticData={staticData} />
+
+      <Link href="/workshops" passHref>
+        <PageLinkLabel>{staticData.linkLabels.workshops}</PageLinkLabel>
+      </Link>
+    </div>
+  </div>
+);
 
 export default Header;
 
-const Expanded = ({ staticData }: Props) => {
-  return (
-    <div className="z-50 hidden w-screen items-center justify-between bg-white px-4 py-6 md:flex lg:px-8 2xl:px-12">
-      <Link href="/" passHref>
-        <div className="flex cursor-pointer items-center gap-2">
-          {staticData.logoImg ? (
-            <div className="relative aspect-[1/1] w-[70px]">
-              <StorageImage urls={staticData.logoImg.urls} />
-            </div>
-          ) : null}
-
-          <h3 className="font-display text-3xl font-bold tracking-wider text-display lg:text-4xl xl:text-6xl">
-            {staticData.orgDetails.name}
-          </h3>
+const Logo = ({ staticData }: Props) => (
+  <Link href="/" passHref>
+    <div className="flex cursor-pointer items-center gap-2">
+      {staticData.logoImg ? (
+        <div className="relative aspect-[1/1] w-[70px]">
+          <StorageImage urls={staticData.logoImg.urls} />
         </div>
-      </Link>
+      ) : null}
 
-      <div className="flex  items-center justify-between gap-3 lg:gap-6">
-        <Menu
-          buttonLabel={staticData.linkLabels.aboutUs}
-          xOrigin="center"
-          tagline={staticData.header.aboutUs.popover.subheading}
-          title={staticData.header.aboutUs.popover.heading}
-        >
-          <MenuItem route="/about" label={staticData.linkLabels.aboutUs} />
-          <MenuItem
-            route="/about#meet-the-team"
-            label={staticData.linkLabels.meetTheTeam}
-          />
-          <MenuItem
-            route={route.getInTouch}
-            label={staticData.linkLabels.getInTouch}
-          />
-          <MenuItem
-            route="/theory-of-change"
-            label={staticData.linkLabels.theoryOfChange}
-          />
-          <MenuItem
-            route="/testimonials"
-            label={staticData.linkLabels.testimonials}
-          />
-        </Menu>
-
-        <Link href="/programmes" passHref>
-          <div>
-            <ExpandedNavbarLinkLabel>
-              {staticData.linkLabels.programmes}
-            </ExpandedNavbarLinkLabel>
-          </div>
-        </Link>
-
-        <Menu
-          buttonLabel={staticData.linkLabels.getInvolved}
-          xOrigin="right"
-          tagline={staticData.header.getInvolved.popover.subheading}
-          title={staticData.header.getInvolved.popover.heading}
-        >
-          <MenuItem route="/donate" label={staticData.linkLabels.donate} />
-          <MenuItem
-            route="/volunteer"
-            label={staticData.linkLabels.volunteer}
-          />
-          <MenuItem route="/careers" label={staticData.linkLabels.careers} />
-        </Menu>
-
-        <Link href="/workshops" passHref>
-          <div>
-            <ExpandedNavbarLinkLabel>
-              {staticData.linkLabels.workshops}
-            </ExpandedNavbarLinkLabel>
-          </div>
-        </Link>
-      </div>
+      <h3 className="font-display text-3xl font-bold tracking-wider text-display lg:text-4xl xl:text-6xl">
+        {staticData.orgDetails.name}
+      </h3>
     </div>
-  );
-};
+  </Link>
+);
 
-const Menu = ({
+const PageLinkLabel = ({
+  children,
+}: {
+  children: string | React.ReactElement;
+}) => (
+  <h3 className="cursor-pointer text-sm font-semibold uppercase tracking-wide text-gray-600 transition-colors duration-75 ease-in-out hover:text-gray-700 lg:text-base xl:text-lg">
+    {children}
+  </h3>
+);
+
+const AboutUsMenu = ({ staticData }: Props) => (
+  <PagesMenu
+    buttonLabel={staticData.linkLabels.aboutUs}
+    xOrigin="center"
+    tagline={staticData.header.aboutUs.popover.subheading}
+    title={staticData.header.aboutUs.popover.heading}
+  >
+    <PagesMenuItem route="/about" label={staticData.linkLabels.aboutUs} />
+    <PagesMenuItem
+      route="/about#meet-the-team"
+      label={staticData.linkLabels.meetTheTeam}
+    />
+    <PagesMenuItem
+      route={route.getInTouch}
+      label={staticData.linkLabels.getInTouch}
+    />
+    <PagesMenuItem
+      route="/theory-of-change"
+      label={staticData.linkLabels.theoryOfChange}
+    />
+    <PagesMenuItem
+      route="/testimonials"
+      label={staticData.linkLabels.testimonials}
+    />
+  </PagesMenu>
+);
+
+const GetInvolvedMenu = ({ staticData }: Props) => (
+  <PagesMenu
+    buttonLabel={staticData.linkLabels.getInvolved}
+    xOrigin="right"
+    tagline={staticData.header.getInvolved.popover.subheading}
+    title={staticData.header.getInvolved.popover.heading}
+  >
+    <PagesMenuItem route="/donate" label={staticData.linkLabels.donate} />
+    <PagesMenuItem route="/volunteer" label={staticData.linkLabels.volunteer} />
+    <PagesMenuItem route="/careers" label={staticData.linkLabels.careers} />
+  </PagesMenu>
+);
+
+const PagesMenu = ({
   buttonLabel,
   children,
   title,
@@ -122,10 +129,10 @@ const Menu = ({
       <button
         onClick={() => setShow(!show)}
         type="button"
-        className="flex items-center gap-1 lg:gap-2"
+        className="group/menu-button flex items-center gap-1 lg:gap-2"
       >
-        <ExpandedNavbarLinkLabel>{buttonLabel}</ExpandedNavbarLinkLabel>
-        <span className="text-brandGreen">
+        <PageLinkLabel>{buttonLabel}</PageLinkLabel>
+        <span className="rounded-full p-xxxs text-brandGreen transition-all duration-100 ease-in-out group-hover/menu-button:bg-gray-100">
           <Icon.CaretDown weight="bold" />
         </span>
       </button>
@@ -153,7 +160,7 @@ const Menu = ({
   );
 };
 
-const MenuItem = ({ route, label }: { route: string; label: string }) => (
+const PagesMenuItem = ({ route, label }: { route: string; label: string }) => (
   <Link href={route} passHref>
     <div className="z-50 flex cursor-pointer items-center gap-1 px-3 py-1 hover:bg-gray-100">
       <span className="grid place-items-center text-displayGreen">
@@ -163,15 +170,3 @@ const MenuItem = ({ route, label }: { route: string; label: string }) => (
     </div>
   </Link>
 );
-
-const ExpandedNavbarLinkLabel = ({
-  children,
-}: {
-  children: string | React.ReactElement;
-}) => {
-  return (
-    <h3 className="cursor-pointer text-sm font-semibold uppercase tracking-wide lg:text-base xl:text-lg">
-      {children}
-    </h3>
-  );
-};

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { NextImage } from "~/lib/external-packages-rename";
 import type { MyDb } from "~/types/database";
 
@@ -8,6 +10,8 @@ type Props = { urls: MyDb["image"]["urls"] } & {
   };
   objectFit?: "cover" | "contain";
   isCircle?: boolean;
+  onImgLoaded?: () => void;
+  loading?: "lazy" | "eager";
 };
 
 export const StorageImage = ({
@@ -15,7 +19,12 @@ export const StorageImage = ({
   position = { x: 50, y: 50 },
   objectFit = "cover",
   isCircle = false,
+  onImgLoaded,
+  loading = "lazy",
 }: Props) => {
+  // const [blurIsLoaded, setBlurIsLoaded] = React.useState(false);
+  // const [imgIsLoaded, setImgIsLoaded] = React.useState(false);
+
   return (
     <NextImage
       alt=""
@@ -24,9 +33,17 @@ export const StorageImage = ({
       blurDataURL={urls.blur}
       placeholder="blur"
       className={`${isCircle ? "rounded-full" : ""}`}
+      loading={loading}
       style={{
         objectFit,
         objectPosition: `${position.x}% ${position.y}%`,
+      }}
+      onLoadingComplete={() => {
+        // setImgIsLoaded(true);
+
+        if (onImgLoaded) {
+          onImgLoaded();
+        }
       }}
     />
   );

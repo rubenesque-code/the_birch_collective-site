@@ -13,7 +13,8 @@ const Workshops = ({
 }: {
   data: ExcludeNotInUse<StaticData["page"]["workshops"]>;
 }) => (
-  <div className="flex justify-end">
+  // · mb-xl to account for the text-overlay which is translated by y-xl
+  <div className="mb-xl flex justify-end">
     <div className="w-11/12">
       <div className="group/workshops-image relative aspect-[8/5]">
         <StorageImage
@@ -35,11 +36,11 @@ const Workshops = ({
 export default Workshops;
 
 const TextOverlay = ({ body, heading }: { heading: string; body: string }) => (
-  <div className="absolute bottom-0 right-0 min-w-fit translate-y-xl bg-brandRed p-6 pr-12 text-white md:-bottom-10 md:w-1/3 md:translate-y-0 md:p-12">
-    <div className="text-left font-display text-6xl font-bold tracking-wide text-white">
+  <div className="absolute bottom-0 right-0 min-w-fit translate-y-xl bg-brandBrown p-6 pr-12 text-white md:-bottom-10 md:w-1/3 md:translate-y-0 md:p-12">
+    <div className="text-left font-display text-6xl font-bold tracking-wide ">
       <Markdown>{heading}</Markdown>
     </div>
-    <div className="mt-3 hidden w-[300px] text-xl md:block ">
+    <div className="mt-3 hidden w-[300px] text-xl  md:block">
       <Markdown>{body}</Markdown>
     </div>
     <div className="absolute bottom-4 right-1 md:right-5">
