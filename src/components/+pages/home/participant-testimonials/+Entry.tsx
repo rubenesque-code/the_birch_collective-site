@@ -25,7 +25,7 @@ const ParticipantTestimonials = ({
             }}
             key={i}
           >
-            <Testimonial testimonial={testimonial} />
+            <Testimonial testimonial={testimonial} index={i} />
           </TestimonialWrapper>
         ))
       }
@@ -67,14 +67,17 @@ const TestimonialWrapper = ({
 
 const Testimonial = ({
   testimonial,
+  index,
 }: {
   testimonial: StaticData["participantTestimonials"][number];
+  index: number;
 }) => (
   <>
     <div className="absolute h-full w-full">
       <StorageImage
         urls={testimonial.image.connectedImage.urls}
         position={testimonial.image.position}
+        loading={index < 2 ? "eager" : "lazy"}
       />
     </div>
     <div className="absolute bottom-0 z-10 h-4/5 w-full bg-gradient-to-t from-black to-transparent">

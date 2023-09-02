@@ -30,12 +30,10 @@ import { PageFrame } from "~/frames";
 // □ each member needs to activate formsubmit. Plus give me provided code.
 
 // MUST DO
-// □ do a once over of all pages styling
 // □ landing banner image info popover
 // □ not putting placeholder data in cms so go over with local data too. e.g. for professional testimonials.
+
 // □ go over all pages + elements responsiveness
-// □ go over each page in production. Need to add keywords array to images.
-// □ images background
 // □ donate functionality. inc donate-success page
 
 // OTHER

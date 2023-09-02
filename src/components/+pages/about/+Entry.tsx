@@ -1,3 +1,4 @@
+import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -20,12 +21,10 @@ const AboutPage = ({
       orgDetails={orgDetails}
     >
       {page.bannerImage === "not in use" ? null : (
-        <>
-          <Ui.Page.BannerImage data={page.bannerImage} />
-
-          <Ui.Page.VerticalSpace sizing="half" />
-        </>
+        <BannerImage data={page.bannerImage} />
       )}
+
+      <Ui.Page.VerticalSpace sizing="half" />
 
       <Ui.Page.HorizontalSpace>
         <Ui.Page.Subheading>{page.subheading}</Ui.Page.Subheading>

@@ -70,6 +70,7 @@ import {
   Upload,
   Warning,
   WarningCircle,
+  X,
   XSquare,
 } from "@phosphor-icons/react";
 
@@ -83,6 +84,7 @@ const Icon = () => {
 
 export { Icon };
 
+Icon.Close = X;
 Icon.Download = DownloadSimple;
 Icon.Slides = Slideshow;
 Icon.Lock = Lock;

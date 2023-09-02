@@ -14,7 +14,7 @@ export const PageFrame = ({
   orgDetails,
   children,
 }: { children: React.ReactNode | React.ReactNode[] } & CommonData) => (
-  <div className="w-screen overflow-x-hidden">
+  <div className="w-screen overflow-x-hidden ">
     <Header
       staticData={{
         header: header,

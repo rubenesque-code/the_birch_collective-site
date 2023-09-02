@@ -1,3 +1,4 @@
+import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -26,15 +27,11 @@ const ProgrammePage = ({
       logoImage={logoImage}
       orgDetails={orgDetails}
     >
-      {page.bannerImage === "not in use" ? (
-        <Ui.Section.VerticalSpace />
-      ) : (
-        <>
-          <Ui.Page.BannerImage data={page.bannerImage} />
-
-          <Ui.Page.VerticalSpace sizing="half" />
-        </>
+      {page.bannerImage === "not in use" ? null : (
+        <BannerImage data={page.bannerImage} />
       )}
+
+      <Ui.Page.VerticalSpace sizing="half" />
 
       <Ui.Page.HorizontalSpace>
         <Ui.Page.Heading className="text-brandGreen">
