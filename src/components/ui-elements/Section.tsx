@@ -35,11 +35,11 @@ const Subheading = ({
 }) => (
   // · -mb-[1.25em] to account for that on prose
   <div
-    className={`-mb-[1.25em] mt-3 flex justify-center xs:mt-4 xs:text-lg sm:mt-6 sm:text-xl ${
+    className={`-mb-[1.25em] mt-3 flex justify-center xs:mt-4 sm:mt-6 ${
       className || ""
     }`}
   >
-    <div className="custom-prose prose max-w-[60ch] text-center text-xl font-light">
+    <div className="custom-prose prose max-w-[60ch] text-center font-light xs:text-lg sm:text-xl ">
       <Markdown>{children}</Markdown>
     </div>
   </div>

@@ -20,7 +20,7 @@ type Props = {
 
 const Header = ({ staticData }: Props) => {
   return (
-    <div className="flex w-screen items-center justify-between px-4 py-6 lg:px-8 2xl:px-12">
+    <div className="flex items-center justify-between px-4 py-6 lg:px-8 2xl:px-12">
       <LogoAndOrgName staticData={staticData} />
 
       <PageLinksSmall staticData={staticData} />
@@ -32,7 +32,7 @@ const Header = ({ staticData }: Props) => {
 export default Header;
 
 const PageLinksLarge = ({ staticData }: Props) => (
-  <div className="hidden flex-grow justify-end sm:flex">
+  <div className="hidden flex-grow justify-end lg:flex">
     <div className="mt-xs flex flex-wrap items-center justify-between gap-x-sm gap-y-xs md:mt-0 lg:gap-md">
       <HeaderMenu
         buttonText={staticData.linkLabels.aboutUs}
@@ -159,7 +159,7 @@ const HeaderMenu = ({
 
       <Transition
         as="div"
-        className="absolute -bottom-xs right-0 origin-center translate-x-3xl translate-y-full rounded-sm border bg-white shadow-lg outline-none focus:outline-none"
+        className="absolute -bottom-xs left-0 translate-y-full rounded-sm border bg-white shadow-lg outline-none focus:outline-none"
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"
@@ -205,45 +205,104 @@ const HeaderMenuItem = ({ route, text }: { route: string; text: string }) => (
 );
 
 const PageLinksSmall = ({ staticData }: Props) => (
-  <Menu as="div" className="z-50 grid place-items-center sm:hidden">
-    <Menu.Button className="text-2xl">
-      {({ open }) =>
-        !open ? (
-          <Icon.HeaderMenu />
-        ) : (
-          <span className="text-brandGreen">
-            <Icon.Close weight="bold" />
-          </span>
-        )
-      }
-    </Menu.Button>
+  <Menu as="div" className="z-50 grid place-items-center lg:hidden">
+    {({ open }) => (
+      <>
+        <OnPageLinksSmallOpen isOpen={open} />
 
-    <Transition
-      as="div"
-      className="fixed left-0 w-screen"
-      style={{
-        height: `calc(100vh - 98px)`,
-        top: 98,
-      }}
-      enter="transition ease-out duration-150"
-      enterFrom="transform opacity-0 translate-x-full"
-      enterTo="transform opacity-100 scale-100 translate-x-0"
-      leave="transition ease-in duration-150"
-      leaveFrom="transform opacity-100 translate-x-0"
-      leaveTo="transform opacity-0 translate-x-full"
-    >
-      <Menu.Items
-        as="div"
-        className="flex h-full w-full flex-col bg-white px-10 py-8 outline-none focus:outline-none lg:px-14 lg:py-10"
-      >
-        <PageLinkSmall
-          route={route.about}
-          text={staticData.linkLabels.aboutUs}
-        />
-      </Menu.Items>
-    </Transition>
+        <Menu.Button className="text-2xl">
+          {({ open }) =>
+            !open ? (
+              <Icon.HeaderMenu />
+            ) : (
+              <span className="text-brandGreen">
+                <Icon.Close weight="bold" />
+              </span>
+            )
+          }
+        </Menu.Button>
+
+        <Transition
+          as="div"
+          className="fixed left-0 w-screen"
+          style={{
+            height: `calc(100vh - 98px)`,
+            top: 98,
+          }}
+          enter="transition ease-out duration-150"
+          enterFrom="transform opacity-0 translate-x-full"
+          enterTo="transform opacity-100 scale-100 translate-x-0"
+          leave="transition ease-in duration-150"
+          leaveFrom="transform opacity-100 translate-x-0"
+          leaveTo="transform opacity-0 translate-x-full"
+        >
+          <Menu.Items
+            as="div"
+            className="flex h-full max-h-full w-full flex-col gap-sm overflow-y-auto bg-white px-10 py-8 outline-none focus:outline-none lg:px-14 lg:py-10"
+          >
+            <PageLinkSmall
+              route={route.about}
+              text={staticData.linkLabels.aboutUs}
+            />
+            <div className="flex flex-col gap-sm border-l pl-sm">
+              <PageLinkSmall
+                route={route.meetTheTeam}
+                text={staticData.linkLabels.meetTheTeam}
+              />
+              <PageLinkSmall
+                route={route.getInTouch}
+                text={staticData.linkLabels.getInTouch}
+              />
+            </div>
+
+            <PageLinkSmall
+              route={route.programmes}
+              text={staticData.linkLabels.programmes}
+            />
+
+            <PageLinkSmall
+              route={route.workshops}
+              text={staticData.linkLabels.workshops}
+            />
+
+            <PageLinkSmall
+              route={route.testimonials}
+              text={staticData.linkLabels.testimonials}
+            />
+            <PageLinkSmall
+              route={route.theoryOfChange}
+              text={staticData.linkLabels.theoryOfChange}
+            />
+            <PageLinkSmall
+              route={route.donate}
+              text={staticData.linkLabels.donate}
+            />
+            <PageLinkSmall
+              route={route.volunteer}
+              text={staticData.linkLabels.volunteer}
+            />
+            <PageLinkSmall
+              route={route.careers}
+              text={staticData.linkLabels.careers}
+            />
+          </Menu.Items>
+        </Transition>
+      </>
+    )}
   </Menu>
 );
+
+const OnPageLinksSmallOpen = ({ isOpen }: { isOpen: boolean }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
+
+  return <></>;
+};
 
 const PageLinkSmall = ({ route, text }: { route: string; text: string }) => (
   <Link href={route} passHref>

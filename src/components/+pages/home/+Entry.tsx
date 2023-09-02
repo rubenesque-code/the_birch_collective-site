@@ -25,6 +25,7 @@ import { PageFrame } from "~/frames";
 // □ get email codes from formsubmit email each member
 // □ change formsubmit endpoints in formsubmit.ts
 // □ env values
+// □ put footer back
 
 // COMMUNICATE TO TIM
 // □ each member needs to activate formsubmit. Plus give me provided code.
@@ -63,106 +64,108 @@ const HomePage = ({
   participantTestimonials,
 }: StaticData) => {
   return (
-    <PageFrame
-      footer={footer}
-      header={header}
-      linkLabels={linkLabels}
-      logoImage={logoImage}
-      orgDetails={orgDetails}
-    >
-      {page.bannerImage === "not in use" ? null : (
-        <BannerImage data={page.bannerImage} />
-      )}
+    <>
+      <PageFrame
+        footer={footer}
+        header={header}
+        linkLabels={linkLabels}
+        logoImage={logoImage}
+        orgDetails={orgDetails}
+      >
+        {page.bannerImage === "not in use" ? null : (
+          <BannerImage data={page.bannerImage} />
+        )}
 
-      <Ui.Page.VerticalSpace />
+        <Ui.Page.VerticalSpace />
 
-      <Ui.Page.HorizontalSpace>
-        <Headings
-          heading={page.orgHeadings.name}
-          subheading={page.orgHeadings.byline}
-        />
-      </Ui.Page.HorizontalSpace>
+        <Ui.Page.HorizontalSpace>
+          <Headings
+            heading={page.orgHeadings.name}
+            subheading={page.orgHeadings.byline}
+          />
+        </Ui.Page.HorizontalSpace>
 
-      {!participantTestimonials.length ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {!participantTestimonials.length ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <ParticipantTestimonials data={participantTestimonials} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <ParticipantTestimonials data={participantTestimonials} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.aboutUs === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.aboutUs === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <AboutUs data={page.aboutUs} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <AboutUs data={page.aboutUs} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.workshops === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.workshops === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <Workshops data={page.workshops} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <Workshops data={page.workshops} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.programmes === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.programmes === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <Programmes data={page.programmes} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <Programmes data={page.programmes} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.photoAlbum === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.photoAlbum === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <PhotoAlbum data={page.photoAlbum} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <PhotoAlbum data={page.photoAlbum} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.supportUs === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.supportUs === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <SupportUs data={page.supportUs} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <SupportUs data={page.supportUs} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.partners === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.partners === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <Partners data={page.partners} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
+            <Ui.Page.HorizontalSpace>
+              <Partners data={page.partners} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
 
-      {page.supporters === "not in use" ? null : (
-        <>
-          <Ui.Page.VerticalSpace />
+        {page.supporters === "not in use" ? null : (
+          <>
+            <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <Supporters data={page.supporters} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      )}
-    </PageFrame>
+            <Ui.Page.HorizontalSpace>
+              <Supporters data={page.supporters} />
+            </Ui.Page.HorizontalSpace>
+          </>
+        )}
+      </PageFrame>
+    </>
   );
 };
 

@@ -32,17 +32,17 @@ const Programmes = ({
     <Ui.Section.VerticalSpace />
 
     <div className="">
-      <div className="flex w-full flex-wrap gap-y-sm">
+      <div className="grid w-full grid-cols-1 gap-y-xs sm:grid-cols-2 sm:gap-y-sm">
         {entries.map((programme) => (
           <Link
             href={`${route.programmes}/${programme.id}`}
             passHref
             as="div"
-            className="w-1/2 cursor-pointer rounded-lg px-sm py-sm text-center transition-all duration-100 ease-in-out hover:bg-gray-100"
+            className="cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm"
             key={programme.id}
           >
             <div className="flex flex-col items-center">
-              <span className="text-center font-display text-4xl font-bold tracking-wider text-brandLightOrange opacity-90">
+              <span className="text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
                 <Markdown>{programme.title}</Markdown>
               </span>
               <span className="mt-xxs uppercase text-brandBrown opacity-90 xs:text-lg lg:text-xl">

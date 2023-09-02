@@ -21,7 +21,8 @@ export const Slides = ({
   return (
     <MeasureWidth>
       {(containerWidth) => {
-        const numSlidesInView = containerWidth > 900 ? 3 : 2;
+        const numSlidesInView =
+          containerWidth > 900 ? 3 : containerWidth > 640 ? 2 : 1;
         const navigationIsShowing = true;
 
         return (
@@ -83,9 +84,7 @@ const SlideWrapper = (props: {
   children: ReactElement;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
-}) => {
-  return <div className={`h-full pr-sm`} {...props} />;
-};
+}) => <div className={`h-full pl-sm pr-sm sm:pl-0`} {...props} />;
 
 const Navigation = ({
   swipeLeft,
@@ -93,30 +92,28 @@ const Navigation = ({
 }: {
   swipeLeft: () => void;
   swipeRight: () => void;
-}) => {
-  return (
-    <div
-      className={`absolute right-0 top-0 z-20 flex h-full min-w-[110px] flex-col justify-center bg-opacity-70`}
-    >
-      <div className={`-translate-x-sm `}>
-        <button
-          className={`bg-white p-xs text-3xl opacity-60 hover:opacity-90`}
-          onClick={swipeLeft}
-          type="button"
-        >
-          <Icon.CaretLeft />
-        </button>
-        <button
-          onClick={swipeRight}
-          className={`bg-white p-xs text-3xl`}
-          type="button"
-        >
-          <Icon.CaretRight />
-        </button>
-      </div>
+}) => (
+  <div
+    className={`absolute right-0 top-0 z-20 flex h-full min-w-[110px] -translate-y-md flex-col justify-center bg-opacity-70 sm:-translate-y-0`}
+  >
+    <div className={`-translate-x-xs sm:-translate-x-sm`}>
+      <button
+        className={`bg-white p-xs text-3xl opacity-60 sm:hover:opacity-90`}
+        onClick={swipeLeft}
+        type="button"
+      >
+        <Icon.CaretLeft />
+      </button>
+      <button
+        onClick={swipeRight}
+        className={`bg-white p-xs text-3xl`}
+        type="button"
+      >
+        <Icon.CaretRight />
+      </button>
     </div>
-  );
-};
+  </div>
+);
 
 // todo: ideally, should clone children and wait for width?
 function MeasureWidth({
