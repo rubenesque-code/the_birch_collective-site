@@ -19,27 +19,31 @@ const ParticipantTestimonials = ({
     <Ui.Section.Heading className="text-brandOrange">
       {pageData.heading}
     </Ui.Section.Heading>
-
     {pageData.text.length ? (
       <Ui.Section.Description>{pageData.text}</Ui.Section.Description>
     ) : null}
 
-    <Slides
-      numSlidesTotal={testimonials.length}
-      slides={({ leftMost, rightMost }) =>
-        testimonials.map((testimonial, i) => (
-          <TestimonialWrapper
-            slidesView={{
-              isFirst: i === leftMost,
-              isLast: i === rightMost,
-            }}
-            key={i}
-          >
-            <Testimonial testimonial={testimonial} />
-          </TestimonialWrapper>
-        ))
-      }
-    />
+    <Ui.Section.VerticalSpace />
+
+    {/* // · -my-[50px] because 50px padding added within Slides to make space for hover scale-up effect. */}
+    <div className="-my-[50px]">
+      <Slides
+        numSlidesTotal={testimonials.length}
+        slides={({ leftMost, rightMost }) =>
+          testimonials.map((testimonial, i) => (
+            <TestimonialWrapper
+              slidesView={{
+                isFirst: i === leftMost,
+                isLast: i === rightMost,
+              }}
+              key={i}
+            >
+              <Testimonial testimonial={testimonial} />
+            </TestimonialWrapper>
+          ))
+        }
+      />
+    </div>
   </div>
 );
 

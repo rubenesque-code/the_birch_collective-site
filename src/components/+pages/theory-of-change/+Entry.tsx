@@ -1,8 +1,8 @@
 import { BannerImage } from "~/components/sections/BannerImage";
+import RichSections from "~/components/sections/rich-sections/+Entry";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
-import Sections from "./sections/+Entry";
 
 import { PageFrame } from "~/frames";
 
@@ -45,7 +45,7 @@ const TestimonialsPage = ({
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Sections data={page.sections} />
+            <RichSections data={page.sections} />
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}

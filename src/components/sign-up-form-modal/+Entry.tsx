@@ -15,7 +15,7 @@ const SignUpFormModal = ({
       <Modal.WithVisibilityProvider
         button={button}
         panelContent={({ closeModal }) => (
-          <div className="relative grid max-h-[70vh] w-[90vw] max-w-[1200px] place-items-center rounded-2xl border-4  border-orange bg-white p-xl text-left shadow-xl">
+          <div className="relative grid max-h-[70vh] w-[90vw] max-w-[1200px] place-items-center rounded-2xl border-4  border-orange bg-white p-xs text-left shadow-xl md:p-xl">
             <Slides closeModal={closeModal} />
           </div>
         )}

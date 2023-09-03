@@ -1,9 +1,9 @@
 import { BannerImage } from "~/components/sections/BannerImage";
+import RichSections from "~/components/sections/rich-sections/+Entry";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import InfoAndPhotoAlbum from "./info-and-photo-album/+Entry";
-import Sections from "./sections/+Entry";
 import SignUp from "./sign-up/+Entry";
 import Tickets from "./tickets/+Entry";
 
@@ -77,7 +77,7 @@ const WorkshopPage = ({
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Sections data={page.sections} />
+            <RichSections data={page.sections} />
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}

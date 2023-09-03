@@ -916,7 +916,7 @@ const SlidesContainer = (props: {
   isFinalSlide: boolean;
 }) => {
   return (
-    <div className="flex h-[400px] max-h-[400px] w-[600px] flex-col">
+    <div className="flex h-[90vh] max-h-[400px] w-[80vw] max-w-[600px] flex-col">
       {!props.isFinalSlide ? (
         <div className="mt-xs flex-shrink-0 text-center font-display text-5xl font-bold tracking-wide text-orangeLight">
           Birch Events
@@ -929,7 +929,7 @@ const SlidesContainer = (props: {
 
       <div className="relative mt-lg w-full flex-shrink-0 ">
         <div className="flex w-full items-end justify-between">
-          {/* invisible start (for centering) */}
+          {/* invisible element start (for centering) */}
           <div className="pointer-events-none flex gap-xxs opacity-0">
             <div
               className={`cursor-pointer rounded-sm bg-brandLightOrange text-lg text-white opacity-80 transition-opacity ease-in-out hover:opacity-100`}
@@ -943,7 +943,7 @@ const SlidesContainer = (props: {
               <Icon.CaretDown weight="bold" />
             </div>
           </div>
-          {/* invisible end */}
+          {/* invisible element end */}
 
           <div
             className={`cursor-pointer rounded-sm bg-brandLightOrange px-sm py-xs text-xl font-semibold text-white transition-opacity ease-in-out 
@@ -989,7 +989,7 @@ const SlidesContainer = (props: {
 };
 
 const SlideWrapper = ({ children }: { children: React.ReactElement }) => (
-  <div className="absolute grid h-full w-full place-items-center overflow-y-auto p-xs">
+  <div className="absolute grid h-full max-h-full w-full max-w-full place-items-center overflow-y-auto overflow-x-hidden p-xs">
     <div className="w-full">{children}</div>
   </div>
 );
@@ -1032,7 +1032,7 @@ const Slide2 = () => (
 
 const Slide3 = () => (
   <>
-    <div className="text-center text-lg  text-[#2F4858]">
+    <div className="text-center text-lg text-[#2F4858]">
       By signing this form, you are giving us permission to contact you about
       opportunities and events from the Birch Collective. In order to comply
       with the General Data Protection Regulation, The Birch Collective is
@@ -1048,7 +1048,7 @@ const Slide3 = () => (
       for any queries about the data we hold, please get in touch:
     </div>
 
-    <div className="mt-sm flex items-center justify-center gap-xs text-lg text-[#2F4858]">
+    <div className="mt-sm flex flex-col items-center justify-center gap-xs text-lg text-[#2F4858] md:flex-row">
       <div className="italic">team@thebirchcollective.co.uk</div>
 
       <span>or</span>

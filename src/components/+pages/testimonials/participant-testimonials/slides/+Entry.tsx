@@ -1,10 +1,10 @@
 import "swiper/css";
 
 import { useState, type ReactElement } from "react";
+import { useMeasure } from "react-use";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useMeasure } from "react-use";
 import { Icon } from "~/components/icons";
 
 export const Slides = ({
@@ -21,7 +21,8 @@ export const Slides = ({
   return (
     <MeasureWidth>
       {(containerWidth) => {
-        const numSlidesInView = containerWidth > 900 ? 3 : 2;
+        const numSlidesInView =
+          containerWidth > 900 ? 3 : containerWidth > 640 ? 2 : 1;
         const navigationIsShowing = true;
 
         return (
@@ -33,6 +34,7 @@ export const Slides = ({
               paddingTop: 50,
               paddingBottom: 50,
             }}
+            lazyPreloadPrevNext={1}
           >
             {slides({
               leftMost: leftMostIndex,

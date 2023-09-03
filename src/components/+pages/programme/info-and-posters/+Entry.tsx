@@ -10,7 +10,7 @@ type Data = {
 };
 
 const InfoAndPosters = ({ info, posters, programmeTitle }: Data) => (
-  <div className="grid grid-cols-2 gap-lg">
+  <div className="grid gap-lg md:grid-cols-2">
     {info === "not in use" ? null : (
       <div className="">
         <Info data={info} />
@@ -53,7 +53,7 @@ type PostersData = {
 const Posters = ({ data }: { data: PostersData }) => (
   <div className="group/posters relative">
     <div>
-      <div className="relative ml-xl h-[400px] overflow-visible">
+      <div className="relative h-[300px] overflow-visible sm:h-[400px] md:ml-xl">
         <PosterSlides data={data} />
       </div>
     </div>

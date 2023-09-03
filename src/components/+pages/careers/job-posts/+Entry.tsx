@@ -24,7 +24,7 @@ export default JobPosts;
 
 const Entries = ({ data }: { data: Data["entries"] }) => {
   return (
-    <div className="mt-lg grid grid-cols-2 gap-x-lg gap-y-xl">
+    <div className="mt-lg grid gap-x-lg gap-y-xl sm:grid-cols-2">
       {data.map((jobPost) => (
         <JobPost data={jobPost} key={jobPost.id} />
       ))}

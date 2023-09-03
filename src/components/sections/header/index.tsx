@@ -144,7 +144,7 @@ const HeaderMenu = ({
   const { styles, attributes } = usePopper(referenceElement, popperElement);
 
   return (
-    <Menu as="div" className="relative z-10 inline-grid place-items-center">
+    <Menu as="div" className="relative z-30 inline-grid place-items-center">
       <Menu.Button
         as="div"
         className="group/menu-button flex cursor-pointer items-center gap-xxxs lg:gap-2"
@@ -190,8 +190,8 @@ const HeaderMenu = ({
 };
 
 const HeaderMenuItem = ({ route, text }: { route: string; text: string }) => (
-  <Menu.Item as="div">
-    <Link href={route} passHref>
+  <Link href={route} passHref>
+    <Menu.Item>
       <div className="z-50 flex cursor-pointer flex-nowrap items-center gap-1 px-3 py-1 hover:bg-gray-100">
         <span className="grid place-items-center text-displayGreen lg:text-lg">
           <Icon.CaretRight weight="bold" />
@@ -200,8 +200,8 @@ const HeaderMenuItem = ({ route, text }: { route: string; text: string }) => (
           {text}
         </span>
       </div>
-    </Link>
-  </Menu.Item>
+    </Menu.Item>
+  </Link>
 );
 
 const PageLinksSmall = ({ staticData }: Props) => (

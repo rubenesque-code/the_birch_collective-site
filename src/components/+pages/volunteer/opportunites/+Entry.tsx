@@ -16,7 +16,7 @@ const Opportunities = ({ entries, heading }: Data) => (
 
     <div className="">
       {entries.length ? (
-        <div className="grid grid-cols-2 gap-x-xl gap-y-xl">
+        <div className="grid gap-x-xl gap-y-xl sm:grid-cols-2">
           {entries.map((entry) => (
             <Position {...entry} key={entry.id} />
           ))}

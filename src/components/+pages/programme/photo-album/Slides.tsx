@@ -27,6 +27,7 @@ const Slides = ({ entries }: { entries: Data["entries"] }) => {
           width: "100%",
           height: "100%",
         }}
+        lazyPreloadPrevNext={1}
       >
         {entries.map((entry, i) => {
           return (

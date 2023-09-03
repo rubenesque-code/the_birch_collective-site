@@ -27,6 +27,7 @@ const Slides = ({ data }: { data: Data }) => {
           width: "100%",
           height: "100%",
         }}
+        lazyPreloadPrevNext={1}
       >
         {data.map(({ image }, i) => {
           return (

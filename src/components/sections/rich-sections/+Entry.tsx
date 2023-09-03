@@ -3,13 +3,12 @@ import React from "react";
 import { IconSwith } from "~/components/IconSwitch";
 import Ui from "~/components/ui-elements";
 
-import { type StaticData } from "../_static-data";
-
 import { textColourSwith } from "~/helpers/style-switch";
+import type { RichSection } from "~/types/database/_common";
 
-type Data = StaticData["page"]["sections"];
+type Data = RichSection[];
 
-const Sections = ({ data }: { data: Data }) => (
+const RichSections = ({ data }: { data: Data }) => (
   <div className="grid grid-cols-1">
     {data.map((section) => (
       <React.Fragment key={section.id}>
@@ -20,7 +19,7 @@ const Sections = ({ data }: { data: Data }) => (
   </div>
 );
 
-export default Sections;
+export default RichSections;
 
 const Section = ({ bullets, colour, description, title }: Data[number]) => (
   <div className="group/section">

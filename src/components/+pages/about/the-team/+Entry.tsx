@@ -4,12 +4,13 @@ import Ui from "~/components/ui-elements";
 
 import type { StaticData } from "../_static-data";
 
+import { sectionIds } from "~/static-data/routes";
 import { type ExcludeNotInUse } from "~/types/database/_helpers";
 
 type Data = ExcludeNotInUse<StaticData["page"]["theTeam"]>;
 
 const TheTeam = ({ heading, members, text }: Data) => (
-  <div>
+  <div id={sectionIds.about.meetTheTeam}>
     <Ui.Section.Heading className="text-brandOrange">
       {heading}
     </Ui.Section.Heading>
@@ -28,7 +29,7 @@ export default TheTeam;
 
 const Members = ({ members }: { members: Data["members"] }) => (
   <div className="flex justify-center">
-    <div className="grid grid-cols-2 gap-lg">
+    <div className="grid gap-lg sm:grid-cols-2">
       {members.map((member) => (
         <Member member={member} key={member.id} />
       ))}

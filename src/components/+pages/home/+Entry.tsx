@@ -25,21 +25,20 @@ import { PageFrame } from "~/frames";
 // □ get email codes from formsubmit email each member
 // □ change formsubmit endpoints in formsubmit.ts
 // □ env values
-// □ put footer back
 
 // COMMUNICATE TO TIM
 // □ each member needs to activate formsubmit. Plus give me provided code.
 
 // MUST DO
-// □ landing banner image info popover
 // □ not putting placeholder data in cms so go over with local data too. e.g. for professional testimonials.
-
 // □ go over all pages + elements responsiveness
 // □ donate functionality. inc donate-success page
+// □ check styling inc. responsivness with local db data: programme photo album; career entry; professional testimonial.
 
 // OTHER
 // □ apply dompurify
 // □ headings subheading abstraction
+// □ fixed header as on asatic
 // □ probs should process singles e.g. social media links might not be in use
 // □ put get in touch form on each page? Yes, but collapsable?
 // □ apply str fallbacks

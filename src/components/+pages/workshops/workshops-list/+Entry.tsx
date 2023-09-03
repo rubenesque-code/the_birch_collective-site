@@ -10,7 +10,7 @@ import { route } from "~/static-data/routes";
 type Data = StaticData["workshops"];
 
 const WorkshopsList = ({ data }: { data: Data }) => (
-  <div className="grid grid-cols-1 gap-2xl">
+  <div className="grid grid-cols-1 gap-md sm:gap-lg md:gap-xl">
     {data.map((workshop) => (
       <Workshop data={workshop} key={workshop.id} />
     ))}
@@ -25,7 +25,7 @@ const Workshop = ({
   data: Data[number];
 }) => (
   <Link href={`${route.workshops}/${id}`}>
-    <div className="flex max-w-[850px] cursor-pointer flex-col rounded-xl px-2xl py-lg hover:bg-gray-100">
+    <div className="flex max-w-[850px] cursor-pointer flex-col rounded-xl py-xs hover:bg-gray-100 sm:px-xl sm:py-md md:px-2xl md:py-lg">
       <div className="font-display text-5xl font-bold tracking-wider text-brandOrange">
         {title}
       </div>
@@ -34,7 +34,7 @@ const Workshop = ({
         {subtitle}
       </div>
 
-      <div className="mt-md grid w-full grid-cols-2 gap-lg">
+      <div className="mt-md grid w-full gap-lg sm:grid-cols-2">
         <div className="group/image relative aspect-[4/3] w-full">
           <StorageImage
             urls={summary.image.connectedImage.urls}

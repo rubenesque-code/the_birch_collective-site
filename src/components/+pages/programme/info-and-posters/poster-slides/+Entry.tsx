@@ -22,7 +22,7 @@ type Data = {
 };
 
 const PhotoAlbum = ({ data }: { data: Data }) => (
-  <div className="relative h-[400px] overflow-visible">
+  <div className="relative h-[300px] overflow-visible sm:h-[400px]">
     <Slides
       entries={data.entries}
       heading={<div className="text-sm text-gray-500">Posters!</div>}
@@ -80,6 +80,7 @@ const Slides = ({
               width: "100%",
               height: "100%",
             }}
+            lazyPreloadPrevNext={1}
           >
             {entries.map((entry, i) => (
               <SwiperSlide key={i}>
@@ -239,20 +240,21 @@ const ZoomedImage = ({
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95"
     >
-      <div className="flex justify-end">
+      {/* <div className="flex justify-end">
         <div
           className="cursor-pointer rounded-md px-sm py-xs transition-all duration-75 ease-in-out hover:bg-gray-100"
           onClick={close}
         >
           Close
         </div>
-      </div>
+      </div> */}
       <div
         className={`relative w-full min-w-[400px]`}
         style={{
           aspectRatio:
             image.naturalDimensions.width / image.naturalDimensions.height,
         }}
+        onClick={close}
       >
         <StorageImage urls={image.urls} objectFit="contain" />
       </div>

@@ -15,13 +15,11 @@ import { type ExcludeNotInUse } from "~/types/database/_helpers";
 type Data = ExcludeNotInUse<StaticData["page"]["photoAlbum"]>;
 
 const PhotoAlbum = ({ data }: { data: Data }) => (
-  <div className="ml-md rounded-md bg-[#b1cd84] p-sm">
-    <div className="relative h-[400px] overflow-visible">
-      <Slides
-        entries={data.entries}
-        heading={<div className="text-sm text-gray-500">{data.heading}</div>}
-      />
-    </div>
+  <div className="h-[300px] overflow-visible rounded-md bg-[#b1cd84]/70 p-sm sm:h-[400px] md:ml-md">
+    <Slides
+      entries={data.entries}
+      heading={<div className="text-sm text-gray-500">{data.heading}</div>}
+    />
   </div>
 );
 
@@ -46,7 +44,7 @@ const Slides = ({
         ref={containerRef}
       >
         <Swiper
-          spaceBetween={30}
+          spaceBetween={10}
           slidesPerView={1}
           onSwiper={(swiper) => setSwiper(swiper)}
           style={{
@@ -54,6 +52,7 @@ const Slides = ({
             width: "100%",
             height: "100%",
           }}
+          lazyPreloadPrevNext={1}
         >
           {entries.map((entry, i) => {
             return (

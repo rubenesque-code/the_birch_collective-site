@@ -27,7 +27,7 @@ const GetInTouch = ({
       Have any questions? Don&apos;t hesitate to contact us...
     </Ui.Section.Description>
 
-    <div className="mt-md grid grid-cols-2 gap-2xl">
+    <div className="mt-md grid gap-2xl sm:grid-cols-2">
       <ContactForm />
 
       <OtherContacts orgDetails={orgDetails} />

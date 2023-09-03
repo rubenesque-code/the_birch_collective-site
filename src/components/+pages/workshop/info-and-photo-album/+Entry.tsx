@@ -9,7 +9,7 @@ type Data = {
 };
 
 const InfoAndPosters = ({ info, photoAlbum }: Data) => (
-  <div className="flex gap-lg">
+  <div className="grid gap-y-xl md:grid-cols-2 md:gap-x-lg">
     {info === "not in use" ? null : (
       <div className="">
         <Info data={info} />
@@ -17,7 +17,7 @@ const InfoAndPosters = ({ info, photoAlbum }: Data) => (
     )}
 
     {photoAlbum === "not in use" ? null : (
-      <div className="min-w-[400px] flex-grow">
+      <div className="relative h-[300px] flex-grow sm:h-[400px]">
         <PhotoAlbum data={photoAlbum} />
       </div>
     )}

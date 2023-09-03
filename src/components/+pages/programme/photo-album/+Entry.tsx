@@ -9,7 +9,7 @@ type Data = ExcludeNotInUse<StaticData["page"]["photoAlbum"]>;
 
 const PhotoAlbum = ({ entries, heading }: Data) => (
   <div className="group/photo-album relative grid w-full place-items-center">
-    <div className="w-3/4">
+    <div className="w-full sm:w-3/4">
       <div className="mb-sm font-display text-2xl text-brandBrown">
         {heading}
       </div>

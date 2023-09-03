@@ -1,10 +1,10 @@
 import { BannerImage } from "~/components/sections/BannerImage";
+import RichSections from "~/components/sections/rich-sections/+Entry";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
 import InfoAndPosters from "./info-and-posters/+Entry";
 import PhotoAlbum from "./photo-album/+Entry";
-import Sections from "./sections/+Entry";
 import SignUp from "./sign-up/+Entry";
 
 import { PageFrame } from "~/frames";
@@ -78,7 +78,7 @@ const ProgrammePage = ({
           <Ui.Page.VerticalSpace />
 
           <Ui.Page.HorizontalSpace>
-            <Sections data={page.sections} />
+            <RichSections data={page.sections} />
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
