@@ -228,8 +228,8 @@ const PageLinksSmall = ({ staticData }: Props) => (
           as="div"
           className="fixed left-0 w-screen"
           style={{
-            height: `calc(100vh - 98px)`,
-            top: 98,
+            height: `calc(100vh - 90px)`,
+            top: 90,
           }}
           enter="transition ease-out duration-150"
           enterFrom="transform opacity-0 translate-x-full"
