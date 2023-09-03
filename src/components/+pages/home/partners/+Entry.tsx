@@ -20,12 +20,14 @@ const Partners = ({
     </Ui.Section.Heading>
 
     {subheading.length ? (
-      <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
+      <Ui.Section.Subheading className="px-md">
+        {subheading}
+      </Ui.Section.Subheading>
     ) : null}
 
     <Ui.Section.VerticalSpace />
 
-    <div className="grid grid-cols-3 gap-md xs:grid-cols-3 md:grid-cols-4 md:gap-md">
+    <div className="grid grid-cols-2 gap-lg xs:grid-cols-3 sm:gap-xl md:grid-cols-4 md:gap-xl">
       {entries.map((partner) => (
         <Partner data={partner} key={partner.id} />
       ))}
@@ -45,7 +47,7 @@ const Partner = ({ data }: { data: Data["entries"][number] }) => (
       className={`${
         !data.url
           ? "pointer-events-none"
-          : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm "
+          : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm"
       }`}
       target="_blank"
     >

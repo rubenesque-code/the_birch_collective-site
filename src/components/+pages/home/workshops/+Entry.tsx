@@ -15,8 +15,7 @@ const Workshops = ({
 }: {
   data: ExcludeNotInUse<StaticData["page"]["workshops"]>;
 }) => (
-  // · mb-xl to account for the text-overlay which is translated by y-xl
-  <div className="mb-xl flex justify-end">
+  <div className="flex justify-end">
     <div className="w-11/12">
       <div className="group/workshops-image relative aspect-[8/5]">
         <StorageImage
@@ -38,34 +37,19 @@ const Workshops = ({
 export default Workshops;
 
 const TextOverlay = ({ body, heading }: { heading: string; body: string }) => (
-  <Link href={route.workshops}>
-    <div className="absolute bottom-0 right-0 w-4/5 translate-y-xl bg-brandBrown/80 p-sm text-white sm:p-6 md:-bottom-10 md:w-1/3 md:translate-y-0 md:p-12 md:pr-12">
-      <div className="text-right font-display text-4xl font-bold tracking-wide xs:text-5xl md:text-6xl ">
-        <Markdown>{heading}</Markdown>
-      </div>
-      <div className="mt-3 text-right sm:text-lg md:block md:w-[300px] md:text-xl">
-        <Markdown>{body}</Markdown>
-      </div>
-      <div className="absolute bottom-4 right-1 hidden text-xl md:right-5 md:inline-block">
-        <Icon.CaretRight weight="bold" />
-      </div>
+  <Link
+    href={route.workshops}
+    as="div"
+    className="absolute bottom-0 right-0 flex w-[240px] flex-col bg-brandBrown/80 p-sm text-white sm:w-[360px] sm:p-6 md:w-1/3 md:p-12 md:pr-12"
+  >
+    <div className="font-display text-3xl font-bold tracking-wide xs:text-3xl sm:text-4xl md:text-6xl">
+      <Markdown>{heading}</Markdown>
+    </div>
+    <div className="custom-prose prose mt-xxs text-sm text-white sm:mt-3 sm:text-lg md:block md:text-xl">
+      <Markdown>{body}</Markdown>
+    </div>
+    <div className="absolute bottom-sm right-xs text-2xl sm:bottom-xl sm:right-sm sm:text-4xl">
+      <Icon.CaretRight weight="bold" />
     </div>
   </Link>
 );
-
-/* const TextOverlay = ({ body, heading }: { heading: string; body: string }) => (
-  <Link href={route.workshops}>
-    <div className="absolute bottom-0 right-0 w-4/5 translate-y-xl bg-brandBrown/80 p-sm text-white sm:p-6 md:-bottom-10 md:w-1/3 md:translate-y-0 md:p-12 md:pr-12">
-      <div className="text-right font-display text-4xl font-bold tracking-wide xs:text-5xl md:text-6xl ">
-        <Markdown>{heading}</Markdown>
-      </div>
-      <div className="mt-3 text-right sm:text-lg md:block md:w-[300px] md:text-xl">
-        <Markdown>{body}</Markdown>
-      </div>
-      <div className="absolute bottom-4 right-1 hidden text-xl md:right-5 md:inline-block">
-        <Icon.CaretRight weight="bold" />
-      </div>
-    </div>
-  </Link>
-);
- */

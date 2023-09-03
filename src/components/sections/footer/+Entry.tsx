@@ -20,45 +20,116 @@ type Data = {
 
 // todo: responsiveness needs going over!
 
-const Footer = ({ footer, linkLabels, logoImg, orgDetails }: Data) => (
-  <div className="grid items-center gap-x-xl md:grid-cols-2">
+const Footer = (data: Data) => (
+  <>
+    <FooterLrg {...data} />
+    <FooterSml {...data} />
+  </>
+);
+
+export default Footer;
+
+const FooterLrg = ({ footer, linkLabels, logoImg, orgDetails }: Data) => (
+  <div className="hidden items-center gap-[4.5rem] md:flex">
     <div className="flex-grow">
       <SocialMediaLinks socialMediaLinks={orgDetails.socialMediaLinks} />
+
       <div className="mt-md">
         <PageLinks linkLabels={linkLabels} />
       </div>
-      <div className="mt-md flex gap-sm">
-        <InfoRow footer={footer} />
 
-        <div className="flex flex-col items-center gap-sm md:hidden">
-          {logoImg ? (
-            <div className="relative aspect-[1/1] w-[50px] opacity-90">
-              <StorageImage urls={logoImg?.urls} />
-            </div>
-          ) : null}
-
-          <div className="relative aspect-[1/1] w-[75px]">
-            <NextImage
-              alt=""
-              src={livingWageLogo}
-              fill
-              placeholder="blur"
-              style={{
-                objectFit: "contain",
-              }}
-            />
-          </div>
-        </div>
+      <div className="mt-md">
+        <InfoRowLrg footer={footer} />
       </div>
+
       <div className="mt-md">
         <BottomRow contact={orgDetails.contact} footer={footer} />
       </div>
     </div>
+
     <SecondColumnLrg logoImg={logoImg} />
   </div>
 );
 
-export default Footer;
+const SecondColumnLrg = ({ logoImg }: { logoImg: Data["logoImg"] }) => (
+  <div className="flex items-center gap-lg">
+    <div className="relative aspect-[1/1] w-[100px]">
+      <NextImage
+        alt=""
+        src={livingWageLogo}
+        fill
+        placeholder="blur"
+        style={{
+          objectFit: "contain",
+        }}
+      />
+    </div>
+
+    {logoImg ? (
+      <div className="relative aspect-[1/1] w-[70px]">
+        <StorageImage urls={logoImg?.urls} />
+      </div>
+    ) : null}
+  </div>
+);
+
+const FooterSml = ({ footer, linkLabels, logoImg, orgDetails }: Data) => (
+  <div className="flex flex-col gap-md md:hidden">
+    <SocialMediaLinks socialMediaLinks={orgDetails.socialMediaLinks} />
+
+    <PageLinks linkLabels={linkLabels} />
+
+    <InfoRowSml footer={footer} logoImg={logoImg} />
+
+    <BottomRow contact={orgDetails.contact} footer={footer} />
+  </div>
+);
+
+const InfoRowSml = ({
+  footer,
+  logoImg,
+}: {
+  footer: Data["footer"];
+  logoImg: Data["logoImg"];
+}) => (
+  <div className="flex flex-col gap-xs">
+    <div className="flex items-center justify-between">
+      <div className="text-gray-800">
+        <Markdown>{footer.orgDescription}</Markdown>
+      </div>
+
+      <div className="flex w-[100px] flex-shrink-0 justify-center">
+        {logoImg ? (
+          <div className="relative aspect-[1/1] w-[50px]">
+            <StorageImage urls={logoImg?.urls} />
+          </div>
+        ) : (
+          <span />
+        )}
+      </div>
+    </div>
+
+    <div className="flex items-center justify-between">
+      <div className="text-gray-800">
+        <Markdown>{footer.livingWageEmployer.text}</Markdown>
+      </div>
+
+      <div className="flex w-[100px] flex-shrink-0 justify-center">
+        <div className="relative aspect-[1/1] w-[60px]">
+          <NextImage
+            alt=""
+            src={livingWageLogo}
+            fill
+            placeholder="blur"
+            style={{
+              objectFit: "contain",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const SocialMediaLinks = ({
   socialMediaLinks,
@@ -155,7 +226,7 @@ const PageLink = ({
   </Link>
 );
 
-const InfoRow = ({ footer }: { footer: Data["footer"] }) => (
+const InfoRowLrg = ({ footer }: { footer: Data["footer"] }) => (
   <div className="">
     <div className="text-gray-800">
       <Markdown>{footer.orgDescription}</Markdown>
@@ -163,27 +234,6 @@ const InfoRow = ({ footer }: { footer: Data["footer"] }) => (
     <div className="mt-sm text-gray-800 md:mt-xxxs">
       <Markdown>{footer.livingWageEmployer.text}</Markdown>
     </div>
-  </div>
-);
-
-const SecondColumnLrg = ({ logoImg }: { logoImg: Data["logoImg"] }) => (
-  <div className="hidden items-center gap-lg md:flex">
-    <div className="relative aspect-[1/1] w-[100px]">
-      <NextImage
-        alt=""
-        src={livingWageLogo}
-        fill
-        placeholder="blur"
-        style={{
-          objectFit: "contain",
-        }}
-      />
-    </div>
-    {logoImg ? (
-      <div className="relative aspect-[1/1] w-[70px]">
-        <StorageImage urls={logoImg?.urls} />
-      </div>
-    ) : null}
   </div>
 );
 

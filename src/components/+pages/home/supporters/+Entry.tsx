@@ -25,7 +25,7 @@ const Supporters = ({
 
     <Ui.Section.VerticalSpace />
 
-    <div className="grid grid-cols-3 gap-md xs:grid-cols-3 md:grid-cols-4 md:gap-md">
+    <div className="grid grid-cols-2 gap-lg xs:grid-cols-3 sm:gap-xl md:grid-cols-4 md:gap-xl">
       {entries.map((supporter) => (
         <Supporter data={supporter} key={supporter.id} />
       ))}
