@@ -178,37 +178,37 @@ const SocialMediaLinks = ({
 const PageLinks = ({ linkLabels }: { linkLabels: Data["linkLabels"] }) => (
   <div className="flex max-w-[500px] flex-wrap items-center gap-x-lg gap-y-md">
     <PageLink
-      href="/programmes"
+      href={route.programmes}
       text={strWithFallback(linkLabels.programmes, "programmes")}
     />
 
     <PageLink
-      href="/workshops"
+      href={route.workshops}
       text={strWithFallback(linkLabels.workshops, "workshops")}
     />
 
     <PageLink
-      href="/donate"
+      href={route.donate}
       text={strWithFallback(linkLabels.donate, "donate")}
     />
 
     <PageLink
-      href="/volunteer"
+      href={route.volunteer}
       text={strWithFallback(linkLabels.volunteer, "volunteer")}
     />
 
     <PageLink
-      href="/about"
+      href={route.about}
       text={strWithFallback(linkLabels.aboutUs, "about")}
     />
 
     <PageLink
-      href="/theory-of-change"
+      href={route.theoryOfChange}
       text={strWithFallback(linkLabels.theoryOfChange, "theory of change")}
     />
 
     <PageLink
-      href="/testimonials"
+      href={route.testimonials}
       text={strWithFallback(linkLabels.testimonials, "testimonials")}
     />
   </div>
@@ -249,11 +249,13 @@ const BottomRow = ({
       {contact.phoneNumber ? (
         <div className="text-brandGreen">{contact.phoneNumber}</div>
       ) : null}
+
       {contact.email ? (
         <div className="text-brandGreen">{contact.email}</div>
       ) : null}
+
       <WithTooltip text="go to our message form">
-        <Link href={route.message} passHref>
+        <Link href={route.getInTouch} passHref>
           <div className="text-brandGreen">{footer.message}</div>
         </Link>
       </WithTooltip>

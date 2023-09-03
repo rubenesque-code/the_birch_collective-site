@@ -40,15 +40,15 @@ const TestimonialsPage = ({
         </>
       ) : null}
 
-      {page.sections.length ? (
-        <>
-          <Ui.Page.VerticalSpace />
+      <Ui.Page.VerticalSpace />
 
-          <Ui.Page.HorizontalSpace>
-            <RichSections data={page.sections} />
-          </Ui.Page.HorizontalSpace>
-        </>
-      ) : null}
+      <Ui.Page.HorizontalSpace>
+        {page.sections.length ? (
+          <RichSections data={page.sections} />
+        ) : (
+          <p>Check back later...</p>
+        )}
+      </Ui.Page.HorizontalSpace>
     </PageFrame>
   );
 };

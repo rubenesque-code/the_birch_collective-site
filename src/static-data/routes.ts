@@ -18,5 +18,4 @@ export const route = {
   workshops: "/workshops",
   theoryOfChange: "/theory-of-change",
   testimonials: "/testimonials",
-  message: "/about#message",
 } as const;

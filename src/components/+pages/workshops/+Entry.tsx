@@ -2,11 +2,12 @@ import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
+import MainText from "./main-text/+Entry";
 import WorkshopsList from "./workshops-list/+Entry";
 
 import { PageFrame } from "~/frames";
 
-const ProgrammePage = ({
+const WorkshopsPage = ({
   staticData: {
     footer,
     header,
@@ -43,7 +44,8 @@ const ProgrammePage = ({
         <>
           <Ui.Page.HorizontalSpace>
             <Ui.Section.VerticalSpace />
-            <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
+
+            <MainText aboutAmy={page.aboutAmy} mainText={page.mainText} />
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
@@ -63,4 +65,4 @@ const ProgrammePage = ({
   );
 };
 
-export default ProgrammePage;
+export default WorkshopsPage;

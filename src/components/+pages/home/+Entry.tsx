@@ -45,6 +45,7 @@ import { PageFrame } from "~/frames";
 // □ 404 page
 // □ seo
 // □ smooth scroll to section (with id)
+// □ better external link functionality on touch-screen is: click once -> tooltip show saying 'click again to go to page' -> ...
 
 // □ different max widths for text sections
 

@@ -41,6 +41,8 @@ export const getStaticProps: GetStaticProps<StaticData> = async () => {
 
     page.bannerImage.dbConnections.imageId,
 
+    page.aboutAmy.image.dbConnections.imageId,
+
     ...connectedDocsSelfValidated.workshops.flatMap((workshop) => [
       workshop.bannerImage.dbConnections.imageId,
       workshop.summary.image.dbConnections.imageId,
