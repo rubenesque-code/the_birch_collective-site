@@ -12,6 +12,7 @@ export const BannerImage = ({ data }: { data: BannerImageType }) => (
       urls={data.connectedImage.urls}
       position={data.position}
       loading="eager"
+      sizes="100vw"
     />
 
     {data.infoPopover ? (

@@ -52,6 +52,7 @@ const Testimonial = ({
             urls={image.connectedImage.urls}
             position={image.position}
             isCircle
+            sizes="120px"
           />
         </div>
       )}

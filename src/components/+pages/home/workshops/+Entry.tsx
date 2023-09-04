@@ -21,6 +21,7 @@ const Workshops = ({
         <StorageImage
           urls={image.connectedImage.urls}
           position={image.position}
+          sizes="80vw"
         />
         <TextOverlay
           heading={strWithFallback(textOverlay.heading, "Workshops")}

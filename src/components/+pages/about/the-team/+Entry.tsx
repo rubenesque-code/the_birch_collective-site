@@ -48,6 +48,7 @@ const Member = ({
         urls={image.connectedImage.urls}
         isCircle
         position={image.position}
+        sizes="200px"
       />
     </div>
     <div className="mt-md">

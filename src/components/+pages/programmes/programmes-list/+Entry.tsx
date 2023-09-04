@@ -46,6 +46,7 @@ const Programme = ({
           <StorageImage
             urls={summary.image.connectedImage.urls}
             position={summary.image.position}
+            sizes="400px"
           />
         </div>
         <div>

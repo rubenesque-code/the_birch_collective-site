@@ -53,7 +53,11 @@ const Partner = ({ data }: { data: Data["entries"][number] }) => (
     >
       <div className="relative">
         <div className="relative aspect-[16/9]">
-          <StorageImage urls={data.connectedImage.urls} objectFit="contain" />
+          <StorageImage
+            urls={data.connectedImage.urls}
+            objectFit="contain"
+            sizes="200px"
+          />
         </div>
       </div>
     </a>

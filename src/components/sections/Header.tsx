@@ -107,7 +107,7 @@ const LogoAndOrgName = ({ staticData }: Props) => (
     <div className="flex cursor-pointer flex-nowrap items-center gap-xs">
       {staticData.logoImg ? (
         <div className="relative aspect-[1/1] w-[45px] xs:w-[50px] sm:w-[60px]">
-          <StorageImage urls={staticData.logoImg.urls} />
+          <StorageImage urls={staticData.logoImg.urls} sizes="100px" />
         </div>
       ) : null}
 

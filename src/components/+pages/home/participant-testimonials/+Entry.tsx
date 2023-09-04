@@ -78,6 +78,7 @@ const Testimonial = ({
         urls={testimonial.image.connectedImage.urls}
         position={testimonial.image.position}
         loading={index < 2 ? "eager" : "lazy"}
+        sizes="(max-width: 640px) 90vw, (max-width: 900px) 45vw, 30vw"
       />
     </div>
     <div className="absolute bottom-0 z-10 h-4/5 w-full bg-gradient-to-t from-black to-transparent">

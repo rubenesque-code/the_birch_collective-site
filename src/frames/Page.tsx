@@ -1,6 +1,4 @@
 import React from "react";
-import { useMeasure } from "@react-hookz/web";
-import { usePrevious, useWindowScroll, useWindowSize } from "react-use";
 
 import { Footer, Header } from "~/components/sections";
 import Ui from "~/components/ui-elements";
@@ -8,6 +6,51 @@ import Ui from "~/components/ui-elements";
 import { type CommonData } from "~/pre-render-helpers/types";
 
 export const PageFrame = ({
+  footer,
+  header,
+  linkLabels,
+  logoImage,
+  orgDetails,
+  children: pageBody,
+  head,
+}: {
+  children: React.ReactNode | React.ReactNode[];
+  head: React.ReactElement;
+} & CommonData) => {
+  return (
+    <>
+      {head}
+
+      <div className="w-screen overflow-hidden">
+        <Header
+          staticData={{
+            header: header,
+            linkLabels: linkLabels,
+            orgDetails: orgDetails,
+            logoImg: logoImage,
+          }}
+        />
+
+        {pageBody}
+
+        <Ui.Page.VerticalSpace sizing="double" />
+
+        <Ui.Page.HorizontalSpace>
+          <Footer
+            footer={footer}
+            linkLabels={linkLabels}
+            logoImg={logoImage}
+            orgDetails={orgDetails}
+          />
+        </Ui.Page.HorizontalSpace>
+
+        <Ui.Page.VerticalSpace />
+      </div>
+    </>
+  );
+};
+
+/* export const PageFrame = ({
   footer,
   header,
   linkLabels,
@@ -78,3 +121,4 @@ export const PageFrame = ({
     </>
   );
 };
+ */

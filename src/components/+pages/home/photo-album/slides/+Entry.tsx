@@ -36,6 +36,7 @@ const Slides = ({ data }: { data: Data }) => {
                 <StorageImage
                   urls={image.connectedImage.urls}
                   position={image.position}
+                  sizes="(max-width: 640px) 90vw, 70vw"
                 />
               </div>
             </SwiperSlide>

@@ -31,21 +31,19 @@ import { PageFrame } from "~/frames";
 // □ can use phone number + email as actual text please?
 
 // MUST DO
-// □ not putting placeholder data in cms so go over with local data too. e.g. for professional testimonials.
-// □ go over all pages + elements responsiveness
-// □ seo
 // □ donate functionality. inc donate-success page
 
 // OTHER
+// □ https://pagespeed.web.dev/ suggestions
 // □ apply dompurify
-// □ image blur up - working well on asatic
+// □ image blur up - working well on asatic. See issue (https://github.com/vercel/next.js/issues/42140)
 // □ headings subheading abstraction
+// □ go over rest of storage images. Got up to programme page. (working through how pages appear in header)
 // □ fixed header as on asatic
 // □ probs should process singles e.g. social media links might not be in use
 // □ put get in touch form on each page? Yes, but collapsable?
 // □ apply str fallbacks
 // □ 404 page
-// □ seo
 // □ smooth scroll to section (with id)
 // □ better external link functionality on touch-screen is: click once -> tooltip show saying 'click again to go to page' -> ...
 // □ scroll bar for body only (not over header)

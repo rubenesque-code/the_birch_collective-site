@@ -63,7 +63,7 @@ const SecondColumnLrg = ({ logoImg }: { logoImg: Data["logoImg"] }) => (
 
     {logoImg ? (
       <div className="relative aspect-[1/1] w-[70px]">
-        <StorageImage urls={logoImg?.urls} />
+        <StorageImage urls={logoImg?.urls} sizes="100px" />
       </div>
     ) : null}
   </div>
@@ -97,7 +97,7 @@ const InfoRowSml = ({
       <div className="flex w-[100px] flex-shrink-0 justify-center">
         {logoImg ? (
           <div className="relative aspect-[1/1] w-[50px]">
-            <StorageImage urls={logoImg?.urls} />
+            <StorageImage urls={logoImg?.urls} sizes="100px" />
           </div>
         ) : (
           <span />

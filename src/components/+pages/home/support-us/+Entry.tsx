@@ -44,6 +44,7 @@ const Donate = ({
       <StorageImage
         urls={image.connectedImage.urls}
         position={image.position}
+        sizes="(max-width: 768px) 50vw, 90vw"
       />
 
       <Link

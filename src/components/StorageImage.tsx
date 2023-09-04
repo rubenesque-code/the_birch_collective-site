@@ -12,6 +12,7 @@ type Props = { urls: MyDb["image"]["urls"] } & {
   isCircle?: boolean;
   onImgLoaded?: () => void;
   loading?: "lazy" | "eager";
+  sizes?: string;
 };
 
 export const StorageImage = ({
@@ -21,6 +22,7 @@ export const StorageImage = ({
   isCircle = false,
   onImgLoaded,
   loading = "lazy",
+  sizes,
 }: Props) => {
   // const [blurIsLoaded, setBlurIsLoaded] = React.useState(false);
   // const [imgIsLoaded, setImgIsLoaded] = React.useState(false);
@@ -45,6 +47,7 @@ export const StorageImage = ({
           onImgLoaded();
         }
       }}
+      sizes={sizes}
     />
   );
 };
