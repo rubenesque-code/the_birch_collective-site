@@ -46,8 +46,8 @@ const Bullets = ({ data }: { data: Data["entries"] }) => (
 
 const Entry = ({ data }: { data: Data["entries"][number] }) => (
   <div className="group/entry relative flex w-full max-w-[62ch] items-center gap-sm">
-    <div className="text-3xl text-brandGreen">
-      <Icon.AboutUs />
+    <div className="w-[25px]  text-brandGreen">
+      <Icon.AboutUs size="3x" />
     </div>
 
     <div className="custom-prose prose flex-grow text-lg sm:text-xl">
