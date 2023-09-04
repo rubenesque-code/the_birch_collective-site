@@ -3,6 +3,7 @@ import "swiper/css";
 import React from "react";
 import { Transition } from "@headlessui/react";
 import { saveAs } from "file-saver";
+import { createPortal } from "react-dom";
 import { useMeasure } from "react-use";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -45,14 +46,6 @@ const Slides = ({
   const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
   const [showZoomedImage, setShowZoomedImage] = React.useState(false);
-
-  React.useEffect(() => {
-    if (showZoomedImage) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [showZoomedImage]);
 
   const currentSlide = entries[currentSlideIndex];
 
@@ -228,36 +221,30 @@ const ZoomedImage = ({
   show: boolean;
   image: MyDb["image"];
   close: () => void;
-}) => (
-  <Transition show={show}>
-    <Transition.Child
-      as="div"
-      className="fixed inset-0 z-[60] overflow-auto bg-white/90"
-      enter="transition ease-out duration-100"
-      enterFrom="transform opacity-0 scale-95"
-      enterTo="transform opacity-100 scale-100"
-      leave="transition ease-in duration-75"
-      leaveFrom="transform opacity-100 scale-100"
-      leaveTo="transform opacity-0 scale-95"
-    >
-      {/* <div className="flex justify-end">
+}) =>
+  createPortal(
+    <Transition show={show}>
+      <Transition.Child
+        as="div"
+        className="fixed inset-0 z-[60] grid place-items-center overflow-auto bg-white/90"
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
         <div
-          className="cursor-pointer rounded-md px-sm py-xs transition-all duration-75 ease-in-out hover:bg-gray-100"
+          className={`relative w-full min-w-[400px] cursor-zoom-out`}
+          style={{
+            aspectRatio:
+              image.naturalDimensions.width / image.naturalDimensions.height,
+          }}
           onClick={close}
         >
-          Close
+          <StorageImage urls={image.urls} objectFit="contain" />
         </div>
-      </div> */}
-      <div
-        className={`relative w-full min-w-[400px]`}
-        style={{
-          aspectRatio:
-            image.naturalDimensions.width / image.naturalDimensions.height,
-        }}
-        onClick={close}
-      >
-        <StorageImage urls={image.urls} objectFit="contain" />
-      </div>
-    </Transition.Child>
-  </Transition>
-);
+      </Transition.Child>
+    </Transition>,
+    document.body,
+  );

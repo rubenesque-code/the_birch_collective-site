@@ -31,16 +31,15 @@ import { PageFrame } from "~/frames";
 // □ can use phone number + email as actual text please?
 
 // MUST DO
+// □ sign up mobile bug
 // □ donate functionality. inc donate-success page
 
 // TO DO
-// □ unset scroll when popup
-// □ better navbar
 
 // OTHER
 // □ https://pagespeed.web.dev/ suggestions
 // □ apply dompurify
-// □ image blur up - working well on asatic. See issue (https://github.com/vercel/next.js/issues/42140)
+// □ image blur up. See issue (https://github.com/vercel/next.js/issues/42140)
 // □ headings subheading abstraction
 // □ go over rest of storage images. Got up to programme page. (working through how pages appear in header)
 // □ fixed header as on asatic
