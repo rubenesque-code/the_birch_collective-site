@@ -46,7 +46,7 @@ const Bullets = ({ data }: { data: Data["entries"] }) => (
 
 const Entry = ({ data }: { data: Data["entries"][number] }) => (
   <div className="group/entry relative flex w-full max-w-[62ch] items-center gap-sm">
-    <div className="w-[35px]  text-brandGreen">
+    <div className="w-[30px] shrink-0 text-brandGreen opacity-80">
       <Icon.AboutUs size="3x" />
     </div>
 

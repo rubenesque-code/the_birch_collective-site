@@ -490,7 +490,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
         showQuickPrevButton={currentSlideIndex > 0}
         textSlides={
           <Swiper
-            spaceBetween={0}
+            spaceBetween={10}
             slidesPerView={1}
             direction="vertical"
             onSwiper={(swiper) => setSwiper(swiper)}

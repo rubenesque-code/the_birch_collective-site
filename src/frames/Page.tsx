@@ -36,6 +36,8 @@ export const PageFrame = ({
         <Ui.Page.VerticalSpace sizing="double" />
 
         <Ui.Page.HorizontalSpace>
+          <Ui.Page.VerticalSpace />
+
           <Footer
             footer={footer}
             linkLabels={linkLabels}

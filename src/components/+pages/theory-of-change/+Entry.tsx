@@ -46,7 +46,7 @@ const TestimonialsPage = ({
         {page.sections.length ? (
           <RichSections data={page.sections} />
         ) : (
-          <p>Check back later...</p>
+          <p className="text-gray-700">Please check back later...</p>
         )}
       </Ui.Page.HorizontalSpace>
     </PageFrame>

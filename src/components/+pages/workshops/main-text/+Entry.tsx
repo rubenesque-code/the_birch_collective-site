@@ -38,11 +38,23 @@ const AboutAmy = ({
       <Markdown>{strWithFallback(aboutAmy.heading, "Meet Amy")}</Markdown>
     </h3>
 
-    <div className="mt-xxs flex justify-between gap-md">
-      <div className="w-full">
+    <div className="flex w-full justify-between gap-md sm:mt-xxs">
+      <div>
         {aboutAmy.text !== "not in use" ? (
-          <div className="custom-prose prose mt-sm w-full max-w-full">
-            {aboutAmy.text}
+          <div className="flex items-center justify-between gap-md">
+            <div className="custom-prose prose mt-sm w-full max-w-full">
+              {aboutAmy.text}
+            </div>
+
+            {aboutAmy.image !== "not in use" ? (
+              <div className="relative h-[100px] w-[100px] shrink-0 rounded-full border-4 border-brandLightBrown sm:hidden">
+                <StorageImage
+                  urls={aboutAmy.image.connectedImage.urls}
+                  isCircle
+                  position={aboutAmy.image.position}
+                />
+              </div>
+            ) : null}
           </div>
         ) : null}
 
@@ -61,7 +73,7 @@ const AboutAmy = ({
       </div>
 
       {aboutAmy.image !== "not in use" ? (
-        <div className="relative aspect-[1/1] w-[120px] shrink-0 rounded-full border-4 border-brandLightBrown">
+        <div className="relative hidden h-[100px] w-[100px] shrink-0 rounded-full border-4 border-brandLightBrown sm:block">
           <StorageImage
             urls={aboutAmy.image.connectedImage.urls}
             isCircle

@@ -33,6 +33,10 @@ import { PageFrame } from "~/frames";
 // MUST DO
 // □ donate functionality. inc donate-success page
 
+// TO DO
+// □ unset scroll when popup
+// □ better navbar
+
 // OTHER
 // □ https://pagespeed.web.dev/ suggestions
 // □ apply dompurify
@@ -45,6 +49,7 @@ import { PageFrame } from "~/frames";
 // □ apply str fallbacks
 // □ 404 page
 // □ smooth scroll to section (with id)
+// □ should store sign up form entries when click away and between pages.
 // □ better external link functionality on touch-screen is: click once -> tooltip show saying 'click again to go to page' -> ...
 // □ scroll bar for body only (not over header)
 // □ programme posters scroll on sm devices is a bit funny for portrait images

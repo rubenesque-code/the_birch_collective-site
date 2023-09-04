@@ -67,17 +67,19 @@ Page.Subheading = Subheading;
 
 const VerticalSpace = ({
   sizing = "default",
+  className,
 }: {
+  className?: string;
   sizing?: "half" | "default" | "double";
 }) => (
   <div
-    className={
+    className={`${className || ""} ${
       sizing === "half"
         ? "mt-6 xs:mt-8 lg:mt-12"
         : sizing === "double"
         ? "mt-16 xs:mt-32 lg:mt-48"
         : "mt-12 xs:mt-16 lg:mt-24"
-    }
+    } `}
   />
 );
 
