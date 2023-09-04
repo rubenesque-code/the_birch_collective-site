@@ -42,10 +42,10 @@ const Programmes = ({
             key={programme.id}
           >
             <div className="flex flex-col items-center">
-              <span className="text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
+              <span className="max-w-[350px] text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
                 <Markdown>{programme.title}</Markdown>
               </span>
-              <span className="mt-xxs uppercase text-brandBrown opacity-90 xs:text-lg lg:text-xl">
+              <span className="mt-xxs max-w-[350px] uppercase text-brandBrown opacity-90 xs:text-lg  lg:text-xl">
                 <Markdown>{programme.subtitle}</Markdown>
               </span>
               <p className="custom-prose prose mt-xxs max-w-[290px] text-center text-base font-light">
