@@ -492,7 +492,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
           <Swiper
             spaceBetween={30}
             slidesPerView={1}
-            direction="vertical"
+            direction="horizontal"
             onSwiper={(swiper) => setSwiper(swiper)}
             style={{
               position: "absolute",
