@@ -18,16 +18,12 @@ type Data = {
   logoImg: MyDb["image"] | null;
 };
 
-// todo: responsiveness needs going over!
-
-const Footer = (data: Data) => (
+export const Footer = (data: Data) => (
   <>
     <FooterLrg {...data} />
     <FooterSml {...data} />
   </>
 );
-
-export default Footer;
 
 const FooterLrg = ({ footer, linkLabels, logoImg, orgDetails }: Data) => (
   <div className="hidden items-center gap-[4.5rem] md:flex">

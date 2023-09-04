@@ -73,7 +73,7 @@ const Testimonial = ({
     </div>
 
     <div
-      className={`custom-prose prose mt-sm w-[600px] border-gray-100 ${
+      className={`custom-prose prose mt-sm max-w-[600px] border-gray-100 ${
         align === "right"
           ? "ml-auto border-r-4 pr-md text-right"
           : "border-l-4 pl-md"

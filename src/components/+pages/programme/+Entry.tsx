@@ -1,5 +1,4 @@
-import { BannerImage } from "~/components/sections/BannerImage";
-import RichSections from "~/components/sections/rich-sections/+Entry";
+import { BannerImage, Head, RichSections } from "~/components/sections";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -16,6 +15,7 @@ const ProgrammePage = ({
 }) => {
   return (
     <PageFrame
+      head={<Head />}
       footer={footer}
       header={header}
       linkLabels={linkLabels}

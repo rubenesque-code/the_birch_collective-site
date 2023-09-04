@@ -1,6 +1,6 @@
 import Markdown from "markdown-to-jsx";
 
-import { BannerImage } from "~/components/sections/BannerImage";
+import { BannerImage, Head } from "~/components/sections";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -23,20 +23,22 @@ import { PageFrame } from "~/frames";
 
 // GO LIVE CHECKLIST
 // □ get email codes from formsubmit email each member
-// □ change formsubmit endpoints in formsubmit.ts
-// □ env values
+// □ change formsubmit endpoints in formsubmit.ts (use codes rather than emails)
+// □ env values - will probably change to vercel project that has the domain setup so will have to change env values!!
 
 // COMMUNICATE TO TIM
 // □ each member needs to activate formsubmit. Plus give me provided code.
+// □ can use phone number + email as actual text please?
 
 // MUST DO
 // □ not putting placeholder data in cms so go over with local data too. e.g. for professional testimonials.
 // □ go over all pages + elements responsiveness
+// □ seo
 // □ donate functionality. inc donate-success page
-// □ check styling inc. responsivness with local db data: programme photo album; career entry; professional testimonial.
 
 // OTHER
 // □ apply dompurify
+// □ image blur up - working well on asatic
 // □ headings subheading abstraction
 // □ fixed header as on asatic
 // □ probs should process singles e.g. social media links might not be in use
@@ -46,6 +48,8 @@ import { PageFrame } from "~/frames";
 // □ seo
 // □ smooth scroll to section (with id)
 // □ better external link functionality on touch-screen is: click once -> tooltip show saying 'click again to go to page' -> ...
+// □ scroll bar for body only (not over header)
+// □ programme posters scroll on sm devices is a bit funny for portrait images
 
 // □ different max widths for text sections
 
@@ -66,6 +70,7 @@ const HomePage = ({
   return (
     <>
       <PageFrame
+        head={<Head />}
         footer={footer}
         header={header}
         linkLabels={linkLabels}

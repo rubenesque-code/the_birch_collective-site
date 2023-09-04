@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 html {
-  @apply scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500;
+  @apply w-screen overflow-x-hidden scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500;
+  /* @apply overflow-hidden; */
 }
 * {
   -webkit-tap-highlight-color: transparent;

@@ -1,4 +1,4 @@
-import { BannerImage } from "~/components/sections/BannerImage";
+import { BannerImage, Head } from "~/components/sections";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
@@ -14,6 +14,7 @@ const AboutPage = ({
 }) => {
   return (
     <PageFrame
+      head={<Head />}
       footer={footer}
       header={header}
       linkLabels={linkLabels}

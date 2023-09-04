@@ -8,7 +8,7 @@ import type { RichSection } from "~/types/database/_common";
 
 type Data = RichSection[];
 
-const RichSections = ({ data }: { data: Data }) => (
+export const RichSections = ({ data }: { data: Data }) => (
   <div className="grid grid-cols-1">
     {data.map((section) => (
       <React.Fragment key={section.id}>
@@ -18,8 +18,6 @@ const RichSections = ({ data }: { data: Data }) => (
     ))}
   </div>
 );
-
-export default RichSections;
 
 const Section = ({ bullets, colour, description, title }: Data[number]) => (
   <div className="group/section">

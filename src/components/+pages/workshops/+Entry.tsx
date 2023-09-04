@@ -1,3 +1,4 @@
+import { Head } from "~/components/sections";
 import { BannerImage } from "~/components/sections/BannerImage";
 import Ui from "~/components/ui-elements";
 
@@ -22,6 +23,7 @@ const WorkshopsPage = ({
 }) => {
   return (
     <PageFrame
+      head={<Head />}
       footer={footer}
       header={header}
       linkLabels={linkLabels}

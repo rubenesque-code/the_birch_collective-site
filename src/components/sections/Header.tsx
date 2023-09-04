@@ -18,18 +18,14 @@ type Props = {
   };
 };
 
-const Header = ({ staticData }: Props) => {
-  return (
-    <div className="flex items-center justify-between px-4 py-6 lg:px-8 2xl:px-12">
-      <LogoAndOrgName staticData={staticData} />
+export const Header = ({ staticData }: Props) => (
+  <div className="flex items-center justify-between px-4 py-6 lg:px-8 2xl:px-12">
+    <LogoAndOrgName staticData={staticData} />
 
-      <PageLinksSmall staticData={staticData} />
-      <PageLinksLarge staticData={staticData} />
-    </div>
-  );
-};
-
-export default Header;
+    <PageLinksSmall staticData={staticData} />
+    <PageLinksLarge staticData={staticData} />
+  </div>
+);
 
 const PageLinksLarge = ({ staticData }: Props) => (
   <div className="hidden flex-grow justify-end lg:flex">
@@ -210,7 +206,7 @@ const PageLinksSmall = ({ staticData }: Props) => (
       <>
         <OnPageLinksSmallOpen isOpen={open} />
 
-        <Menu.Button className="text-2xl">
+        <Menu.Button className="text-2xl sm:text-3xl">
           {({ open }) =>
             !open ? (
               <span className="text-brandBrown">
