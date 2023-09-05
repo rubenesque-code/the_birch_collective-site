@@ -60,9 +60,7 @@ export const PageFrame = ({
       {head}
 
       <div
-        className={`fixed left-0 top-0 z-50 w-full bg-white transition-transform duration-300 ease-in-out ${
-          hideHeader ? "-translate-y-full" : ""
-        }`}
+        className={`fixed left-0 top-0 z-50 w-full bg-white transition-transform duration-300 ease-in-out`}
         style={{
           transform:
             hideHeader && headerHeight ? `translateY(-${headerHeight}px)` : "",

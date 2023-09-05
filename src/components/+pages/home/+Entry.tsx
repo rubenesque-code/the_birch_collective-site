@@ -37,6 +37,8 @@ import { PageFrame } from "~/frames";
 
 // OTHER
 // □ pagespeed.web.dev suggestions
+// □ use image linter extension
+// □ head - title for pages
 // □ apply dompurify
 // □ image blur up. See issue (https://github.com/vercel/next.js/issues/42140)
 // □ go over rest of storage images and apply 'sizes'. Got up to programme page. (working through how pages appear in header)
