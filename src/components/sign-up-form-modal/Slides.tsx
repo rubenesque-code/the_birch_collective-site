@@ -490,7 +490,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
         showQuickPrevButton={currentSlideIndex > 0}
         textSlides={
           <Swiper
-            spaceBetween={30}
+            spaceBetween={10}
             slidesPerView={1}
             direction="horizontal"
             onSwiper={(swiper) => setSwiper(swiper)}
@@ -934,13 +934,13 @@ const SlidesContainer = (props: {
             <div
               className={`cursor-pointer rounded-sm bg-brandLightOrange text-lg text-white opacity-80 transition-opacity ease-in-out hover:opacity-100`}
             >
-              <Icon.CaretUp weight="bold" />
+              <Icon.CaretRight weight="bold" />
             </div>
 
             <div
               className={`cursor-pointer rounded-sm bg-brandLightOrange text-lg text-white opacity-80 transition-opacity ease-in-out hover:opacity-100`}
             >
-              <Icon.CaretDown weight="bold" />
+              <Icon.CaretLeft weight="bold" />
             </div>
           </div>
           {/* invisible element end */}
@@ -964,7 +964,7 @@ const SlidesContainer = (props: {
                 }`}
                 onClick={props.goPrev}
               >
-                <Icon.CaretUp weight="bold" />
+                <Icon.CaretLeft weight="bold" />
               </div>
             </WithTooltip>
 
@@ -977,7 +977,7 @@ const SlidesContainer = (props: {
                 }`}
                 onClick={props.goNext}
               >
-                <Icon.CaretDown weight="bold" />
+                <Icon.CaretRight weight="bold" />
               </div>
             </WithTooltip>
           </div>

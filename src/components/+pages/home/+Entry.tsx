@@ -28,36 +28,26 @@ import { PageFrame } from "~/frames";
 
 // COMMUNICATE TO TIM
 // □ each member needs to activate formsubmit. Plus give me provided code.
-// □ can use phone number + email as actual text please?
+// □ can use phone number + email as actual text (please)?
 
 // MUST DO
-// □ sign up mobile bug
 // □ donate functionality. inc donate-success page
 
 // TO DO
 
 // OTHER
-// □ https://pagespeed.web.dev/ suggestions
+// □ pagespeed.web.dev suggestions
 // □ apply dompurify
 // □ image blur up. See issue (https://github.com/vercel/next.js/issues/42140)
-// □ headings subheading abstraction
-// □ go over rest of storage images. Got up to programme page. (working through how pages appear in header)
-// □ fixed header as on asatic
+// □ go over rest of storage images and apply 'sizes'. Got up to programme page. (working through how pages appear in header)
 // □ probs should process singles e.g. social media links might not be in use
 // □ put get in touch form on each page? Yes, but collapsable?
-// □ apply str fallbacks
 // □ 404 page
 // □ smooth scroll to section (with id)
 // □ should store sign up form entries when click away and between pages.
 // □ better external link functionality on touch-screen is: click once -> tooltip show saying 'click again to go to page' -> ...
-// □ scroll bar for body only (not over header)
-// □ programme posters scroll on sm devices is a bit funny for portrait images
-
 // □ different max widths for text sections
-
-// □ image blur in working? image load in bg
-// □ bug on testimonials slider when hover central slide has transparency
-// □ block phone number + email through other means
+// □ block phone number + email through other means?
 // □ no res returned from sheets post. Should really confirm receipt, and warn if not received. Is possible to do it properly?
 
 const HomePage = ({

@@ -33,26 +33,26 @@ const Programmes = ({
 
     <div className="">
       <div className="grid w-full grid-cols-1 gap-y-xs sm:grid-cols-2 sm:gap-y-sm">
-        {entries.map((programme) => (
+        {entries.map((entry) => (
           <Link
-            href={`${route.programmes}/${programme.id}`}
+            href={`${route.programmes}/${entry.id}`}
+            key={entry.id}
             passHref
-            as="div"
-            className="cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm"
-            key={programme.id}
           >
-            <div className="flex flex-col items-center">
-              <span className="max-w-[350px] text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
-                <Markdown>{programme.title}</Markdown>
-              </span>
+            <div className="cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm">
+              <div className="flex flex-col items-center">
+                <span className="max-w-[350px] text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
+                  <Markdown>{entry.title}</Markdown>
+                </span>
 
-              <span className="mt-xxs max-w-[350px] uppercase text-brandBrown opacity-90 xs:text-lg  lg:text-xl">
-                <Markdown>{programme.subtitle}</Markdown>
-              </span>
+                <span className="mt-xxs max-w-[350px] uppercase text-brandBrown opacity-90 xs:text-lg  lg:text-xl">
+                  <Markdown>{entry.subtitle}</Markdown>
+                </span>
 
-              <p className="custom-prose prose mt-xxs max-w-[290px] text-center text-base font-light">
-                <Markdown>{programme.summary.mainText}</Markdown>
-              </p>
+                <p className="custom-prose prose mt-xxs max-w-[290px] text-center text-base font-light">
+                  <Markdown>{entry.summary.mainText}</Markdown>
+                </p>
+              </div>
             </div>
           </Link>
         ))}
@@ -64,6 +64,7 @@ const Programmes = ({
       <Link href={route.programmes} passHref>
         <div className="flex cursor-pointer place-items-center gap-1 bg-brandLightOrange px-3 py-2 font-semibold uppercase text-white xs:text-lg sm:gap-2 sm:px-5 sm:py-3 sm:text-xl">
           <Markdown>{buttonText}</Markdown>
+
           <Icon.ArrowRight />
         </div>
       </Link>
