@@ -33,7 +33,7 @@ const Slide2 = () => {
     paymentIntentMutation.mutate({ amount: donationAmount as number });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [donationAmount]);
 
   return paymentIntentMutation.isLoading || loadStripeQuery.isLoading ? (
     <p>Loading...</p>
@@ -73,11 +73,10 @@ const PaymentForm = () => {
 
   // · below stripe hooks return positive because load-stripe passed as resolved to the ElementsProvider above
   const stripe = useStripe() as Stripe;
-  const elements = useElements() as StripeElements;
+  const paymentFormElements = useElements() as StripeElements;
 
   const { donationAmount } = ComponentCx.use();
 
-  // const { paymentIntentMutation } = StripeCx.use();
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const confirmPaymenMutation = useMutation(stripe.confirmPayment);
 
@@ -89,7 +88,7 @@ const PaymentForm = () => {
 
     if (!e.currentTarget.reportValidity()) return;
 
-    await elements.submit();
+    await paymentFormElements.submit();
 
     confirmPaymenMutation.mutate({
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -97,17 +96,8 @@ const PaymentForm = () => {
       confirmParams: {
         return_url: `${origin}/donate-success`,
       },
-      elements,
+      elements: paymentFormElements,
     });
-
-    /*     const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: `${origin}/donate-success`,
-      },
-    }); */
-
-    // console.log("error:", error);
   };
 
   return (
