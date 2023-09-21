@@ -20,8 +20,6 @@ import { ComponentCx, StripeCx } from "./_state";
 const Slide2 = () => {
   const { paymentIntentMutation, loadStripeQuery } = StripeCx.use();
 
-  // console.log("paymentIntentMutation:", paymentIntentMutation);
-
   const { donationAmount } = ComponentCx.use();
 
   React.useEffect(() => {
@@ -32,8 +30,7 @@ const Slide2 = () => {
       return;
     }
 
-    paymentIntentMutation.mutate({ amount: 1 });
-    // paymentIntentMutation.mutate({ amount: donationAmount as number });
+    paymentIntentMutation.mutate({ amount: donationAmount as number });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -83,7 +80,6 @@ const PaymentForm = () => {
   // const { paymentIntentMutation } = StripeCx.use();
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const confirmPaymenMutation = useMutation(stripe.confirmPayment);
-  console.log("confirmPaymenMutation:", confirmPaymenMutation);
 
   const { origin } = absoluteUrl();
 
@@ -162,7 +158,7 @@ const PaymentForm = () => {
           {confirmPaymenMutation.status === "error"
             ? "payment error"
             : confirmPaymenMutation.status === "loading"
-            ? "connecting..."
+            ? "connecting payment..."
             : "payment success"}
         </div>
       </Transition>

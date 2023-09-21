@@ -2,6 +2,7 @@ import { processAboutPage } from "./about-page";
 import { processCareer } from "./career";
 import { processCareersPage } from "./careers-page";
 import { processDonatePage } from "./donate-page";
+import { processDonateSuccessPage } from "./donate-success-page";
 import { processLandingPage } from "./landing-page";
 import { processParticipantTestimonial } from "./participant-testimonial";
 import { processPartner } from "./partner";
@@ -30,6 +31,7 @@ const processDbData = {
   aboutPage: processAboutPage,
   careersPage: processCareersPage,
   donatePage: processDonatePage,
+  donateSuccessPage: processDonateSuccessPage,
   programmesPage: processProgrammesPage,
   testimonialsPage: processTestimonialsPage,
   theoryOfChangePage: processTheoryOfChangePage,

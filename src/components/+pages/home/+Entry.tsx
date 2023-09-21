@@ -30,6 +30,7 @@ import { PageFrame } from "~/frames";
 // □ update nextjs package - image now working?
 // □ navbar translate bug on mobile - seems to happen twice. Could be to do with calculation of when to hide + translation of scroll element.
 // □ supporters needs work. logo images too low res. too large. bottom row needs be centered.
+// □ format donation amount; go over donation amount logic and assertions.
 
 // OTHER
 // □ pagespeed.web.dev suggestions

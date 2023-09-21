@@ -5,6 +5,7 @@ export type Pages = {
   aboutUs: AboutUs;
   careers: Careers;
   donate: Donate;
+  "donate-success": DonateSuccess;
   programmes: Programmes;
   ["volunteer-positions"]: VolunteerPositions;
   testimonials: Testimonials;
@@ -355,5 +356,36 @@ type Workshops = {
     instaLink: string;
 
     text: string;
+  };
+};
+
+type DonateSuccess = {
+  id: "donate-success-page";
+
+  bannerImage: {
+    dbConnections: {
+      imageId: string | null;
+    };
+    position: {
+      x: number;
+      y: number;
+    };
+  };
+
+  heading: string;
+  subheading: string;
+
+  body: {
+    heading: string;
+    text: string;
+    image: {
+      dbConnections: {
+        imageId: string | null;
+      };
+      position: {
+        x: number;
+        y: number;
+      };
+    };
   };
 };

@@ -53,7 +53,7 @@ const DonatePage = ({
         <PaymentWidget />
       </Ui.Page.HorizontalSpace>
 
-      <Ui.Section.VerticalSpace />
+      <Ui.Page.VerticalSpace />
 
       <Ui.Page.HorizontalSpace>
         <Body {...page.body} />

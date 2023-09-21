@@ -36,6 +36,7 @@
     "sharp": "^0.32.6",
     "stripe": "^13.6.0",
     "swiper": "^10.2.0",
+    "swr": "^2.2.2",
     "use-immer": "^0.9.0"
   },
   "devDependencies": {

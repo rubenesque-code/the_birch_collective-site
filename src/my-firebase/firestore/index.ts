@@ -3,6 +3,7 @@ import {
   fetchCareers,
   fetchCareersPage,
   fetchDonatePage,
+  fetchDonateSuccessPage,
   fetchFooter,
   fetchHeader,
   fetchImages,
@@ -55,6 +56,9 @@ export const myDb = {
     },
     donate: {
       fetch: fetchDonatePage,
+    },
+    donateSuccess: {
+      fetch: fetchDonateSuccessPage,
     },
     ["volunteer-positions"]: {
       fetch: fetchVolunteerPositionsPage,
