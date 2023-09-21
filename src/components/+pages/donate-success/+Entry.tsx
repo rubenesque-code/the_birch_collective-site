@@ -79,6 +79,12 @@ const DonateSuccessPage = ({
 
 export default DonateSuccessPage;
 
+function checkObjectHasField<T extends Record<string, unknown>>(obj: T) {
+  const hasAKey = Object.keys(obj).length;
+
+  return Boolean(hasAKey);
+}
+
 const AwaitRouter = ({
   children,
 }: {
@@ -118,6 +124,16 @@ const HandleRouteParams = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [routerQuery]);
 
+  if (!checkObjectHasField(router.query)) {
+    return (
+      <Ui.Page.HorizontalSpace>
+        <Ui.Page.VerticalSpace />
+
+        <p>Redirecting...</p>
+      </Ui.Page.HorizontalSpace>
+    );
+  }
+
   if (!routerQuery.payment_intent) {
     return (
       <Ui.Page.HorizontalSpace>
@@ -152,8 +168,6 @@ const HandlePayment = ({
     payment_intent ? `/api/payment_intents/${payment_intent}` : null,
     (url: string) => fetch(url).then((res) => res.json()),
   );
-
-  console.log("data:", data);
 
   if (error) {
     return (
