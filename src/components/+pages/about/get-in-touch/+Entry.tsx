@@ -313,7 +313,11 @@ const OtherContacts = ({
         <p className="mt-md italic text-gray-400">
           Only answered on Thursdays at the moment!
         </p>
-        <p className="mt-xs text-gray-700">{orgDetails.contact.phoneNumber}</p>
+        <div className="mt-xs flex items-end gap-sm text-gray-700 ">
+          <p className="">{orgDetails.contact.phoneNumber}</p>
+          <span>or</span>
+          <p>07871843893</p>
+        </div>
       </div>
     ) : null}
 

@@ -18,19 +18,19 @@ import { PageFrame } from "~/frames";
 // GO LIVE CHECKLIST
 // □ get email codes from formsubmit email each member
 // □ change formsubmit endpoints in formsubmit.ts (use codes rather than emails)
-// □ env values - will probably change to vercel project that has the domain setup so will have to change env values!!
+// □ env values in cms and frontend - will probably change to vercel project that has the domain setup so will have to change env values!!
 
 // COMMUNICATE TO TIM
 
 // MUST DO
-// □ donate functionality. inc donate-success page
-// □ second phone number - 07871843893
 
 // TO DO
 // □ update nextjs package - image now working?
+// □ image component
 // □ navbar translate bug on mobile - seems to happen twice. Could be to do with calculation of when to hide + translation of scroll element.
 // □ supporters needs work. logo images too low res. too large. bottom row needs be centered.
-// □ format donation amount; go over donation amount logic and assertions.
+// □ format donation amount for currency; go over donation amount logic and assertions.
+// □ should be a poster max size. Looks silly on big screens
 
 // OTHER
 // □ pagespeed.web.dev suggestions

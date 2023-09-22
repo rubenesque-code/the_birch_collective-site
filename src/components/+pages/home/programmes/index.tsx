@@ -31,8 +31,8 @@ const Programmes = ({
 
     <Ui.Section.VerticalSpace />
 
-    <div className="">
-      <div className="grid w-full grid-cols-1 gap-y-xs sm:grid-cols-2 sm:gap-y-sm">
+    <div className="flex justify-center">
+      <div className="grid w-full max-w-[800px] grid-cols-1 gap-y-xs sm:grid-cols-2 sm:gap-y-sm">
         {entries.map((entry) => (
           <Link
             href={`${route.programmes}/${entry.id}`}

@@ -10,10 +10,12 @@ import { route } from "~/static-data/routes";
 type Data = StaticData["workshops"];
 
 const WorkshopsList = ({ data }: { data: Data }) => (
-  <div className="grid grid-cols-1 gap-md sm:gap-lg md:gap-xl">
-    {data.map((workshop) => (
-      <Workshop data={workshop} key={workshop.id} />
-    ))}
+  <div className="flex justify-center">
+    <div className="grid grid-cols-1 gap-md sm:gap-lg md:gap-xl">
+      {data.map((workshop) => (
+        <Workshop data={workshop} key={workshop.id} />
+      ))}
+    </div>
   </div>
 );
 

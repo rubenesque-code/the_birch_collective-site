@@ -85,9 +85,19 @@ const VerticalSpace = ({
 
 Page.VerticalSpace = VerticalSpace;
 
-const HorizontalSpace = ({ children }: { children: React.ReactNode }) => (
+const HorizontalSpace = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div className="grid place-items-center">
-    <div className="w-screen max-w-[1600px] px-4 xs:px-8 sm:px-12 md:px-16 lg:px-24">
+    <div
+      className={`w-screen max-w-[1600px] px-4 xs:px-8 sm:px-12 md:px-16 lg:px-24 ${
+        className || ""
+      }`}
+    >
       {children}
     </div>
   </div>

@@ -34,7 +34,7 @@ const WorkshopsPage = ({
         <BannerImage data={page.bannerImage} />
       )}
 
-      <Ui.Page.HorizontalSpace>
+      <Ui.Page.HorizontalSpace className="!max-w-[1400px]">
         <Ui.Page.VerticalSpace sizing="half" />
 
         <Ui.Page.Heading className="text-brandGreen">
@@ -44,7 +44,7 @@ const WorkshopsPage = ({
 
       {page.mainText.length ? (
         <>
-          <Ui.Page.HorizontalSpace>
+          <Ui.Page.HorizontalSpace className="!max-w-[1400px]">
             <Ui.Section.VerticalSpace />
 
             <MainText aboutAmy={page.aboutAmy} mainText={page.mainText} />

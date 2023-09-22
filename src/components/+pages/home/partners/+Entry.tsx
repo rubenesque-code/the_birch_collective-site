@@ -44,7 +44,7 @@ const Partner = ({ data }: { data: Data["entries"][number] }) => (
   >
     <a
       href={data.url}
-      className={`${
+      className={`max-w-[200px] ${
         !data.url
           ? "pointer-events-none"
           : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm"

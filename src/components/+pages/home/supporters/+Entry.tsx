@@ -13,25 +13,53 @@ const Supporters = ({
   data: { entries, heading, subheading },
 }: {
   data: Data;
-}) => (
-  <div className="">
-    <Ui.Section.Heading className="text-brandOrange">
-      {strWithFallback(heading, "Supporters")}
-    </Ui.Section.Heading>
+}) => {
+  /*   const windowSize = useWindowSize();
 
-    {subheading.length ? (
-      <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
-    ) : null}
+  const numPerLine =
+    windowSize.width < 410 ? 2 : windowSize.width < 768 ? 3 : 4;
 
-    <Ui.Section.VerticalSpace />
+  // const entriesFullLines = Math.floor(entries.length / numPerLine)
 
-    <div className="grid grid-cols-2 gap-lg xs:grid-cols-3 sm:gap-xl md:grid-cols-4 md:gap-xl">
-      {entries.map((supporter) => (
-        <Supporter data={supporter} key={supporter.id} />
-      ))}
+  const numEntriesToSplit = entries.length % numPerLine;
+  console.log("numEntriesToSplit:", numEntriesToSplit);
+
+  const lastLineEntries = entries.slice(entries.length - numEntriesToSplit);
+  console.log("lastLineEntries:", lastLineEntries);
+  const gridEntries = entries.slice(0, entries.length - numEntriesToSplit);
+  console.log("gridEntries:", gridEntries); */
+
+  return (
+    <div className="">
+      <Ui.Section.Heading className="text-brandOrange">
+        {strWithFallback(heading, "Supporters")}
+      </Ui.Section.Heading>
+
+      {subheading.length ? (
+        <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
+      ) : null}
+
+      <Ui.Section.VerticalSpace />
+
+      <div className="grid grid-cols-2 gap-lg xs:grid-cols-3 sm:gap-xl md:grid-cols-4 md:gap-xl">
+        {entries.map((supporter) => (
+          <Supporter data={supporter} key={supporter.id} />
+        ))}
+      </div>
+
+      {/* <div
+        className="grid justify-center gap-lg sm:gap-xl md:gap-xl"
+        style={{
+          gridTemplateColumns: `repeat(${3}, minmax(0, 1fr))`,
+        }}
+      >
+        {lastLineEntries.map((supporter) => (
+          <Supporter data={supporter} key={supporter.id} />
+        ))}
+      </div> */}
     </div>
-  </div>
-);
+  );
+};
 
 export default Supporters;
 
@@ -42,7 +70,7 @@ const Supporter = ({ data }: { data: Data["entries"][number] }) => (
   >
     <a
       href={data.url}
-      className={`${
+      className={`max-w-[200px] ${
         !data.url
           ? "pointer-events-none"
           : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm"

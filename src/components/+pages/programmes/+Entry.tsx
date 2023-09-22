@@ -34,7 +34,7 @@ const ProgrammePage = ({
 
       <Ui.Page.VerticalSpace sizing="half" />
 
-      <Ui.Page.HorizontalSpace>
+      <Ui.Page.HorizontalSpace className="!max-w-[1400px]">
         <Ui.Page.Heading className="text-brandGreen">
           {page.heading}
         </Ui.Page.Heading>
@@ -42,7 +42,7 @@ const ProgrammePage = ({
 
       {page.mainText.length ? (
         <>
-          <Ui.Page.HorizontalSpace>
+          <Ui.Page.HorizontalSpace className="!max-w-[1400px]">
             <Ui.Section.VerticalSpace />
 
             <Ui.Page.MainText>{page.mainText}</Ui.Page.MainText>
