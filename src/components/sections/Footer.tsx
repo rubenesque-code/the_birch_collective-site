@@ -198,10 +198,10 @@ const PageLinks = ({ linkLabels }: { linkLabels: Data["linkLabels"] }) => (
       text={strWithFallback(linkLabels.aboutUs, "about")}
     />
 
-    <PageLink
+    {/*     <PageLink
       href={route.theoryOfChange}
       text={strWithFallback(linkLabels.theoryOfChange, "theory of change")}
-    />
+    /> */}
 
     <PageLink
       href={route.testimonials}

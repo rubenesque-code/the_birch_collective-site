@@ -51,11 +51,11 @@ const PageLinksLarge = ({ staticData }: Props) => (
               text={staticData.linkLabels.getInTouch}
               key="touch"
             />,
-            <HeaderMenuItem
+            /*             <HeaderMenuItem
               route={route.theoryOfChange}
               text={staticData.linkLabels.theoryOfChange}
               key="theory"
-            />,
+            />, */
             <HeaderMenuItem
               route={route.testimonials}
               text={staticData.linkLabels.testimonials}
@@ -267,10 +267,10 @@ const PageLinksSmall = ({ staticData }: Props) => (
               route={route.testimonials}
               text={staticData.linkLabels.testimonials}
             />
-            <PageLinkSmall
+            {/*             <PageLinkSmall
               route={route.theoryOfChange}
               text={staticData.linkLabels.theoryOfChange}
-            />
+            /> */}
             <PageLinkSmall
               route={route.donate}
               text={staticData.linkLabels.donate}
