@@ -62,6 +62,7 @@ module.exports = {
       gridTemplateColumns: {
         "3flex1": "1fr auto auto",
         auto1fr: "auto 1fr",
+        24: "repeat(24, minmax(0, 1fr))",
       },
       scale: {
         80: "0.8",

@@ -1,3 +1,5 @@
+import { useWindowSize } from "@react-hookz/web";
+
 import { StorageImage } from "~/components/StorageImage";
 import Ui from "~/components/ui-elements";
 import { WithTooltip } from "~/components/WithTooltip";
@@ -14,49 +16,58 @@ const Supporters = ({
 }: {
   data: Data;
 }) => {
-  /*   const windowSize = useWindowSize();
+  const windowSize = useWindowSize();
 
   const numPerLine =
     windowSize.width < 410 ? 2 : windowSize.width < 768 ? 3 : 4;
 
-  // const entriesFullLines = Math.floor(entries.length / numPerLine)
-
   const numEntriesToSplit = entries.length % numPerLine;
-  console.log("numEntriesToSplit:", numEntriesToSplit);
+
+  const mainEntries = entries.slice(0, entries.length - numEntriesToSplit);
 
   const lastLineEntries = entries.slice(entries.length - numEntriesToSplit);
-  console.log("lastLineEntries:", lastLineEntries);
-  const gridEntries = entries.slice(0, entries.length - numEntriesToSplit);
-  console.log("gridEntries:", gridEntries); */
 
   return (
-    <div className="">
-      <Ui.Section.Heading className="text-brandOrange">
-        {strWithFallback(heading, "Supporters")}
-      </Ui.Section.Heading>
+    <div className="flex justify-center">
+      <div className="w-full max-w-[1100px]">
+        <Ui.Section.Heading className="text-brandOrange">
+          {strWithFallback(heading, "Supporters")}
+        </Ui.Section.Heading>
 
-      {subheading.length ? (
-        <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
-      ) : null}
+        {subheading.length ? (
+          <Ui.Section.Subheading>{subheading}</Ui.Section.Subheading>
+        ) : null}
 
-      <Ui.Section.VerticalSpace />
+        <Ui.Section.VerticalSpace />
 
-      <div className="grid grid-cols-2 gap-lg xs:grid-cols-3 sm:gap-xl md:grid-cols-4 md:gap-xl">
-        {entries.map((supporter) => (
-          <Supporter data={supporter} key={supporter.id} />
-        ))}
+        <div className="grid grid-cols-24 gap-lg">
+          {mainEntries.map((supporter) => (
+            <Supporter data={supporter} key={supporter.id} />
+          ))}
+
+          {lastLineEntries.length < numPerLine &&
+          Math.floor((numPerLine - lastLineEntries.length) / 2)
+            ? [
+                ...Array(
+                  Math.floor((numPerLine - lastLineEntries.length) / 2),
+                ).keys(),
+              ].map((i) => (
+                <div
+                  className="col-span-12 xs:col-span-8 md:col-span-6"
+                  key={i}
+                />
+              ))
+            : null}
+
+          {lastLineEntries.length < numPerLine ? (
+            <div className="col-span-6 xs:col-span-4 md:col-span-3" />
+          ) : null}
+
+          {lastLineEntries.map((supporter) => (
+            <Supporter data={supporter} key={supporter.id} />
+          ))}
+        </div>
       </div>
-
-      {/* <div
-        className="grid justify-center gap-lg sm:gap-xl md:gap-xl"
-        style={{
-          gridTemplateColumns: `repeat(${3}, minmax(0, 1fr))`,
-        }}
-      >
-        {lastLineEntries.map((supporter) => (
-          <Supporter data={supporter} key={supporter.id} />
-        ))}
-      </div> */}
     </div>
   );
 };
@@ -70,21 +81,19 @@ const Supporter = ({ data }: { data: Data["entries"][number] }) => (
   >
     <a
       href={data.url}
-      className={`max-w-[200px] ${
+      className={`col-span-12 xs:col-span-8 md:col-span-6 ${
         !data.url
           ? "pointer-events-none"
           : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm"
       }`}
       target="_blank"
     >
-      <div className="relative">
-        <div className="relative aspect-[16/9]">
-          <StorageImage
-            urls={data.connectedImage.urls}
-            objectFit="contain"
-            sizes="100px"
-          />
-        </div>
+      <div className="relative aspect-[16/9]">
+        <StorageImage
+          urls={data.connectedImage.urls}
+          objectFit="contain"
+          sizes="100px"
+        />
       </div>
     </a>
   </WithTooltip>

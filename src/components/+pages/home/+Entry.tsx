@@ -25,12 +25,14 @@ import { PageFrame } from "~/frames";
 // MUST DO
 
 // TO DO
+// □ disable swipe on sign up swiper
 // □ update nextjs package - image now working?
 // □ image component
 // □ navbar translate bug on mobile - seems to happen twice. Could be to do with calculation of when to hide + translation of scroll element.
 // □ supporters needs work. logo images too low res. too large. bottom row needs be centered.
 // □ format donation amount for currency; go over donation amount logic and assertions.
 // □ should be a poster max size. Looks silly on big screens
+// □ change eager images to priority https://nextjs.org/docs/pages/api-reference/components/image#priority
 
 // OTHER
 // □ pagespeed.web.dev suggestions

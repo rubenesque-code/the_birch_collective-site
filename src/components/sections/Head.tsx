@@ -4,8 +4,8 @@ import NextHead from "next/head";
 export const Head = ({ children }: { children?: React.ReactNode }) => (
   <NextHead>
     <title>
-      Birch Collective | Bristol based charity connecting young people to the
-      natural world
+      Birch Collective | Bristol based social enterprise connecting young people
+      to the natural world
     </title>
     <link rel="icon" href="/icon.ico" />
     <meta name="robots" content="all" key="robots" />

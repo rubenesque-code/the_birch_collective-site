@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useWindowSize } from "@react-hookz/web";
 import Markdown from "markdown-to-jsx";
 
 import { Icon } from "~/components/icons";
@@ -16,30 +17,41 @@ const Programmes = ({
   data: { buttonText, entries, heading, subheading },
 }: {
   data: Data;
-}) => (
-  <>
-    <Ui.Section.Heading className="text-brandLightOrange">
-      {strWithFallback(heading, "Programmes")}
-    </Ui.Section.Heading>
+}) => {
+  const windowSize = useWindowSize();
 
-    <Ui.Section.Subheading>
-      {strWithFallback(
-        subheading,
-        "We have a range of programmes to suit everyone, from online courses to residential programmes.",
-      )}
-    </Ui.Section.Subheading>
+  const numPerLine = windowSize.width < 640 ? 1 : 2;
 
-    <Ui.Section.VerticalSpace />
+  const numEntriesToSplit = entries.length % numPerLine;
 
-    <div className="flex justify-center">
-      <div className="grid w-full max-w-[800px] grid-cols-1 gap-y-xs sm:grid-cols-2 sm:gap-y-sm">
-        {entries.map((entry) => (
-          <Link
-            href={`${route.programmes}/${entry.id}`}
-            key={entry.id}
-            passHref
-          >
-            <div className="cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm">
+  const mainEntries = entries.slice(0, entries.length - numEntriesToSplit);
+
+  const lastLineEntries = entries.slice(entries.length - numEntriesToSplit);
+
+  return (
+    <>
+      <Ui.Section.Heading className="text-brandLightOrange">
+        {strWithFallback(heading, "Programmes")}
+      </Ui.Section.Heading>
+
+      <Ui.Section.Subheading>
+        {strWithFallback(
+          subheading,
+          "We have a range of programmes to suit everyone, from online courses to residential programmes.",
+        )}
+      </Ui.Section.Subheading>
+
+      <Ui.Section.VerticalSpace />
+
+      <div className="flex justify-center">
+        <div className="grid w-full max-w-[800px] grid-cols-2 gap-y-xs sm:grid-cols-4 sm:gap-y-sm">
+          {mainEntries.map((entry) => (
+            <Link
+              href={`${route.programmes}/${entry.id}`}
+              as={"div"}
+              key={entry.id}
+              className="col-span-2 cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm"
+            >
               <div className="flex flex-col items-center">
                 <span className="max-w-[350px] text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
                   <Markdown>{entry.title}</Markdown>
@@ -53,23 +65,48 @@ const Programmes = ({
                   <Markdown>{entry.summary.mainText}</Markdown>
                 </p>
               </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
-    <Ui.Section.VerticalSpace />
+            </Link>
+          ))}
 
-    <div className="flex justify-center">
-      <Link href={route.programmes} passHref>
-        <div className="flex cursor-pointer place-items-center gap-1 bg-brandLightOrange px-3 py-2 font-semibold uppercase text-white xs:text-lg sm:gap-2 sm:px-5 sm:py-3 sm:text-xl">
-          <Markdown>{buttonText}</Markdown>
+          {lastLineEntries.length ? <div className="col-span-1" /> : null}
 
-          <Icon.ArrowRight />
+          {lastLineEntries.map((entry) => (
+            <Link
+              href={`${route.programmes}/${entry.id}`}
+              as={"div"}
+              key={entry.id}
+              className="col-span-2 cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm"
+            >
+              <div className="flex flex-col items-center">
+                <span className="max-w-[350px] text-center font-display text-3xl font-bold tracking-wider text-brandLightOrange opacity-90 sm:text-4xl">
+                  <Markdown>{entry.title}</Markdown>
+                </span>
+
+                <span className="mt-xxs max-w-[350px] uppercase text-brandBrown opacity-90 xs:text-lg  lg:text-xl">
+                  <Markdown>{entry.subtitle}</Markdown>
+                </span>
+
+                <p className="custom-prose prose mt-xxs max-w-[290px] text-center text-base font-light">
+                  <Markdown>{entry.summary.mainText}</Markdown>
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
-      </Link>
-    </div>
-  </>
-);
+      </div>
+      <Ui.Section.VerticalSpace />
+
+      <div className="flex justify-center">
+        <Link href={route.programmes} passHref>
+          <div className="flex cursor-pointer place-items-center gap-1 bg-brandLightOrange px-3 py-2 font-semibold uppercase text-white xs:text-lg sm:gap-2 sm:px-5 sm:py-3 sm:text-xl">
+            <Markdown>{buttonText}</Markdown>
+
+            <Icon.ArrowRight />
+          </div>
+        </Link>
+      </div>
+    </>
+  );
+};
 
 export default Programmes;
