@@ -48,7 +48,6 @@ const Programmes = ({
           {mainEntries.map((entry) => (
             <Link
               href={`${route.programmes}/${entry.id}`}
-              as={"div"}
               key={entry.id}
               className="col-span-2 cursor-pointer rounded-lg p-xs text-center transition-all duration-100 ease-in-out hover:bg-gray-100 sm:px-sm sm:py-sm"
             >
