@@ -148,7 +148,8 @@ const crossProcessMany = (
     .map((workshop) => crossProcess(workshop, connectedDocs))
     .flatMap((workshop) =>
       workshop !== "requirements not met" ? [workshop] : [],
-    );
+    )
+    .sort(sortByIndex);
 
   return processed;
 };

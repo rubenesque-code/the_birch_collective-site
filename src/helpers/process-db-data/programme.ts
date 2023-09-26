@@ -78,20 +78,21 @@ const crossProcess = (
     ? notInUse
     : infoEntriesProcessed;
 
-  const postersProcessed = !usePosters
-    ? notInUse
-    : posters
-        .filter((poster) =>
-          filterByConnectedImage(poster, connectedDocs.images),
-        )
-        .map(({ image: posterImage, ...restPoster }) => ({
-          connectedImage: findByConnectedImage(
-            posterImage,
-            connectedDocs.images,
-          )!,
-          ...restPoster,
-        }))
-        .sort(sortByIndex);
+  const postersProcessed =
+    !usePosters || !posters.length
+      ? notInUse
+      : posters
+          .filter((poster) =>
+            filterByConnectedImage(poster, connectedDocs.images),
+          )
+          .map(({ image: posterImage, ...restPoster }) => ({
+            connectedImage: findByConnectedImage(
+              posterImage,
+              connectedDocs.images,
+            )!,
+            ...restPoster,
+          }))
+          .sort(sortByIndex);
 
   const photoAlbumEntriesProcessed = !photoAlbum.use
     ? null
@@ -160,7 +161,8 @@ const crossProcessMany = (
     .map((programme) => crossProcess(programme, connectedDocs))
     .flatMap((programme) =>
       programme !== "requirements not met" ? [programme] : [],
-    );
+    )
+    .sort(sortByIndex);
 
   return processed;
 };

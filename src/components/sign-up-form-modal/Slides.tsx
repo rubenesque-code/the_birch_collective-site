@@ -499,6 +499,8 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
               width: "100%",
               height: "100%",
             }}
+            allowTouchMove={false}
+            simulateTouch={false}
           >
             [
             <SwiperSlide key="slide-1">
