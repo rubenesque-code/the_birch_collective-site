@@ -6,7 +6,7 @@ import { WithTooltip } from "~/components/WithTooltip";
 
 import { type StaticData } from "../_static-data";
 
-import { strWithFallback } from "~/helpers/utilities";
+import { numberToArr, strWithFallback } from "~/helpers/utilities";
 import type { ExcludeNotInUse } from "~/types/database/_helpers";
 
 type Data = ExcludeNotInUse<StaticData["page"]["partners"]>;
@@ -18,14 +18,19 @@ const Partners = ({
 }) => {
   const windowSize = useWindowSize();
 
-  const numPerLine =
-    windowSize.width < 410 ? 2 : windowSize.width < 768 ? 3 : 4;
+  const numEntriesPerLine =
+    windowSize.width < 640 ? 2 : windowSize.width < 768 ? 3 : 4;
 
-  const numEntriesToSplit = entries.length % numPerLine;
+  const numLastLineEntries = entries.length % numEntriesPerLine;
 
-  const mainEntries = entries.slice(0, entries.length - numEntriesToSplit);
+  const mainEntries = entries.slice(0, entries.length - numLastLineEntries);
 
-  const lastLineEntries = entries.slice(entries.length - numEntriesToSplit);
+  const lastLineEntries = entries.slice(entries.length - numLastLineEntries);
+  const numLastLineSpaces = numEntriesPerLine - numLastLineEntries;
+  const numDummyCompleteSpaces = Math.floor(numLastLineSpaces / 2);
+  const isDummyHalfSpace = Boolean(
+    numDummyCompleteSpaces - numLastLineSpaces / 2,
+  );
 
   return (
     <div className="flex justify-center">
@@ -42,32 +47,27 @@ const Partners = ({
 
         <Ui.Section.VerticalSpace />
 
-        <div className="grid grid-cols-24 gap-lg">
-          {mainEntries.map((supporter) => (
-            <Partner data={supporter} key={supporter.id} />
-          ))}
+        <div className="flex justify-center">
+          <div className="grid w-full max-w-full grid-cols-24 gap-2">
+            {mainEntries.map((supporter) => (
+              <Partner partner={supporter} key={supporter.id} />
+            ))}
 
-          {lastLineEntries.length < numPerLine &&
-          Math.floor((numPerLine - lastLineEntries.length) / 2)
-            ? [
-                ...Array(
-                  Math.floor((numPerLine - lastLineEntries.length) / 2),
-                ).keys(),
-              ].map((i) => (
-                <div
-                  className="col-span-12 xs:col-span-8 md:col-span-6"
-                  key={i}
-                />
-              ))
-            : null}
+            {numberToArr(numDummyCompleteSpaces).map((i) => (
+              <div
+                className="col-span-12 sm:col-span-8 md:col-span-6"
+                key={i}
+              />
+            ))}
 
-          {lastLineEntries.length < numPerLine ? (
-            <div className="col-span-6 xs:col-span-4 md:col-span-3" />
-          ) : null}
+            {isDummyHalfSpace ? (
+              <div className="col-span-6 sm:col-span-4 md:col-span-3" />
+            ) : null}
 
-          {lastLineEntries.map((supporter) => (
-            <Partner data={supporter} key={supporter.id} />
-          ))}
+            {lastLineEntries.map((supporter) => (
+              <Partner partner={supporter} key={supporter.id} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -76,29 +76,25 @@ const Partners = ({
 
 export default Partners;
 
-const Partner = ({ data }: { data: Data["entries"][number] }) => (
+const Partner = ({ partner }: { partner: Data["entries"][number] }) => (
   <WithTooltip
-    text={`visit ${data.name}'s site`}
-    isDisabled={!data.name.length || !data.url.length}
+    text={`visit ${partner.name}'s site`}
+    isDisabled={!partner.name.length || !partner.url.length}
   >
     <a
-      href={data.url}
-      className={`col-span-12 xs:col-span-8 md:col-span-6 ${
-        !data.url
+      href={partner.url}
+      className={`relative col-span-12 aspect-[16/9] min-h-0 min-w-0 p-sm sm:col-span-8 md:col-span-6 ${
+        !partner.url
           ? "pointer-events-none"
           : "cursor-pointer rounded-md transition-all duration-75 ease-in-out hover:bg-gray-100 md:p-sm"
       }`}
       target="_blank"
     >
-      <div className="relative">
-        <div className="relative aspect-[16/9]">
-          <StorageImage
-            urls={data.connectedImage.urls}
-            objectFit="contain"
-            sizes="200px"
-          />
-        </div>
-      </div>
+      <StorageImage
+        urls={partner.connectedImage.urls}
+        objectFit="contain"
+        sizes="200px"
+      />
     </a>
   </WithTooltip>
 );

@@ -12,3 +12,7 @@ export function strWithFallback(str: string, fallback: string) {
   }
   return fallback;
 }
+
+export function numberToArr(num: number) {
+  return [...Array(num).keys()];
+}
