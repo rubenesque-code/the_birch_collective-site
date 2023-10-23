@@ -152,6 +152,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
   const [lifeSavingMedications, setLifeSavingMedications] = React.useState("");
   const [events, setEvents] = useImmer<Event[]>([]);
   const [hopeToGet, setHopeToGet] = React.useState("");
+  const [referralInfo, setReferralInfo] = React.useState("");
   const [sources, setSources] = useImmer<Sources>({
     entries: [
       {
@@ -344,6 +345,10 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
     }
 
     if (currentSlideIndex === 16) {
+      input.onGoToSlide();
+    }
+
+    if (currentSlideIndex === 17) {
       if (receiveNewsLetter === null) {
         setShowErrorMessage(true);
         return;
@@ -351,7 +356,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
       input.onGoToSlide();
     }
 
-    if (currentSlideIndex === 17) {
+    if (currentSlideIndex === 18) {
       if (imagePermission === null) {
         setShowErrorMessage(true);
         return;
@@ -359,7 +364,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
       input.onGoToSlide();
     }
 
-    if (currentSlideIndex === 18) {
+    if (currentSlideIndex === 19) {
       input.onGoToSlide();
     }
   };
@@ -434,6 +439,7 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
       lifeSavingMedications: lifeSavingMedications,
       events: eventsStr,
       hopeToGet: hopeToGet,
+      proReferralAdditionalInfo: referralInfo,
       sources: `${optionsToStr(
         sources.entries,
       )} | medical professional details: ${
@@ -788,10 +794,14 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
             <SwiperSlide key="slide-16">
               <SlideWrapper>
                 <QuestionnaireSlideWrapper
-                  heading="How did you hear about The Birch Collective"
-                  inputs={<Slide16 setSources={setSources} sources={sources} />}
+                  heading="For referrals from professionals"
+                  inputs={
+                    <Slide16
+                      referralInfo={referralInfo}
+                      setReferralInfo={setReferralInfo}
+                    />
+                  }
                   questionNumber={13}
-                  subheading="Tick all that apply."
                 />
               </SlideWrapper>
             </SwiperSlide>
@@ -799,22 +809,10 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
             <SwiperSlide key="slide-17">
               <SlideWrapper>
                 <QuestionnaireSlideWrapper
-                  heading="Would you like to be added to the Birch Collectives monthly newsletter to hear about new workshops, programmes and services we are running?"
-                  inputs={
-                    <Slide17
-                      receiveNewsLetter={receiveNewsLetter}
-                      setReceiveNewsLetter={setReceiveNewsLetter}
-                      handleResetShowErrorMessage={() =>
-                        showErrorMessage && setShowErrorMessage(false)
-                      }
-                    />
-                  }
+                  heading="How did you hear about The Birch Collective"
+                  inputs={<Slide17 setSources={setSources} sources={sources} />}
                   questionNumber={14}
-                  errorMessage={{
-                    message: "Oops...please select one of the options",
-                    show: showErrorMessage,
-                  }}
-                  isRequired
+                  subheading="Tick all that apply."
                 />
               </SlideWrapper>
             </SwiperSlide>
@@ -822,18 +820,17 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
             <SwiperSlide key="slide-18">
               <SlideWrapper>
                 <QuestionnaireSlideWrapper
-                  heading="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
-                  subheading="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
+                  heading="Would you like to be added to the Birch Collectives monthly newsletter to hear about new workshops, programmes and services we are running?"
                   inputs={
                     <Slide18
-                      imagePermission={imagePermission}
-                      setImagePermission={setImagePermission}
+                      receiveNewsLetter={receiveNewsLetter}
+                      setReceiveNewsLetter={setReceiveNewsLetter}
                       handleResetShowErrorMessage={() =>
                         showErrorMessage && setShowErrorMessage(false)
                       }
                     />
                   }
-                  questionNumber={14}
+                  questionNumber={15}
                   errorMessage={{
                     message: "Oops...please select one of the options",
                     show: showErrorMessage,
@@ -845,7 +842,31 @@ const Slides = ({ closeModal }: { closeModal: () => void }) => {
             ,
             <SwiperSlide key="slide-19">
               <SlideWrapper>
-                <Slide19 submit={handleSubmitForm} />
+                <QuestionnaireSlideWrapper
+                  heading="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
+                  subheading="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
+                  inputs={
+                    <Slide19
+                      imagePermission={imagePermission}
+                      setImagePermission={setImagePermission}
+                      handleResetShowErrorMessage={() =>
+                        showErrorMessage && setShowErrorMessage(false)
+                      }
+                    />
+                  }
+                  questionNumber={16}
+                  errorMessage={{
+                    message: "Oops...please select one of the options",
+                    show: showErrorMessage,
+                  }}
+                  isRequired
+                />
+              </SlideWrapper>
+            </SwiperSlide>
+            ,
+            <SwiperSlide key="slide-20">
+              <SlideWrapper>
+                <Slide20 submit={handleSubmitForm} />
               </SlideWrapper>
             </SwiperSlide>
             ]
@@ -1078,7 +1099,9 @@ const QuestionnaireSlideWrapper = ({
   <>
     <div className="text-lg text-[#2F4858]">{questionNumber}.</div>
 
-    <div className="mt-sm text-xl font-medium text-brandOrange">{heading}</div>
+    <div className="mt-sm font-medium text-brandOrange sm:text-lg md:text-xl">
+      {heading}
+    </div>
 
     {subheading ? <p className="mt-xs text-gray-500">{subheading}</p> : null}
 
@@ -1543,6 +1566,21 @@ const Slide15 = ({
 );
 
 const Slide16 = ({
+  referralInfo,
+  setReferralInfo,
+}: {
+  referralInfo: string;
+  setReferralInfo: (value: string) => void;
+}) => (
+  <textarea
+    className="w-full resize-none border-b border-b-[#2F4858] text-lg text-[#2F4858]"
+    value={referralInfo}
+    onChange={(e) => setReferralInfo(e.currentTarget.value)}
+    placeholder="Any additional information you think is important to share about your client?"
+  />
+);
+
+const Slide17 = ({
   setSources,
   sources,
 }: {
@@ -1630,7 +1668,7 @@ const Slide16 = ({
   </div>
 );
 
-const Slide17 = ({
+const Slide18 = ({
   receiveNewsLetter,
   setReceiveNewsLetter,
   handleResetShowErrorMessage,
@@ -1679,7 +1717,7 @@ const Slide17 = ({
   );
 };
 
-const Slide18 = ({
+const Slide19 = ({
   imagePermission,
   setImagePermission,
   handleResetShowErrorMessage,
@@ -1722,7 +1760,7 @@ const Slide18 = ({
   </div>
 );
 
-const Slide19 = ({ submit }: { submit: () => void }) => (
+const Slide20 = ({ submit }: { submit: () => void }) => (
   <div className="">
     <div className="mt-lg text-center  text-gray-400">
       To finish, click submit:

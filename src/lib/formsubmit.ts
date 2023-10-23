@@ -13,9 +13,9 @@ const postGetInTouchForm = async ({
   axios.defaults.headers.post["Content-Type"] = "application/json";
 
   await axios.post(
-    // `https://formsubmit.co/ajax/${"rub4sev@gmail.com"}`,
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_FORMSUBMIT_KEY!}`,
+    `https://formsubmit.co/ajax/team@thebirchcollective.co.uk`,
+    // `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_FORMSUBMIT_KEY!}`,
     {
       ...formValues,
       _subject: `New message from ${formValues.firstName} ${

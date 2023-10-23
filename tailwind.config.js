@@ -52,6 +52,7 @@ module.exports = {
         black: "rgb(51,51,51)",
         "black-rgba": "rgba(0, 0, 0, 0.3)",
         "bg-overlay-light": "rgba(237, 242, 247, 0.5)",
+        "form-secondary": "#2F4858",
       },
       backgroundImage: {
         donate: "url('/images/fern.jpg')",
