@@ -8,6 +8,7 @@ import { FormCx, UserEnteredDataCx } from "./_state";
 import type { SlideId } from "./_types";
 
 import { formsubmit } from "~/lib/formsubmit";
+import { isDevMode } from "~/static-data/process";
 
 const SlideWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="absolute grid h-full max-h-full w-full max-w-full place-items-center overflow-y-auto overflow-x-hidden p-xs">
@@ -686,13 +687,14 @@ const Slide16 = () => {
     <SlideWrapper>
       <InputSlideWrapper
         heading="For referrals from professionals"
+        subheading="Any additional information you think is important to share about your client?"
         questionNumber={13}
       >
         <textarea
           className="w-full resize-none border-b border-b-[#2F4858] text-lg text-[#2F4858]"
           value={referralInfo.value}
           onChange={(e) => referralInfo.update(e.currentTarget.value)}
-          placeholder="Any additional information you think is important to share about your client?"
+          placeholder="Referral additional info here"
           ref={setInputNode}
         />
       </InputSlideWrapper>
@@ -945,25 +947,25 @@ const Slide20 = () => {
 
     const data = {
       name: name.value,
-      dateOfBirth: `${dob.value.day}/${dob.value.month}/${dob.value.year}`,
+      date_of_birth: `${dob.value.day}/${dob.value.month}/${dob.value.year}`,
       email: email.value,
-      phoneNumber: phoneNumber.value,
-      emergencyContact: `name:${emergencyContact.value.name} | phone number: ${emergencyContact.value.phoneNumber} | relationship: ${emergencyContact.value.relationship}`,
+      phone_number: phoneNumber.value,
+      emergency_contact: `name:${emergencyContact.value.name} | phone number: ${emergencyContact.value.phoneNumber} | relationship: ${emergencyContact.value.relationship}`,
       identities: identitiesStr,
       ethnicity: ethnicity.value,
       genders: gendersStr,
-      healthIssues: healthIssues.value,
-      lifeSavingMedications: lifeSavingMedications.value,
+      health_issues: healthIssues.value,
+      life_saving_medications: lifeSavingMedications.value,
       events: eventsStr,
-      hopeToGet: hopeToGet.value,
-      proReferralAdditionalInfo: referralInfo.value,
+      hope_to_get: hopeToGet.value,
+      pro_referral_additional_info: referralInfo.value,
       sources: `${optionsToStr(
         sources.value.entries,
       )} | medical professional details: ${
         sources.value.medicalProDetails
       } | other details: ${sources.value.otherDetails}`,
-      newsletterOptIn: receiveNewsLetter ? "yes" : "no",
-      imageOptIn: imagePermission ? "yes" : "no",
+      newsletter_opt_in: receiveNewsLetter ? "yes" : "no",
+      image_opt_in: imagePermission ? "yes" : "no",
     };
 
     void fetch("/api/sheets", {
@@ -971,7 +973,9 @@ const Slide20 = () => {
       body: JSON.stringify(data),
     });
 
-    void formsubmit.notifySignUp({ emails: notifyEmails });
+    if (!isDevMode) {
+      void formsubmit.notifySignUp({ emails: notifyEmails });
+    }
 
     setTimeout(() => {
       submitFormStatus.update("success");

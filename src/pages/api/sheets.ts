@@ -2,20 +2,20 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 type Body = {
   name: string;
-  dateOfBirth: string;
+  date_of_birth: string;
   email: string;
-  phoneNumber: string;
-  emergencyContact: string;
+  phone_number: string;
+  emergency_contact: string;
   identities: string;
   ethnicity: string;
   genders: string;
-  healthIssues: string;
-  lifeSavingMedications: string;
+  health_issues: string;
+  life_saving_medications: string;
   events: string;
-  hopeToGet: string;
+  hope_to_get: string;
   sources: string;
-  newsletterOptIn: string;
-  imageOptIn: string;
+  newsletter_opt_in: string;
+  image_opt_in: string;
 };
 
 export default async function handler(
@@ -33,7 +33,7 @@ export default async function handler(
 
     const dateNow = new Date();
 
-    formData.append("dateOfEntry", dateNow.toUTCString());
+    formData.append("date_of_entry", dateNow.toUTCString());
 
     for (const [key, value] of Object.entries(body)) {
       formData.append(key, value);
