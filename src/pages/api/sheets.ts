@@ -39,8 +39,7 @@ export default async function handler(
       formData.append(key, value);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await fetch(process.env.SHEET_SCRIPT_URL!, {
+    await fetch(process.env.SIGN_UP_SHEET_SCRIPT_URL as string, {
       method: "POST",
       body: formData,
     });

@@ -30,13 +30,13 @@ const notifySignUp = async ({ emails }: { emails: string[] }) => {
 
   const notifications = emails.map((email) =>
     axios.post(
-      // `https://formsubmit.co/ajax/${"rub4sev@gmail.com"}`,
       `https://formsubmit.co/ajax/${email}`,
 
       {
         _subject: `New sign up for a programme(s) and/or workshop(s)`,
-        spreadsheet:
-          "The info can be found on the spreadsheet: https://docs.google.com/spreadsheets/d/11PUoA5JZXjt1T8C7JBnjP1CUV9jQPehqbrDAJYeLMU8/edit#gid=0",
+        spreadsheet: `The info can be found on the spreadsheet: ${
+          process.env.SIGN_UP_SHEET_URL as string
+        }`,
       },
     ),
   );
