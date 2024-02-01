@@ -968,14 +968,14 @@ const Slide20 = () => {
       image_opt_in: imagePermission ? "yes" : "no",
     };
 
-    void fetch("/api/sheets", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-
     if (!isDevMode) {
-      void formsubmit.notifySignUp({ emails: notifyEmails });
+      void fetch("/api/sheets", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
     }
+
+    void formsubmit.notifySignUp({ emails: notifyEmails });
 
     setTimeout(() => {
       submitFormStatus.update("success");

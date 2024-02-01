@@ -67,7 +67,10 @@ const ContactForm = () => {
     validateEmail(email.value) &&
     message.value.length;
 
-  const sendformMutation = useMutation("send-form", formsubmit.getInTouch);
+  const sendformMutation = useMutation(
+    "send-form",
+    formsubmit.postGetInTouchForm,
+  );
 
   const handleSubmit = () => {
     if (!firstName.value.length) {
