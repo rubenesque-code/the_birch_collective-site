@@ -61,6 +61,10 @@ export type Programme = {
     buttonText: string;
 
     notifyEmails: string[];
+
+    downloadLink: string | null;
+
+    type: "online-form" | "download-sheet";
   };
 
   subtitle: string;
