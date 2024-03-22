@@ -2,11 +2,17 @@ import { BannerImage, Head, RichSections } from "~/components/sections";
 import Ui from "~/components/ui-elements";
 
 import { type StaticData } from "./_static-data";
+import CampBirchOnly from "./camp-birch-only/+Entry";
 import InfoAndPosters from "./info-and-posters/+Entry";
 import PhotoAlbum from "./photo-album/+Entry";
 import SignUp from "./sign-up/+Entry";
 
 import { PageFrame } from "~/frames";
+import { isDevMode } from "~/static-data/process";
+
+const campBirchId = isDevMode
+  ? "c1a225b3-71bf-4dd4-822e-e6e5905331f5"
+  : "7913c51a-9f94-4cfd-b2cb-0184d51aaa38";
 
 const ProgrammePage = ({
   staticData: { footer, header, linkLabels, logoImage, orgDetails, page },
@@ -79,6 +85,16 @@ const ProgrammePage = ({
 
           <Ui.Page.HorizontalSpace>
             <RichSections data={page.sections} />
+          </Ui.Page.HorizontalSpace>
+        </>
+      ) : null}
+
+      {page.id === campBirchId ? (
+        <>
+          <Ui.Page.VerticalSpace />
+
+          <Ui.Page.HorizontalSpace>
+            <CampBirchOnly />
           </Ui.Page.HorizontalSpace>
         </>
       ) : null}
