@@ -231,10 +231,9 @@ const ZoomedImage = ({ show, close }: { show: boolean; close: () => void }) =>
         leaveTo="transform opacity-0 scale-95"
       >
         <div
-          className={`relative cursor-zoom-out`}
+          className={`relative w-[1000px] cursor-zoom-out`}
           style={{
             aspectRatio: 5 / 3,
-            width: "100vh",
           }}
           onClick={close}
         >
@@ -242,7 +241,6 @@ const ZoomedImage = ({ show, close }: { show: boolean; close: () => void }) =>
             alt=""
             src={payment_suggestions}
             fill
-            placeholder="blur"
             style={{
               objectFit: "contain",
             }}
