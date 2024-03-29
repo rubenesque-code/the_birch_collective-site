@@ -1,3 +1,5 @@
+import Markdown from "markdown-to-jsx";
+
 import { Icon } from "~/components/icons";
 import Ui from "~/components/ui-elements";
 import { WithTooltip } from "~/components/WithTooltip";
@@ -46,7 +48,7 @@ const JobPost = ({ data }: { data: Data["entries"][number] }) => {
                   <Icon.Date />
                 </span>
                 <div className="flex gap-xs">
-                  <span>closes, </span>
+                  <span>Closes, </span>
                   <span>{data.closingDate}</span>
                 </div>
               </div>
@@ -55,7 +57,7 @@ const JobPost = ({ data }: { data: Data["entries"][number] }) => {
         </div>
 
         <div className="custom-prose prose mt-sm w-full max-w-full">
-          {data.description}
+          <Markdown>{data.description}</Markdown>
         </div>
 
         <div className="mt-md">

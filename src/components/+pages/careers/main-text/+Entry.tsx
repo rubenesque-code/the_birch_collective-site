@@ -1,3 +1,5 @@
+import Markdown from "markdown-to-jsx";
+
 import { Icon } from "~/components/icons";
 import { WithTooltip } from "~/components/WithTooltip";
 
@@ -13,7 +15,7 @@ const MainText = ({
   return (
     <div className="group/main">
       <div className="custom-prose prose mt-sm w-full max-w-full">
-        {page.mainText}
+        <Markdown>{page.mainText}</Markdown>
 
         {socialMediaLinks.facebook.length ||
         socialMediaLinks.instagram.length ||

@@ -24,8 +24,8 @@ const process = ({ docLinkButtons, ...restTestimonial }: MyDb["career"]) => {
   };
 };
 
-const processMany = (carrers: MyDb["career"][]) => {
-  const processed = carrers.map((career) => process(career));
+const processMany = (careers: MyDb["career"][]) => {
+  const processed = careers.map((career) => process(career));
 
   return processed;
 };
