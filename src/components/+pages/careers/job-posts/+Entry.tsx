@@ -26,7 +26,6 @@ const JobPosts = ({ entries, heading }: Data) => (
 export default JobPosts;
 
 const Entries = ({ data }: { data: Data["entries"] }) => {
-  console.log("data:", data);
   return (
     <div className="mt-lg grid gap-x-lg gap-y-xl md:grid-cols-2">
       {data.map((jobPost) => (
