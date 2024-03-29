@@ -6,6 +6,7 @@ import { WithTooltip } from "~/components/WithTooltip";
 
 import type { StaticData } from "../_static-data";
 
+import { strWithFallback } from "~/helpers/utilities";
 import { type ExcludeNotInUse } from "~/types/database/_helpers";
 
 type Data = ExcludeNotInUse<StaticData["page"]["careers"]>;
@@ -25,8 +26,9 @@ const JobPosts = ({ entries, heading }: Data) => (
 export default JobPosts;
 
 const Entries = ({ data }: { data: Data["entries"] }) => {
+  console.log("data:", data);
   return (
-    <div className="mt-lg grid gap-x-lg gap-y-xl sm:grid-cols-2">
+    <div className="mt-lg grid gap-x-lg gap-y-xl md:grid-cols-2">
       {data.map((jobPost) => (
         <JobPost data={jobPost} key={jobPost.id} />
       ))}
@@ -91,7 +93,9 @@ const DocLinkButton = ({
         <span className="grid place-items-center text-blue-400">
           <Icon.Download />
         </span>
-        <span className="text-gray-600">{data.text}</span>
+        <span className="text-gray-600">
+          {strWithFallback(data.text, "Download application")}
+        </span>
       </div>
     </a>
   </WithTooltip>

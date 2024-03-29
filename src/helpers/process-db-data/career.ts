@@ -15,7 +15,7 @@ selfValidate.many = selfValidateMany;
 
 const process = ({ docLinkButtons, ...restTestimonial }: MyDb["career"]) => {
   const docLinkButtonsProcessed = docLinkButtons
-    .filter((button) => button.link.length && button.text.length)
+    .filter((button) => button.link.length)
     .sort(sortByIndex);
 
   return {
