@@ -5,6 +5,7 @@ export type InputSlideId =
   | "dob"
   | "email"
   | "phoneNumber"
+  | "address"
   | "emergencyContact"
   | "identities"
   | "ethnicity"

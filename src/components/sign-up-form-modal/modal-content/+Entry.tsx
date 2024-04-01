@@ -54,6 +54,9 @@ const ModalContent = () => {
     if (slidesMeta[swiperApi.currentSlideIndex].id === "phoneNumber") {
       return userEnteredData.phoneNumber.isValid;
     }
+    if (slidesMeta[swiperApi.currentSlideIndex].id === "address") {
+      return userEnteredData.address.isValid;
+    }
     if (slidesMeta[swiperApi.currentSlideIndex].id === "emergencyContact") {
       return userEnteredData.emergencyContact.isValid;
     }
@@ -84,6 +87,7 @@ const ModalContent = () => {
     return true;
   }, [
     swiperApi.currentSlideIndex,
+    userEnteredData.address.isValid,
     userEnteredData.dob.isValid,
     userEnteredData.email.isValid,
     userEnteredData.emergencyContact.isValid,

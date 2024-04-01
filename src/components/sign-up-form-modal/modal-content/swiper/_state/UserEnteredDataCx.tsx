@@ -6,6 +6,12 @@ import { validateEmail, validatePhoneNumber } from "~/helpers/form";
 import { myDb } from "~/my-firebase/firestore";
 
 type DateOfBirth = { day: number; month: number; year: number };
+type Address = {
+  line1: string;
+  line2: string;
+  townOrcity: string;
+  postcode: string;
+};
 type EmergencyContact = {
   name: string;
   phoneNumber: string;
@@ -57,6 +63,12 @@ type ContextValue = {
     value: string;
     update: StateUpdater<string>;
 
+    isRequired: boolean;
+    isValid: boolean | null;
+  };
+  address: {
+    value: Address;
+    update: ImmerUpdater<Address>;
     isRequired: boolean;
     isValid: boolean | null;
   };
@@ -152,6 +164,12 @@ const Provider = ({
   });
   const email = React.useState("");
   const phoneNumber = React.useState("");
+  const address = useImmer<Address>({
+    line1: "",
+    line2: "",
+    townOrcity: "",
+    postcode: "",
+  });
   const emergencyContact = useImmer<EmergencyContact>({
     name: "",
     phoneNumber: "",
@@ -347,6 +365,16 @@ const Provider = ({
       update: phoneNumber[1],
       isRequired: true,
       isValid: Boolean(validatePhoneNumber(phoneNumber[0])),
+    },
+    address: {
+      value: address[0],
+      update: address[1],
+      isRequired: true,
+      isValid: Boolean(
+        address[0].line1.length &&
+          address[0].postcode.length &&
+          address[0].townOrcity.length,
+      ),
     },
     emergencyContact: {
       value: emergencyContact[0],

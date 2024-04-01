@@ -38,22 +38,7 @@ const InputSlideWrapper = ({
 
       {subheading ? <p className="mt-xs text-gray-500">{subheading}</p> : null}
 
-      <div className="mt-md">
-        {children}
-
-        {/*         {errorText || isRequired ? (
-          <div className="mt-xs flex justify-between">
-            {errorMessageVisibility.value === "show" ? (
-              <p className="text-[#FF8983]">{errorText}</p>
-            ) : (
-              <span></span>
-            )}
-            {isRequired ? (
-              <span className="italic text-gray-500">required</span>
-            ) : null}
-          </div>
-        ) : null} */}
-      </div>
+      <div className="mt-md">{children}</div>
     </div>
   );
 };
@@ -319,6 +304,105 @@ const Slide7 = () => {
 const Slide8 = () => {
   const { setInputNode } = useFocusFirstInput(7);
 
+  const { address } = UserEnteredDataCx.use();
+
+  const { errorMessageVisibility } = FormCx.use();
+
+  return (
+    <SlideWrapper>
+      <InputSlideWrapper
+        heading="Your Address"
+        questionNumber={5}
+        errorText="Please complete line 1, town/city and postcode."
+        isRequired
+      >
+        <div className="flex flex-col gap-sm">
+          <div>
+            <label className="text-sm text-gray-500" htmlFor="line1">
+              Line 1
+            </label>
+            <input
+              id="line1"
+              className="mt-xs w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
+              value={address.value.line1}
+              onChange={(e) => {
+                address.update((draft) => {
+                  draft.line1 = e.target.value;
+                });
+
+                errorMessageVisibility.update("hide");
+              }}
+              type="text"
+              placeholder="Line 1"
+              ref={setInputNode}
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-gray-500" htmlFor="line2">
+              Line 2
+            </label>
+            <input
+              id="line1"
+              className="mt-xs w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
+              value={address.value.line2}
+              onChange={(e) => {
+                address.update((draft) => {
+                  draft.line2 = e.target.value;
+                });
+              }}
+              type="text"
+              placeholder="Line 2 (optional)"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-gray-500" htmlFor="town/city">
+              Town/City
+            </label>
+            <input
+              id="town/city"
+              className="mt-xs w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
+              value={address.value.townOrcity}
+              onChange={(e) => {
+                address.update((draft) => {
+                  draft.townOrcity = e.target.value;
+                });
+
+                errorMessageVisibility.update("hide");
+              }}
+              type="text"
+              placeholder="Town/City"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-500" htmlFor="postcode">
+              Postcode
+            </label>
+            <input
+              id="postcode"
+              className="mt-xs w-full border-b border-b-[#2F4858] text-lg text-[#2F4858]"
+              value={address.value.postcode}
+              onChange={(e) => {
+                address.update((draft) => {
+                  draft.postcode = e.target.value;
+                });
+
+                errorMessageVisibility.update("hide");
+              }}
+              type="text"
+              placeholder="Postcode"
+            />
+          </div>
+        </div>
+      </InputSlideWrapper>
+    </SlideWrapper>
+  );
+};
+
+const Slide9 = () => {
+  const { setInputNode } = useFocusFirstInput(8);
+
   const { emergencyContact } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -327,7 +411,7 @@ const Slide8 = () => {
     <SlideWrapper>
       <InputSlideWrapper
         heading="Emergency contact details:"
-        questionNumber={5}
+        questionNumber={7}
         errorText="Please provide contact details."
         isRequired
       >
@@ -398,7 +482,7 @@ const Slide8 = () => {
   );
 };
 
-const Slide9 = () => {
+const Slide10 = () => {
   const { identities } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -462,8 +546,8 @@ const Slide9 = () => {
   );
 };
 
-const Slide10 = () => {
-  const { setInputNode } = useFocusFirstInput(9);
+const Slide11 = () => {
+  const { setInputNode } = useFocusFirstInput(10);
 
   const { ethnicity } = UserEnteredDataCx.use();
 
@@ -473,7 +557,7 @@ const Slide10 = () => {
     <SlideWrapper>
       <InputSlideWrapper
         heading="Your ethnicity"
-        questionNumber={7}
+        questionNumber={8}
         errorText="Oops...please provide an answer"
         isRequired
       >
@@ -494,7 +578,7 @@ const Slide10 = () => {
   );
 };
 
-const Slide11 = () => {
+const Slide12 = () => {
   const { genders } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -504,7 +588,7 @@ const Slide11 = () => {
       <InputSlideWrapper
         heading="Do you identify as any of the following?"
         subheading="Tick all that apply to you."
-        questionNumber={8}
+        questionNumber={9}
         errorText="Oops...please select one of the options"
         isRequired
       >
@@ -550,8 +634,8 @@ const Slide11 = () => {
   );
 };
 
-const Slide12 = () => {
-  const { setInputNode } = useFocusFirstInput(11);
+const Slide13 = () => {
+  const { setInputNode } = useFocusFirstInput(12);
 
   const { healthIssues } = UserEnteredDataCx.use();
 
@@ -560,7 +644,7 @@ const Slide12 = () => {
       <InputSlideWrapper
         heading="Do you consider yourself to have any physical health issues or medical conditions, e.g ASD, Asthma or allergies, ?"
         subheading="If yes, please provide us with some detail."
-        questionNumber={9}
+        questionNumber={10}
       >
         <textarea
           className="w-full resize-none border-b border-b-[#2F4858] text-lg text-[#2F4858]"
@@ -574,8 +658,8 @@ const Slide12 = () => {
   );
 };
 
-const Slide13 = () => {
-  const { setInputNode } = useFocusFirstInput(12);
+const Slide14 = () => {
+  const { setInputNode } = useFocusFirstInput(13);
 
   const { lifeSavingMedications } = UserEnteredDataCx.use();
 
@@ -586,7 +670,7 @@ const Slide13 = () => {
       <InputSlideWrapper
         heading="Do you require any regular life saving medication, e.g inhalers, epipen or other?"
         subheading="If yes, please provide us with some detail. If no, please type 'no'"
-        questionNumber={10}
+        questionNumber={11}
         errorText="Please enter details or type 'no'"
         isRequired
       >
@@ -606,7 +690,7 @@ const Slide13 = () => {
   );
 };
 
-const Slide14 = () => {
+const Slide15 = () => {
   const { events } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -615,7 +699,7 @@ const Slide14 = () => {
     <SlideWrapper>
       <InputSlideWrapper
         heading="Which programmes and workshops are you interested in and would like some more information about?"
-        questionNumber={11}
+        questionNumber={12}
         errorText="Please select at least one option."
         isRequired
       >
@@ -655,8 +739,8 @@ const Slide14 = () => {
   );
 };
 
-const Slide15 = () => {
-  const { setInputNode } = useFocusFirstInput(14);
+const Slide16 = () => {
+  const { setInputNode } = useFocusFirstInput(15);
 
   const { hopeToGet } = UserEnteredDataCx.use();
 
@@ -664,7 +748,7 @@ const Slide15 = () => {
     <SlideWrapper>
       <InputSlideWrapper
         heading="What do you hope to get out of going to The Birch Collective's sessions or programmes?"
-        questionNumber={12}
+        questionNumber={13}
       >
         <textarea
           className="w-full resize-none border-b border-b-[#2F4858] text-lg text-[#2F4858]"
@@ -678,8 +762,8 @@ const Slide15 = () => {
   );
 };
 
-const Slide16 = () => {
-  const { setInputNode } = useFocusFirstInput(15);
+const Slide17 = () => {
+  const { setInputNode } = useFocusFirstInput(16);
 
   const { referralInfo } = UserEnteredDataCx.use();
 
@@ -688,7 +772,7 @@ const Slide16 = () => {
       <InputSlideWrapper
         heading="For referrals from professionals"
         subheading="Any additional information you think is important to share about your client?"
-        questionNumber={13}
+        questionNumber={14}
       >
         <textarea
           className="w-full resize-none border-b border-b-[#2F4858] text-lg text-[#2F4858]"
@@ -702,7 +786,7 @@ const Slide16 = () => {
   );
 };
 
-const Slide17 = () => {
+const Slide18 = () => {
   const { sources } = UserEnteredDataCx.use();
 
   return (
@@ -710,7 +794,7 @@ const Slide17 = () => {
       <InputSlideWrapper
         heading="How did you hear about The Birch Collective"
         subheading="Tick all that apply."
-        questionNumber={14}
+        questionNumber={15}
       >
         <div className="mt-md flex flex-col gap-xs">
           {sources.value.entries.map((option) => (
@@ -799,7 +883,7 @@ const Slide17 = () => {
   );
 };
 
-const Slide18 = () => {
+const Slide19 = () => {
   const { receiveNewsLetter } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -808,7 +892,7 @@ const Slide18 = () => {
     <SlideWrapper>
       <InputSlideWrapper
         heading="Would you like to be added to the Birch Collectives monthly newsletter to hear about new workshops, programmes and services we are running?"
-        questionNumber={15}
+        questionNumber={16}
         errorText="Oops...please select one of the options"
         isRequired
       >
@@ -852,7 +936,7 @@ const Slide18 = () => {
   );
 };
 
-const Slide19 = () => {
+const Slide20 = () => {
   const { imagePermission } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -862,7 +946,7 @@ const Slide19 = () => {
       <InputSlideWrapper
         heading="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
         subheading="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
-        questionNumber={16}
+        questionNumber={17}
         errorText="Oops...please select one of the options"
         isRequired
       >
@@ -915,11 +999,12 @@ const optionsToStr = (options: { label: string; isSelected: boolean }[]) => {
   return selected;
 };
 
-const Slide20 = () => {
+const Slide21 = () => {
   const { notifyEmails } = ComponentApiCx.use();
   const { submitFormStatus } = FormCx.use();
 
   const {
+    address,
     dob,
     email,
     emergencyContact,
@@ -950,6 +1035,7 @@ const Slide20 = () => {
       date_of_birth: `${dob.value.day}/${dob.value.month}/${dob.value.year}`,
       email: email.value,
       phone_number: phoneNumber.value,
+      address: `line1:${address.value.line1} | line2: ${address.value.line2} | town/city: ${address.value.townOrcity} | postcode: ${address.value.postcode}`,
       emergency_contact: `name:${emergencyContact.value.name} | phone number: ${emergencyContact.value.phoneNumber} | relationship: ${emergencyContact.value.relationship}`,
       identities: identitiesStr,
       ethnicity: ethnicity.value,
@@ -1030,44 +1116,47 @@ export const slides = [
   <SwiperSlide key="phoneNumber">
     <Slide7 />
   </SwiperSlide>,
-  <SwiperSlide key="emergencyContact">
+  <SwiperSlide key="address">
     <Slide8 />
   </SwiperSlide>,
-  <SwiperSlide key="identities">
+  <SwiperSlide key="emergencyContact">
     <Slide9 />
   </SwiperSlide>,
-  <SwiperSlide key="ethnicity">
+  <SwiperSlide key="identities">
     <Slide10 />
   </SwiperSlide>,
-  <SwiperSlide key="genders">
+  <SwiperSlide key="ethnicity">
     <Slide11 />
   </SwiperSlide>,
-  <SwiperSlide key="healthIssues">
+  <SwiperSlide key="genders">
     <Slide12 />
   </SwiperSlide>,
-  <SwiperSlide key="lifeSavingMedications">
+  <SwiperSlide key="healthIssues">
     <Slide13 />
   </SwiperSlide>,
-  <SwiperSlide key="events">
+  <SwiperSlide key="lifeSavingMedications">
     <Slide14 />
   </SwiperSlide>,
-  <SwiperSlide key="hopeToGet">
+  <SwiperSlide key="events">
     <Slide15 />
   </SwiperSlide>,
-  <SwiperSlide key="referralInfo">
+  <SwiperSlide key="hopeToGet">
     <Slide16 />
   </SwiperSlide>,
-  <SwiperSlide key="sources">
+  <SwiperSlide key="referralInfo">
     <Slide17 />
   </SwiperSlide>,
-  <SwiperSlide key="receiveNewsLetter">
+  <SwiperSlide key="sources">
     <Slide18 />
   </SwiperSlide>,
-  <SwiperSlide key="imagePermission">
+  <SwiperSlide key="receiveNewsLetter">
     <Slide19 />
   </SwiperSlide>,
-  <SwiperSlide key="submit">
+  <SwiperSlide key="imagePermission">
     <Slide20 />
+  </SwiperSlide>,
+  <SwiperSlide key="submit">
+    <Slide21 />
   </SwiperSlide>,
 ];
 
@@ -1114,6 +1203,13 @@ export const slidesMeta: SlideMeta[] = [
     isRequired: true,
     buttonText: "Next",
     errorText: "Oops...please enter a valid phone number.",
+  },
+  {
+    type: "input",
+    id: "address",
+    isRequired: true,
+    buttonText: "Next",
+    errorText: "Oops...please fill in line1, address and postcode.",
   },
   {
     type: "input",

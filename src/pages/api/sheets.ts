@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { google } from "googleapis";
 
 type Body = {
   name: string;
@@ -27,26 +28,36 @@ export default async function handler(
       return res.status(405).send({ message: "Only POST requests allowed" });
     }
 
+    const auth = new google.auth.GoogleAuth({
+      credentials: {
+        client_email: process.env.SIGN_UP_SHEET_CLIENT_EMAIL,
+        private_key: process.env.SIGN_UP_SHEET_PRIVATE_KEY?.replace(
+          /\\n/g,
+          "\n",
+        ),
+      },
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    });
+
+    const sheets = google.sheets({
+      auth,
+      version: "v4",
+    });
+
+    const dateNow = new Date().toUTCString();
+
     const body = JSON.parse(req.body as string) as Body;
 
-    const formData = new FormData();
-
-    const dateNow = new Date();
-
-    formData.append("date_of_entry", dateNow.toUTCString());
-
-    for (const [key, value] of Object.entries(body)) {
-      formData.append(key, value);
-    }
-
-    await fetch(process.env.SIGN_UP_SHEET_SCRIPT_URL as string, {
-      method: "POST",
-      body: formData,
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.SIGN_UP_SHEET_SPREADSHEET_ID,
+      range: "A2:AR",
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [[dateNow, ...Object.values(body)]],
+      },
     });
 
     res.status(200);
-
-    return "good";
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Internal server error";
