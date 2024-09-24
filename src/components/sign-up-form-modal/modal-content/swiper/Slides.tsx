@@ -1007,7 +1007,7 @@ const Slide21 = () => {
         <div className="flex flex-col gap-sm">
           <div className="flex items-center gap-xs">
             <input
-              id="image-yes"
+              id="fresh-text-yes"
               checked={fresh_air_thursday_text_opt_in_Permission.value === true}
               onChange={() => {
                 fresh_air_thursday_text_opt_in_Permission.update(true);
@@ -1017,7 +1017,7 @@ const Slide21 = () => {
               type="checkbox"
             />
 
-            <label className="text-lg text-[#2F4858]" htmlFor="image-yes">
+            <label className="text-lg text-[#2F4858]" htmlFor="fresh-text-yes">
               Yes
             </label>
           </div>
@@ -1086,9 +1086,7 @@ const Slide22 = () => {
     const gendersStr = optionsToStr(genders.value);
     const eventsStr = optionsToStr(events.value);
 
-    // status field to be left empty
     const data = {
-      status: "",
       name: name.value,
       date_of_birth: `${dob.value.day}/${dob.value.month}/${dob.value.year}`,
       email: email.value,

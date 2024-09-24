@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
 type Body = {
-  status: string;
   name: string;
   date_of_birth: string;
   email: string;
