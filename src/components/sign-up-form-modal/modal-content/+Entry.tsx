@@ -83,12 +83,12 @@ const ModalContent = () => {
     if (slidesMeta[swiperApi.currentSlideIndex].id === "imagePermission") {
       return userEnteredData.imagePermission.isValid;
     }
-    /*     if (
+    if (
       slidesMeta[swiperApi.currentSlideIndex].id ===
       "freshAirThursdayTextPermission"
     ) {
       return userEnteredData.fresh_air_thursday_text_opt_in_Permission.isValid;
-    } */
+    }
 
     return true;
   }, [
@@ -99,6 +99,7 @@ const ModalContent = () => {
     userEnteredData.emergencyContact.isValid,
     userEnteredData.ethnicity.isValid,
     userEnteredData.events.isValid,
+    userEnteredData.fresh_air_thursday_text_opt_in_Permission.isValid,
     userEnteredData.genders.isValid,
     userEnteredData.identities.isValid,
     userEnteredData.imagePermission.isValid,
