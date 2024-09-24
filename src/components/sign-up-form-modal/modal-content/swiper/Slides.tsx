@@ -936,7 +936,7 @@ const Slide19 = () => {
   );
 };
 
-const Slide20 = () => {
+/* const Slide20 = () => {
   const { imagePermission } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -988,9 +988,9 @@ const Slide20 = () => {
       </InputSlideWrapper>
     </SlideWrapper>
   );
-};
+}; */
 
-const Slide21 = () => {
+const Slide20 = () => {
   const { fresh_air_thursday_text_opt_in_Permission } = UserEnteredDataCx.use();
 
   const { errorMessageVisibility } = FormCx.use();
@@ -1077,6 +1077,7 @@ const Slide22 = () => {
     receiveNewsLetter,
     referralInfo,
     sources,
+    // fresh_air_thursday_text_opt_in_Permission,
   } = UserEnteredDataCx.use();
 
   const handleSubmitForm = () => {
@@ -1108,7 +1109,9 @@ const Slide22 = () => {
       } | other details: ${sources.value.otherDetails}`,
       newsletter_opt_in: receiveNewsLetter ? "yes" : "no",
       image_opt_in: imagePermission ? "yes" : "no",
-      fresh_air_thursday_text_opt_in: "",
+      /*       fresh_air_thursday_text_opt_in: fresh_air_thursday_text_opt_in_Permission
+        ? "yes"
+        : "no", */
     };
 
     if (!isDevMode) {
@@ -1212,9 +1215,9 @@ export const slides = [
   <SwiperSlide key="imagePermission">
     <Slide20 />
   </SwiperSlide>,
-  <SwiperSlide key="freshAirThursdayTextPermission">
+  /*   <SwiperSlide key="freshAirThursdayTextPermission">
     <Slide21 />
-  </SwiperSlide>,
+  </SwiperSlide>, */
   <SwiperSlide key="submit">
     <Slide22 />
   </SwiperSlide>,
