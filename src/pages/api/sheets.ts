@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
 type Body = {
+  status: string;
   name: string;
   date_of_birth: string;
   email: string;
@@ -17,6 +18,7 @@ type Body = {
   sources: string;
   newsletter_opt_in: string;
   image_opt_in: string;
+  fresh_air_thursday_text_opt_in: string;
 };
 
 export default async function handler(

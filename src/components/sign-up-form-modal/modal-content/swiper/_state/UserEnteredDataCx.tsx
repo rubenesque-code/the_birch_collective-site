@@ -147,6 +147,12 @@ type ContextValue = {
     isRequired: boolean;
     isValid: boolean | null;
   };
+  fresh_air_thursday_text_opt_in_Permission: {
+    value: boolean | null;
+    update: StateUpdater<boolean | null>;
+    isRequired: boolean;
+    isValid: boolean | null;
+  };
 };
 
 const Context = React.createContext<ContextValue | null>(null);
@@ -298,6 +304,9 @@ const Provider = ({
   });
   const receiveNewsLetter = React.useState<boolean | null>(null);
   const imagePermission = React.useState<boolean | null>(null);
+  const fresh_air_thursday_text_opt_in_Permission = React.useState<
+    boolean | null
+  >(null);
 
   const programmesQuery = useQuery("programmes", myDb.programme.fetchAll);
   const workshopsQuery = useQuery("workshops", myDb.workshop.fetchAll);
@@ -451,6 +460,12 @@ const Provider = ({
       update: imagePermission[1],
       isRequired: true,
       isValid: imagePermission[0] !== null,
+    },
+    fresh_air_thursday_text_opt_in_Permission: {
+      value: fresh_air_thursday_text_opt_in_Permission[0],
+      update: fresh_air_thursday_text_opt_in_Permission[1],
+      isRequired: true,
+      isValid: fresh_air_thursday_text_opt_in_Permission[0] !== null,
     },
   };
 

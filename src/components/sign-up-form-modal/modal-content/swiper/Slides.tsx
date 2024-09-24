@@ -990,6 +990,62 @@ const Slide20 = () => {
   );
 };
 
+const Slide21 = () => {
+  const { fresh_air_thursday_text_opt_in_Permission } = UserEnteredDataCx.use();
+
+  const { errorMessageVisibility } = FormCx.use();
+
+  return (
+    <SlideWrapper>
+      <InputSlideWrapper
+        heading="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
+        subheading="You can be removed at anytime by simply replying STOP"
+        questionNumber={18}
+        errorText="Oops...please select one of the options"
+        isRequired
+      >
+        <div className="flex flex-col gap-sm">
+          <div className="flex items-center gap-xs">
+            <input
+              id="image-yes"
+              checked={fresh_air_thursday_text_opt_in_Permission.value === true}
+              onChange={() => {
+                fresh_air_thursday_text_opt_in_Permission.update(true);
+
+                errorMessageVisibility.update("hide");
+              }}
+              type="checkbox"
+            />
+
+            <label className="text-lg text-[#2F4858]" htmlFor="image-yes">
+              Yes
+            </label>
+          </div>
+
+          <div className="flex items-center gap-xs">
+            <input
+              id="fresh-text-no"
+              checked={
+                fresh_air_thursday_text_opt_in_Permission.value === false
+              }
+              onChange={() => {
+                fresh_air_thursday_text_opt_in_Permission.update(false);
+
+                errorMessageVisibility.update("hide");
+              }}
+              type="checkbox"
+            />
+
+            <label htmlFor="fresh-text-no" className="text-lg text-[#2F4858]">
+              No
+            </label>
+          </div>
+        </div>
+      </InputSlideWrapper>
+    </SlideWrapper>
+  );
+};
+
 const optionsToStr = (options: { label: string; isSelected: boolean }[]) => {
   const selected = options
     .filter((o) => o.isSelected)
@@ -999,7 +1055,7 @@ const optionsToStr = (options: { label: string; isSelected: boolean }[]) => {
   return selected;
 };
 
-const Slide21 = () => {
+const Slide22 = () => {
   const { notifyEmails } = ComponentApiCx.use();
   const { submitFormStatus } = FormCx.use();
 
@@ -1030,7 +1086,9 @@ const Slide21 = () => {
     const gendersStr = optionsToStr(genders.value);
     const eventsStr = optionsToStr(events.value);
 
+    // status field to be left empty
     const data = {
+      status: "",
       name: name.value,
       date_of_birth: `${dob.value.day}/${dob.value.month}/${dob.value.year}`,
       email: email.value,
@@ -1052,6 +1110,7 @@ const Slide21 = () => {
       } | other details: ${sources.value.otherDetails}`,
       newsletter_opt_in: receiveNewsLetter ? "yes" : "no",
       image_opt_in: imagePermission ? "yes" : "no",
+      fresh_air_thursday_text_opt_in: "",
     };
 
     if (!isDevMode) {
@@ -1155,8 +1214,11 @@ export const slides = [
   <SwiperSlide key="imagePermission">
     <Slide20 />
   </SwiperSlide>,
-  <SwiperSlide key="submit">
+  <SwiperSlide key="freshAirThursdayTextPermission">
     <Slide21 />
+  </SwiperSlide>,
+  <SwiperSlide key="submit">
+    <Slide22 />
   </SwiperSlide>,
 ];
 
@@ -1290,6 +1352,13 @@ export const slidesMeta: SlideMeta[] = [
   {
     type: "input",
     id: "imagePermission",
+    isRequired: true,
+    buttonText: "Next",
+    errorText: "Oops...please select one of the options",
+  },
+  {
+    type: "input",
+    id: "freshAirThursdayTextPermission",
     isRequired: true,
     buttonText: "Next",
     errorText: "Oops...please select one of the options",

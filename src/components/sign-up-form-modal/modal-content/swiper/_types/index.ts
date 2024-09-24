@@ -18,4 +18,5 @@ export type InputSlideId =
   | "sources"
   | "receiveNewsLetter"
   | "imagePermission"
+  | "freshAirThursdayTextPermission"
   | "submit";
